@@ -21,6 +21,7 @@ namespace Database
         public virtual DbSet<Airport> Airports { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
         public virtual DbSet<FlightDetail> FlightDetails { get; set; }
+        public virtual DbSet<FlightPath> FlightPaths { get; set; }
         public virtual DbSet<FlightStatus> FlightStatuses { get; set; }
         public virtual DbSet<Pilot> Pilots { get; set; }
         public virtual DbSet<Plane> Planes { get; set; }
@@ -94,18 +95,6 @@ namespace Database
             {
                 entity.Property(e => e.FlightId).HasColumnName("flightId");
 
-                entity.Property(e => e.ArrivalId)
-                    .IsRequired()
-                    .HasMaxLength(3)
-                    .IsUnicode(false)
-                    .HasColumnName("arrivalId");
-
-                entity.Property(e => e.DepartureId)
-                    .IsRequired()
-                    .HasMaxLength(3)
-                    .IsUnicode(false)
-                    .HasColumnName("departureId");
-
                 entity.Property(e => e.FlightDate)
                     .HasColumnType("datetime")
                     .HasColumnName("flightDate");
@@ -161,6 +150,33 @@ namespace Database
                     .WithMany(p => p.FlightDetails)
                     .HasForeignKey(d => d.PlaneId)
                     .HasConstraintName("FK__FlightDet__plane__300424B4");
+            });
+
+            modelBuilder.Entity<FlightPath>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.Property(e => e.AirportId)
+                    .IsRequired()
+                    .HasMaxLength(5)
+                    .IsUnicode(false)
+                    .HasColumnName("airportId");
+
+                entity.Property(e => e.FlightId).HasColumnName("flightId");
+
+                entity.Property(e => e.IsDepartElseArrival).HasColumnName("isDepartElseArrival");
+
+                entity.HasOne(d => d.Airport)
+                    .WithMany()
+                    .HasForeignKey(d => d.AirportId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__FlightPat__airpo__4AB81AF0");
+
+                entity.HasOne(d => d.Flight)
+                    .WithMany()
+                    .HasForeignKey(d => d.FlightId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__FlightPat__fligh__49C3F6B7");
             });
 
             modelBuilder.Entity<FlightStatus>(entity =>

@@ -15,8 +15,6 @@ namespace Database
         public int FlightId { get; set; }
         public int FlightStatusId { get; set; }
         public DateTime FlightDate { get; set; }
-        public string DepartureId { get; set; }
-        public string ArrivalId { get; set; }
 
         public virtual FlightStatus FlightStatus { get; set; }
         public virtual ICollection<FlightDetail> FlightDetails { get; set; }
