@@ -1,0 +1,38 @@
+﻿DBCC CHECKIDENT ('Airlines',RESEED,0)
+GO
+
+INSERT INTO Airlines(airlineName, regionId)
+VALUES
+('Qatar Airways',1),
+('Delta Air Lines',5),
+('ANA',2),
+('KLM',3),
+('British Airways',3),
+('Turkish Airlines',1),
+('Qatar Singapore Airlines',2),
+('Lufthansa',2),
+('United Airlines',5),
+('Cathay Pacific',2),
+('Emirates Airline',1),
+('Saudi Arabian Airlines',1),
+('AirAsia',2),
+('Air China',2),
+('China Airlines',2),
+('JAL Group',2),
+('Korean Air',2),
+('easyJet',3),
+('Ryanair',3),
+('Malaysia Airlines',2),
+('Singapore Airlines',2),
+('Thai Airways International',2),
+('Vietnam Airlines',2),
+('Virgin Blue Airlines',2),
+('Air France KLM',3),
+('Thomson Airways',3),
+('Avianca',4),
+('LAN Airlines',4),
+('Air Canada',5),
+('Alask Airlines',5),
+('American Airlines',5),
+('JetBlue Airways',5),
+('WestJet',5)

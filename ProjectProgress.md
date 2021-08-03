@@ -11,11 +11,12 @@
 | Epics |                                                              |
 | :---: | ------------------------------------------------------------ |
 |   1   | As an owner, I want a database so that the program can query and utilise it. |
-|   2   | As a user, I want an interface so that I can add new flights with the correct and appropriate information. |
-|   3   | As a user, I want an interface so that I can update current flights by being able to change certain flight information. |
-|   4   | As a user, I want an interface so that I can delete flights that are redundant or have been mistakenly added. |
-|   5   | As a user, I want a history interface so that I can see what changes have been made and to revert them. |
-|   6   | As an owner, I want a graphically pleasing interface so that the app is attractive and appealing. |
+|   2   | As a user, I want an interface so that I can select a flight and retrieve the correct information. |
+|   3   | As a user, I want an interface so that I can add new flights with the correct and appropriate information. |
+|   4   | As a user, I want an interface so that I can update current flights by being able to change certain flight information. |
+|   5   | As a user, I want an interface so that I can delete flights that are redundant or have been mistakenly added. |
+|   6   | As a user, I want a history interface so that I can see what changes have been made and to revert them. |
+|   7   | As an owner, I want a graphically pleasing interface so that the app is attractive and appealing. |
 
 ### User Story Definition of Done
 - Acceptance criteria has been met 
