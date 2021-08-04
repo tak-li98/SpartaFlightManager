@@ -51,8 +51,19 @@ namespace GUI
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (flightBoard.SelectedItem != null)
+            {
+                _flightManager.SetSelectedFlight(flightBoard.SelectedItem);
+
+            }
         }
 
+        private void FullDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var flightDetailsWindow = new FlightDetailsWindow(customerListBox.SelectedItem);
+            orderWindow.Show();
+            orderWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Close();
+        }
     }
 }

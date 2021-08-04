@@ -16,7 +16,7 @@ namespace Manager
     {
         public Flight SelectedFlight { get; set; }
 
-        public void SetFlight(object selectedItem)
+        public void SetSelectedFlight(object selectedItem)
         {
             SelectedFlight = (Flight)selectedItem;
         }
