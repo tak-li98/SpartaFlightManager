@@ -23,7 +23,8 @@ namespace FlightManagerTests
             }
         }
         [Test]
-        public void CheckIfNewPilotAddedDatabaseIncreasesBy1()
+        [Category("HAPPY")]
+        public void CheckIfNewPilotAdded_DatabaseIncreasesBy1()
         {
             using (var db = new SpartaFlightContext())
             {
@@ -34,6 +35,45 @@ namespace FlightManagerTests
             }
         }
 
+        [Test]
+        [Category("HAPPY")]
+        public void CheckIfPilotIsUpdated()
+        {
+            using(var db = new SpartaFlightContext())
+            {
+                var pilotId = db.Pilots.Where(p => p.FirstName == "Dummy" && p.LastName == "Data").FirstOrDefault().PilotId;
+                var updatePilot = _pilotManager.Update(pilotId, "Dummy", "Data", "Dr.");
+                Assert.That(updatePilot, Is.True);
+            }
+        }
+
+        [Test]
+        [Category("HAPPY")]
+        public void CheckIfPilotIsDeleted()
+        { 
+            using (var db = new SpartaFlightContext())
+            {
+                var pilotId = db.Pilots.Where(p => p.FirstName == "Dummy" && p.LastName == "Data");
+                foreach (var item in pilotId)
+                {
+                    var delPilot = _pilotManager.Delete(item.PilotId);
+                    Assert.That(delPilot, Is.True);
+                }
+            }
+        }
+        [Test]
+        [Category("HAPPY")]
+        public void CheckIfDeletePilot_DatabaseDecreases1()
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var initialCount = db.Pilots.Count();
+                var pilotId = db.Pilots.Where(p => p.FirstName == "Dummy" && p.LastName == "Data").FirstOrDefault().PilotId;
+                _pilotManager.Delete(pilotId);
+                var finalCount = db.Pilots.Count();
+                Assert.That(finalCount - initialCount, Is.EqualTo(-1));
+            }
+        }
         [TearDown]
         public void TearDown()
         {
