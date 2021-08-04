@@ -8,9 +8,10 @@ namespace Manager
     class Program
     {
         public static void Main(string[] args)
-        { 
-            FlightManager _flightManager = new FlightManager();
-            _flightManager.ReturnFlightBoardInfoFromFlights();
+        {
+            ////FLIGHT MANAGER MANUAL TESTING
+            //FlightManager _flightManager = new FlightManager();
+            //_flightManager.ReturnFlightBoardInfoFromFlights();
             //CREATE
             //_flightManager.Create(Status.SCHEDULED, DateTime.Now.AddDays(3),"LHR","DAL");
             //READ
@@ -26,9 +27,17 @@ namespace Manager
             //        {
             //            _flightManager.Delete(item.FlightId);
             //        }
-                    
+
             //    }
             //}
+
+            //PILOT MANAGER MANUAL TESTING
+            PilotManager _pilotManager = new PilotManager();
+            var pilots =_pilotManager.RetrieveAll();
+            foreach (var pilot in pilots)
+            {
+                Console.WriteLine(pilot.ToString());
+            }
         }
     }
 }
