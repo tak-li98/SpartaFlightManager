@@ -82,7 +82,7 @@ namespace FlightManagerTests
             {
                 var removeFlight = db.Flights.Where(f =>
                 (f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0) || f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0)));
-                //var removeFlightPath = dbTeardown.FlightPaths.Where(f => f.FlightId == lastId);
+                
                 var idList = new List<int>();
 
                 foreach (var item in removeFlight)

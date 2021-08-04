@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="flightBoard" Width ="900" Height ="425" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="8" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black">
+            <ListView.View>
+                <GridView>
+                    
+                    <GridViewColumn DisplayMemberBinding="{Binding FlightNumber}" Header="Flight Number" Width="120"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Time}" Header="Time" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Status" Width="130"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

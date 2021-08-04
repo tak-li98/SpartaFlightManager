@@ -28,22 +28,24 @@ namespace Manager
                 return db.Flights.ToList();
             }
         }
-        public void ReturnInfoFromFlight()
+        public string[,] ReturnFlightBoardInfoFromFlights()
         {
-
             using (var db = new SpartaFlightContext())
             {
                 var queryDepart =
                     from f in db.Flights
+                    join fs in db.FlightStatuses on f.FlightStatusId equals fs.FlightStatusId
                     join fp in db.FlightPaths on f.FlightId equals fp.FlightId
                     join ap in db.Airports on fp.AirportId equals ap.AirportId
                     join fd in db.FlightDetails on f.FlightId equals fd.FlightId
                     join al in db.Airlines on fd.AirlineId equals al.AirlineId
                     where (fp.IsDepartElseArrival == true)
+                    orderby f.FlightDate
                     select new
                     {
                         f.FlightId,
                         f.FlightDate,
+                        fs.Status,
                         ap.AirportId,
                         ap.City,
                         ap.Country,
@@ -55,13 +57,14 @@ namespace Manager
                     join fp in db.FlightPaths on f.FlightId equals fp.FlightId
                     join ap in db.Airports on fp.AirportId equals ap.AirportId
                     where (fp.IsDepartElseArrival == false)
+                    orderby f.FlightDate
                     select new
                     {
                         ap.AirportId,
                         ap.City,
                         ap.Country,
                     };
-                var info = new string[queryDepart.Count(), 10];
+                var info = new string[queryDepart.Count(), 12];
                 var count = 0;
                 foreach (var i in queryDepart)
                 {
@@ -71,24 +74,20 @@ namespace Manager
                     info[count, 3] = i.City;
                     info[count, 4] = i.Country;
                     info[count, 5] = i.AirportId;
-                    info[count, 6] = i.FlightDate.ToString();
+                    info[count, 6] = i.FlightDate.ToShortDateString();
+                    info[count, 7] = i.FlightDate.ToShortTimeString();
+                    info[count, 8] = i.Status.ToString();
                     count++;
                 }
                 var countArrival = 0;
                 foreach (var i in queryArrival)
                 {
-                    info[countArrival, 7] = i.City;
-                    info[countArrival, 8] = i.Country;
-                    info[countArrival, 9] = i.AirportId;
+                    info[countArrival, 9] = i.City;
+                    info[countArrival, 10] = i.Country;
+                    info[countArrival, 11] = i.AirportId;
                     countArrival++;
                 }
-
-                for (int i = 0; i < queryDepart.Count(); i++)
-                {
-                    Console.WriteLine($"Flight {info[i, 0]}0{info[i, 1]} ({info[i, 2]})" +
-                        $"; departing from {info[i, 3]}, {info[i, 4]} ({info[i, 5]}) on {info[i, 6]}" +
-                        $" arriving at {info[i, 7]}, {info[i, 8]} ({info[i, 9]}).");
-                }
+                return info;
             }
         }
         public void Create(Status flightStatus, DateTime flightDate, string departureId,string arrivalId)

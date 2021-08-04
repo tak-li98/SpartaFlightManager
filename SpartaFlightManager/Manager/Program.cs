@@ -10,7 +10,7 @@ namespace Manager
         public static void Main(string[] args)
         { 
             FlightManager _flightManager = new FlightManager();
-            _flightManager.ReturnInfoFromFlight();
+            _flightManager.ReturnFlightBoardInfoFromFlights();
             //CREATE
             //_flightManager.Create(Status.SCHEDULED, DateTime.Now.AddDays(3),"LHR","DAL");
             //READ
