@@ -29,7 +29,7 @@ namespace Manager
             }
         }
 
-        public void Create(Status flightStatus, DateTime flightDate, string departureId)
+        public void Create(Status flightStatus, DateTime flightDate, string departureId,string arrivalId)
         {
 
             var newFlight = new Flight() { FlightStatusId = (int)flightStatus, FlightDate = flightDate };
@@ -37,14 +37,25 @@ namespace Manager
             {
                 db.Flights.Add(newFlight);
                 db.SaveChanges();
-                var lastId = db.Flights.Select(i => i.FlightId.ToString().Max()).FirstOrDefault();
+                var lastId = db.Flights.Select(i => i.FlightId).Max();
                 CreateDeparture(lastId, departureId);
+                CreateArrival(lastId, arrivalId);
             }
         }
         public static void CreateDeparture(int flightId, string departureId)
         {
 
             var newFlightPath = new FlightPath() { FlightId = flightId, AirportId = departureId, IsDepartElseArrival = true };
+            using (var db = new SpartaFlightContext())
+            {
+                db.FlightPaths.Add(newFlightPath);
+                db.SaveChanges();
+            }
+        }
+        public static void CreateArrival(int flightId, string arrivalId)
+        {
+
+            var newFlightPath = new FlightPath() { FlightId = flightId, AirportId = arrivalId, IsDepartElseArrival = false };
             using (var db = new SpartaFlightContext())
             {
                 db.FlightPaths.Add(newFlightPath);
