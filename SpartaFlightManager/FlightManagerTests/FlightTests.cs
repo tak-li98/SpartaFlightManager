@@ -4,6 +4,8 @@ using Manager;
 using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
 namespace FlightManagerTests
 {
     public class FlightTests
@@ -72,56 +74,40 @@ namespace FlightManagerTests
                 }
             }
         }
-        //[TearDown]
-        
-        //public void Teardown()
-        //{
-        //    using (var dB = new SpartaFlightContext())
-        //    {
-        //        var idQuery =
-        //            from f in dB.Flights
-        //            join fp in dB.FlightPaths on f.FlightId equals fp.FlightId
-        //            where (fp.AirportId == "LHR" || fp.AirportId == "DAL") &&
-        //            (f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0) || f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0))
-        //            select f.FlightId;
-        //        idQuery.ToList();
-        //        //var removeFlightPath = dbTeardown.FlightPaths.Where(f => f.FlightId == lastId);
+        [TearDown]
 
-        //        var removeFlight1 = dB.Flights.Where(f => f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0));
-        //        var removeFlight2 = dB.Flights.Where(f => f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0));
+        public void Teardown()
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var removeFlight = db.Flights.Where(f =>
+                (f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0) || f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0)));
+                //var removeFlightPath = dbTeardown.FlightPaths.Where(f => f.FlightId == lastId);
+                var idList = new List<int>();
 
-        //        if (idQuery != null)
-        //        {
-        //            foreach (var item in idQuery)
-        //            {
-        //                var allFlights = dB.FlightPaths.Where(i => i.FlightId == item);
-        //                foreach (var i in allFlights)
-        //                {
-        //                    dB.RemoveRange(i);
-        //                }
-        //            }
-        //        }
-        //        dB.SaveChanges();
+                foreach (var item in removeFlight)
+                {
+                    idList.Add(item.FlightId);
+                }
 
-        //        using (var dbF = new SpartaFlightContext())
-        //            if (removeFlight1 != null)
-        //            {
-        //                foreach (var item in removeFlight1)
-        //                {
-        //                    dB.Flights.RemoveRange(item);
 
-        //                }
-        //            }
-        //        if (removeFlight2 != null)
-        //        {
-        //            foreach (var item in removeFlight2)
-        //            {
-        //                dB.Flights.RemoveRange(item);
-        //            }
-        //        }
-        //        dB.SaveChanges();
-        //    }
-        //}
-        
+                if (removeFlight != null)
+                {
+                    foreach (var item in idList)
+                    {
+                        db.FlightPaths.RemoveRange(db.FlightPaths.Where(i => i.FlightId == item));
+                    }
+                    db.SaveChanges();
+                }
+                if (removeFlight != null)
+                {
+                    foreach (var item in removeFlight)
+                    {
+                        db.Flights.RemoveRange(item);
+                    }
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
