@@ -8,12 +8,13 @@ namespace Manager
         { 
             FlightManager _flightManager = new FlightManager();
             //CREATE
-            _flightManager.Create(Status.SCHEDULED, DateTime.Now.AddDays(3),"LHR","DAL");
+            //_flightManager.Create(Status.SCHEDULED, DateTime.Now.AddDays(3),"LHR","DAL");
             //READ
             //flightManager.RetrieveAll().ForEach(i => Console.WriteLine(i.ToString()));
             //UPDATE
             //_flightManager.Update(23, Status.DELAYED, DateTime.Now.AddDays(4));
             //DELETE
+
             //_flightManager.Delete(23);
         }
     }

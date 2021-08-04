@@ -92,10 +92,19 @@ namespace Manager
         {
             using (var db = new SpartaFlightContext())
             {
+                var delFlightPath = db.FlightPaths.Where(fp => fp.FlightId == flightId);
                 var delFlight = db.Flights.Where(f => f.FlightId == flightId);
+                if(delFlightPath == null)
+                {
+                    return false;
+                }
                 if (delFlight == null)
                 {
                     return false;
+                }
+                foreach (var item in delFlightPath)
+                {
+                    db.FlightPaths.RemoveRange(item);
                 }
                 foreach (var item in delFlight)
                 {
