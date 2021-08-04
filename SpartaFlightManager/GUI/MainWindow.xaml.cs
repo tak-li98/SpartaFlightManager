@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Manager;
 
+
 namespace GUI
 {
     /// <summary>
@@ -36,8 +37,9 @@ namespace GUI
             var results = _flightManager.ReturnFlightBoardInfoFromFlights();
             for (int i = 0; i < results.Length / 12; i++)
             {
-                var row = new { 
-                    FlightNumber = $"{results[i, 0]}0{results[i, 1]}"
+                var row = new {
+                    ID = results[i,1]
+                    ,FlightNumber = $"{results[i, 0]}0{results[i, 1]}"
                     ,Departure = $"{results[i,3]} ({results[i,5]})"
                     ,Arrival = $"{results[i, 9]} ({results[i, 11]})"
                     ,Date= results[i,6]
@@ -51,18 +53,23 @@ namespace GUI
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (flightBoard.SelectedItem != null)
-            {
-                _flightManager.SetSelectedFlight(flightBoard.SelectedItem);
+            //if (flightBoard.SelectedItem != null)
+            //{
+            //    _flightManager.SetSelectedFlight((dynamic)flightBoard.SelectedItem);
 
-            }
+            //}
         }
 
         private void FullDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            var flightDetailsWindow = new FlightDetailsWindow(customerListBox.SelectedItem);
-            orderWindow.Show();
-            orderWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            //foreach (var item in flightBoard.SelectedItem[0])
+            //{
+
+            //}
+            
+            var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(flightBoard.SelectedItem.ToString()));
+            flightDetailsWindow.Show();
+            flightDetailsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();
         }
     }

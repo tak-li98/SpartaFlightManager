@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Manager;
 
 namespace GUI
 {
@@ -19,6 +20,7 @@ namespace GUI
     /// </summary>
     public partial class FlightDetailsWindow : Window
     {
+        private FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -33,10 +35,24 @@ namespace GUI
             InitializeComponent();
             CentreScreen();
         }
-        public FlightDetailsWindow(object selectedFlight)
+        public FlightDetailsWindow(int selectedFlightId)
         {
             InitializeComponent();
             CentreScreen();
+        }
+        public void PopulateFlightDetailsTextBoxes()
+        {
+            var flightDetailStr = _flightDetailsManager.ReturnFlightDetailIDStrings();
+            if (_flightDetailsManager.SelectedFlightDetail != 0)
+            {
+                flightIdTxt.Text = flightDetailStr[0];
+                pilotTxt.Text = flightDetailStr[1];
+                airlineTxt.Text = flightDetailStr[2];
+                planeModelTxt.Text = flightDetailStr[3];
+                planeCapacityTxt.Text = flightDetailStr[4];
+                passengerNumTxt.Text = flightDetailStr[5];
+                flightDurationTxt.Text = flightDetailStr[6];
+            }
         }
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {

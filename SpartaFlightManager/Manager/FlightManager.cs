@@ -14,11 +14,11 @@ namespace Manager
     }
     public class FlightManager
     {
-        public Flight SelectedFlight { get; set; }
+        public int SelectedFlight { get; set; }
 
-        public void SetSelectedFlight(object selectedItem)
+        public void SetSelectedFlight(int selectedItem)
         {
-            SelectedFlight = (Flight)selectedItem;
+            SelectedFlight = selectedItem;
         }
 
         public List<Flight> RetrieveAll()

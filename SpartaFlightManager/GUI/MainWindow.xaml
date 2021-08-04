@@ -33,13 +33,14 @@
         <ListView x:Name="flightBoard" Width ="900" Height ="425" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="8" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black">
             <ListView.View>
                 <GridView>
-                    
+                    <GridViewColumn DisplayMemberBinding="{Binding ID}" Header="ID" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding FlightNumber}" Header="Flight Number" Width="120"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Time}" Header="Time" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Status" Width="130"/>
+                    
                 </GridView>
             </ListView.View>
         </ListView>

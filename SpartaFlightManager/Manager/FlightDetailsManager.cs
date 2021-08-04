@@ -10,11 +10,11 @@ namespace Manager
 {
     public class FlightDetailsManager
     {
-        public FlightDetail SelectedFlightDetail { get; set; }
+        public int SelectedFlightDetail { get; set; }
 
-        public void SetFlightDetail(object selectedItem)
+        public void SetFlightDetail(int selectedItem)
         {
-            SelectedFlightDetail = (FlightDetail)selectedItem;
+            SelectedFlightDetail = selectedItem;
         }
 
         public List<FlightDetail> RetrieveAll()
@@ -34,7 +34,41 @@ namespace Manager
                 db.SaveChanges();
             }
         }
-
+        public List<string> ReturnFlightDetailIDStrings()
+        {
+            var outputList = new List<string>();
+            using (var db = new SpartaFlightContext())
+            {
+                var query =
+                    from fd in db.FlightDetails
+                    join pl in db.Pilots on fd.PilotId equals pl.PilotId
+                    join p in db.Planes on fd.PlaneId equals p.PlaneId
+                    join a in db.Airlines on fd.AirlineId equals a.AirlineId
+                    select new
+                    {
+                        fd.FlightId,
+                        pl.Title,
+                        pl.FirstName,
+                        pl.LastName,
+                        a.AirlineName,
+                        p.PlaneModel,
+                        p.Capacity,
+                        fd.PassengerNumber,
+                        fd.FlightDuration
+                    };
+                foreach (var item in query)
+                {
+                    outputList.Add(item.FlightId.ToString());
+                    outputList.Add($"{item.Title} {item.FirstName} {item.LastName}");
+                    outputList.Add(item.AirlineName);
+                    outputList.Add(item.PlaneModel);
+                    outputList.Add(item.Capacity.ToString());
+                    outputList.Add(item.PassengerNumber.ToString());
+                    outputList.Add(item.FlightDuration.ToString());
+                }
+                return outputList;
+            }
+        }
         public bool Update(int flightDetailsId,int flightId, int pilotId, 
             int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive = false)
         {
