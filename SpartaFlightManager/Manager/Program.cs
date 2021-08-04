@@ -12,13 +12,13 @@ namespace Manager
             ////FLIGHT MANAGER MANUAL TESTING
             //FlightManager _flightManager = new FlightManager();
             //_flightManager.ReturnFlightBoardInfoFromFlights();
-            //CREATE
+            ////CREATE
             //_flightManager.Create(Status.SCHEDULED, DateTime.Now.AddDays(3),"LHR","DAL");
-            //READ
+            ////READ
             //flightManager.RetrieveAll().ForEach(i => Console.WriteLine(i.ToString()));
-            //UPDATE
+            ////UPDATE
             //_flightManager.Update(23, Status.DELAYED, DateTime.Now.AddDays(4));
-            //DELETE
+            ////DELETE
             //using (var db = new SpartaFlightContext())
             //{
             //    foreach (var item in db.Flights)
@@ -33,11 +33,19 @@ namespace Manager
 
             //PILOT MANAGER MANUAL TESTING
             PilotManager _pilotManager = new PilotManager();
-            var pilots =_pilotManager.RetrieveAll();
-            foreach (var pilot in pilots)
-            {
-                Console.WriteLine(pilot.ToString());
-            }
+            ////READ
+            //var pilots = _pilotManager.RetrieveAll();
+            //foreach (var pilot in pilots)
+            //{
+            //    Console.WriteLine(pilot.ToString());
+            //}
+            ////CREATE
+            // _pilotManager.Create("John", "Smith", "Miss");
+            ////Update
+            //_pilotManager.Update(24, "John", "Smith", "Mr.");
+            ////Delete
+            //_pilotManager.Delete(24);
+
         }
     }
 }
