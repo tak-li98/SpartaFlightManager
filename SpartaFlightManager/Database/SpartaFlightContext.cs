@@ -154,26 +154,26 @@ namespace Database
 
             modelBuilder.Entity<FlightPath>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.FlightId, e.AirportId })
+                    .HasName("PK__FlightPa__F2843BB93B46B132");
+
+                entity.Property(e => e.FlightId).HasColumnName("flightId");
 
                 entity.Property(e => e.AirportId)
-                    .IsRequired()
                     .HasMaxLength(5)
                     .IsUnicode(false)
                     .HasColumnName("airportId");
 
-                entity.Property(e => e.FlightId).HasColumnName("flightId");
-
                 entity.Property(e => e.IsDepartElseArrival).HasColumnName("isDepartElseArrival");
 
                 entity.HasOne(d => d.Airport)
-                    .WithMany()
+                    .WithMany(p => p.FlightPaths)
                     .HasForeignKey(d => d.AirportId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__FlightPat__airpo__4AB81AF0");
 
                 entity.HasOne(d => d.Flight)
-                    .WithMany()
+                    .WithMany(p => p.FlightPaths)
                     .HasForeignKey(d => d.FlightId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__FlightPat__fligh__49C3F6B7");

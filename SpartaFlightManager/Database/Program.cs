@@ -13,7 +13,7 @@ namespace Database
         }
         public static void ReturnInfoFromFlight()
         {
-            
+
             using (var db = new SpartaFlightContext())
             {
                 var queryDepart =
@@ -44,7 +44,7 @@ namespace Database
                         ap.City,
                         ap.Country,
                     };
-                var info = new string[queryDepart.Count(),10];
+                var info = new string[queryDepart.Count(), 10];
                 var count = 0;
                 foreach (var i in queryDepart)
                 {
@@ -68,11 +68,11 @@ namespace Database
 
                 for (int i = 0; i < queryDepart.Count(); i++)
                 {
-                    Console.WriteLine($"Flight {info[i,0]}0{info[i,1]} ({info[i,2]})" +
-                        $"; departing from {info[i,3]}, {info[i,4]} ({info[i,5]}) on {info[i,6]}" +
-                        $" arriving at {info[i,7]}, {info[i,8]} ({info[i,9]}).");
+                    Console.WriteLine($"Flight {info[i, 0]}0{info[i, 1]} ({info[i, 2]})" +
+                        $"; departing from {info[i, 3]}, {info[i, 4]} ({info[i, 5]}) on {info[i, 6]}" +
+                        $" arriving at {info[i, 7]}, {info[i, 8]} ({info[i, 9]}).");
                 }
-            }           
+            }
         }
     }
 }
