@@ -4,9 +4,25 @@
 
 ## Introduction
 
-This project aims to provide an 3-tier application (GUI, Manager, Database) to allow users to manager flights.
+Imagine you are one with the world and you want to be able to see which flights are departing and arriving from one country to another. 
 
-(Add more here later)
+You want to be able to change certain flight details; delay or cancel a flight, change the pilot or change the destination.
+
+This project does just that!
+
+The project aims to provide an 3-tier application (GUI, Manager, Database) to allow  to manage flights.
+
+The main features of the application would be to:
+
+1. Display all flights on a 'flight board'
+2. Create a new flight allowing users to select airline, airports, pilots, plane, date
+3. Modify existing flight details 
+4. Delete or cancel any existing flights
+5. Flight statuses such as scheduled, depart/arrived can be auto-determined through date check
+
+6. (Extra feature if enough time): Change reversion option through use of a history logger
+
+
 
 ### <u>Sprint 0</u>
 
@@ -83,7 +99,7 @@ This project aims to provide an 3-tier application (GUI, Manager, Database) to a
 | --------------------------------- | ------------------------------------------------------------ |
 | 1.1 -  Create ERD                 | - Used Draw.io<br />- Added all classes, their fields and corresponding relationship with one another |
 | 1.2 - Create Application Skeleton | - Created three projects under the 'SpartaFlightManager' solution of: GUI, Manager & Database |
-| 1.3 - Create Database             | - Made queries to create tables and insert data into them (saved into a folder for future use)<br />- Added example data in all the classes<br />- Converted database into classes through scaffolding<br />- Made a test method to retrieve the relevant information and print to console an example format of:<br />"Flight: BA032; departing from London, England (LHR) on 2021/08/03 15:00:00 arriving at Beijing, China (BJS)." |
+| 1.3 - Create Database             | - Made queries to create tables and insert data into them (saved into a folder for future use)<br />- Added dummy data in all the classes<br />- Converted database into classes through scaffolding<br />- Made a test method to retrieve the relevant information and print to console an example format of:<br />"Flight: BA032; departing from London, England (LHR) on 2021/08/03 15:00:00 arriving at Beijing, China (BJS)." |
 
 | Tasks Not Done         | Actions                                                      |
 | ---------------------- | ------------------------------------------------------------ |
@@ -97,7 +113,7 @@ This project aims to provide an 3-tier application (GUI, Manager, Database) to a
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------- |
 | - Created the required database and inserted appropriate amount of example data | - To commit work more often                                  | - Add User Story 7.1 to the Product Backlog |
 | - Documentation all sorted for other sprints                 | - To write documentation along with work to prevent recalling the sprint tasks and writing at the end of the sprint |                                             |
-| - Documentation style is clear and concise                   |                                                              |                                             |
+| - Documentation style is clear and concise                   | - Double check work to see if it is correct and follows standards to ensure it doesn't affect future work to much if it *is* wrong |                                             |
 
 
 
