@@ -113,14 +113,6 @@ namespace GUI
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            pilotCombo.IsHitTestVisible = false;
-            airlineCombo.IsHitTestVisible = false;
-            planeCombo.IsHitTestVisible = false;
-            flightDurationTxt.IsReadOnly = true;
-            passengerNumTxt.IsReadOnly = true;
-            fdTitle.Content = "Flight Details";
-            fdTitle.Foreground = new SolidColorBrush(Colors.Black);
-
             //UPDATE FUNCTION
             var flightId = Int32.Parse(flightIdTxt.Text);
             var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
@@ -130,8 +122,22 @@ namespace GUI
             var passengerNumInt = Int32.Parse(passengerNumTxt.Text);
             var capacityInt = Int32.Parse(planeCapacityTxt.Text);
 
-            _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, durationInt, capacityInt);
-
+            try
+            {
+                _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, durationInt, capacityInt);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("The passenger number is greater than the capacity!");
+                return;
+            }
+            pilotCombo.IsHitTestVisible = false;
+            airlineCombo.IsHitTestVisible = false;
+            planeCombo.IsHitTestVisible = false;
+            flightDurationTxt.IsReadOnly = true;
+            passengerNumTxt.IsReadOnly = true;
+            fdTitle.Content = "Flight Details";
+            fdTitle.Foreground = new SolidColorBrush(Colors.Black);
         }
 
         private void EditField_Click(object sender, RoutedEventArgs e)
@@ -147,7 +153,8 @@ namespace GUI
 
         private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            planeCapacityTxt.Text = _planeManager.ReturnCapacity(planeCombo.Text).ToString();
+            string text = (sender as ComboBox).SelectedItem.ToString();
+            planeCapacityTxt.Text = _planeManager.ReturnCapacity(text).ToString();
         }
     }
 }

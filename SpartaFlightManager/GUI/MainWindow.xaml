@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -46,7 +46,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="850" Background="#7FFFFFFF">
+        <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="800" Background="#7FFFFFFF">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -70,17 +70,22 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView x:Name="flightBoard" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False">
+            <ListView x:Name="flightBoard" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+                        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView x:Name="gridView">
-                        <GridViewColumn x:Name="gridColID" DisplayMemberBinding="{Binding ID}" Header="ID" Width="80" />
-                        <GridViewColumn x:Name="gridColFlightNum" DisplayMemberBinding="{Binding FlightNumber}" Header="Flight No." Width="120"/>
-                        <GridViewColumn x:Name="gridColDepart" DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="150" />
-                        <GridViewColumn x:Name="gridColArrive" DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="150" />
-                        <GridViewColumn x:Name="gridColDate" DisplayMemberBinding="{Binding Date}" Header="Date" Width="100" />
-                        <GridViewColumn x:Name="gridColTime" DisplayMemberBinding="{Binding Time}" Header="Time" Width="100"/>
-                        <GridViewColumn x:Name="gridColStatus" DisplayMemberBinding="{Binding Status}" Header="Status" Width="150"/>
-
+                        <GridViewColumn x:Name="gridColID" DisplayMemberBinding="{Binding ID}" Header="ID" Width="auto" />
+                        <GridViewColumn x:Name="gridColFlightNum" DisplayMemberBinding="{Binding FlightNumber}" Header="Flight No." Width="auto"/>
+                        <GridViewColumn x:Name="gridColDepart" DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="auto" />
+                        <GridViewColumn x:Name="gridColArrive" DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="auto" />
+                        <GridViewColumn x:Name="gridColDate" DisplayMemberBinding="{Binding Date}" Header="Date" Width="auto" />
+                        <GridViewColumn x:Name="gridColTime" DisplayMemberBinding="{Binding Time}" Header="Time" Width="auto"/>
+                        <GridViewColumn x:Name="gridColStatus" DisplayMemberBinding="{Binding Status}" Header="Status" Width="auto"/>
                     </GridView>
                 </ListView.View>
             </ListView>

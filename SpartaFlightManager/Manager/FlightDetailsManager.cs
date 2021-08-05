@@ -104,6 +104,7 @@ namespace Manager
                 }
                 catch (Exception e)
                 {
+                   
                     Debug.WriteLine($"Error updating flight detail {flightDetailsId}");
                     return false;
                 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
         Title="FlightDetailsWindow" Height="600" Width="1000"
@@ -73,5 +74,6 @@
         <Button  x:Name="SaveChangesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="3" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="SAVE CHANGES"  Click="SaveChanges_Click" Foreground="#DD000000" />
         <Button  x:Name="DeleteFlightButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="5" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="DELETE FLIGHT"  Click="DeleteFlight_Click" Foreground="#DD000000" />
         <Label x:Name="fdTitle" Content="Flight Details" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="3" Width="200" Height="40" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"/>
+        <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>   
     </Grid>
 </Window>
