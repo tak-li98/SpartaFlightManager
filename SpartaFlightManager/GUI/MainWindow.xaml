@@ -32,19 +32,19 @@
         </Grid.RowDefinitions>
         <ListView x:Name="flightBoard" Width ="900" Height ="425" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="8" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding ID}" Header="ID" Width="130"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding FlightNumber}" Header="Flight Number" Width="120"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="130"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="130"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Date" Width="130"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Time}" Header="Time" Width="130"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Status" Width="130"/>
+                <GridView x:Name="gridView">
+                    <GridViewColumn x:Name="gridColID" DisplayMemberBinding="{Binding ID}" Header="ID"  />
+                    <GridViewColumn x:Name="gridColFlightNum" DisplayMemberBinding="{Binding FlightNumber}" Header="Flight Number"/>
+                    <GridViewColumn x:Name="gridColDepart" DisplayMemberBinding="{Binding Departure}" Header="Departure" />
+                    <GridViewColumn x:Name="gridColArrive" DisplayMemberBinding="{Binding Arrival}" Header="Arrival" />
+                    <GridViewColumn x:Name="gridColDate" DisplayMemberBinding="{Binding Date}" Header="Date" />
+                    <GridViewColumn x:Name="gridColTime" DisplayMemberBinding="{Binding Time}" Header="Time" />
+                    <GridViewColumn x:Name="gridColStatus" DisplayMemberBinding="{Binding Status}" Header="Status" Width="Auto"/>
                     
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="FullDetailsButton" Content="Full Details" Width="75" Height="35" Grid.Column="7" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Click="FullDetailsButton_Click"/>
+        <Button x:Name="FullDetailsButton" IsEnabled="False" Content="Full Details" Width="100" Height="35" Grid.Column="7" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Click="FullDetailsButton_Click" Background="#FFBD4A44"/>
 
     </Grid>
 </Window>

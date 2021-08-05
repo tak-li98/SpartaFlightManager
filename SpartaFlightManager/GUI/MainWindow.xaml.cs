@@ -37,11 +37,13 @@ namespace GUI
             InitializeComponent();
             CentreScreen();
             PopulateListView();
+
         }
         public void GetFlightBoardInfo()
         {
 
         }
+       
         private void PopulateListView()
         {
             var results = _flightManager.ReturnFlightBoardInfoFromFlights();
@@ -57,13 +59,14 @@ namespace GUI
                     ,Status=results[i,8]
                 };
                 flightBoard.Items.Add(row);
+
             }
 
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            FullDetailsButton.IsEnabled = true;
         }
 
         private void FullDetailsButton_Click(object sender, RoutedEventArgs e)
