@@ -20,10 +20,12 @@ namespace GUI
     /// </summary>
     public partial class AddFlightWindow : Window
     {
-        private PilotManager _pilotManager = new PilotManager();
-        private AirlineManager _airlineManager = new AirlineManager();
-        private FlightManager _flightManager = new FlightManager();
-        private PlaneManager _planeManager = new PlaneManager();
+        PilotManager _pilotManager = new PilotManager();
+        AirlineManager _airlineManager = new AirlineManager();
+        FlightManager _flightManager = new FlightManager();
+        PlaneManager _planeManager = new PlaneManager();
+        AirportManager _airportManager = new AirportManager();
+        
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -59,6 +61,10 @@ namespace GUI
             {
                 planeCombo.Items.Add(item.PlaneModel);
             }
+            foreach (var item in _airportManager.RetrieveAll())
+            {
+                departCombo.Items.Add(item.ToString());
+            }
         }
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
@@ -78,6 +84,12 @@ namespace GUI
         private void PresetTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
 
+        }
+
+        private void departCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string text = (sender as ComboBox).SelectedItem.ToString();
+            regionTxt.Text = _airportManager.ReturnRegion(text);
         }
     }
 }
