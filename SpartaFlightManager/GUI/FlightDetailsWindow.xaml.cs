@@ -113,12 +113,27 @@ namespace GUI
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
+            pilotCombo.IsHitTestVisible = false;
+            airlineCombo.IsHitTestVisible = false;
+            planeCombo.IsHitTestVisible = false;
+            flightDurationTxt.IsReadOnly = false;
+            passengerNumTxt.IsReadOnly = false;
+            planeCapacityTxt.IsReadOnly = false;
+            fdTitle.Content = "Flight Details";
+            fdTitle.Foreground = new SolidColorBrush(Colors.Black);
 
         }
 
         private void EditField_Click(object sender, RoutedEventArgs e)
         {
-
+            pilotCombo.IsHitTestVisible = true;
+            airlineCombo.IsHitTestVisible = true;
+            planeCombo.IsHitTestVisible = true;
+            flightDurationTxt.IsReadOnly = false;
+            passengerNumTxt.IsReadOnly = false;
+            planeCapacityTxt.IsReadOnly = false;
+            fdTitle.Content = "EDIT MODE";
+            fdTitle.Foreground = new SolidColorBrush(Colors.Red);
         }
     }
 }
