@@ -23,9 +23,19 @@ namespace GUI
     public partial class MainWindow : Window
     {
         private FlightManager _flightManager = new FlightManager();
+        public void CentreScreen()
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeight = SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
         public MainWindow()
         {
             InitializeComponent();
+            CentreScreen();
             PopulateListView();
         }
         public void GetFlightBoardInfo()
@@ -53,11 +63,7 @@ namespace GUI
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (flightBoard.SelectedItem != null)
-            //{
-            //    _flightManager.SetSelectedFlight((dynamic)flightBoard.SelectedItem);
 
-            //}
         }
 
         private void FullDetailsButton_Click(object sender, RoutedEventArgs e)

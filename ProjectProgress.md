@@ -2,6 +2,10 @@
 
 
 
+[TOC]
+
+
+
 ## Introduction
 
 Imagine you are one with the world and you want to be able to see which flights are departing and arriving from one country to another. 
@@ -62,7 +66,7 @@ The main features of the application would be to:
 
 -------------------------------
 
-### <u>Sprint 1</u>
+## <u>Sprint 1</u>
 
 #### Sprint Goal
 
@@ -119,17 +123,72 @@ The main features of the application would be to:
 
 ------------------
 
-### <u>Sprint 2</u>
+## <u>Sprint 2</u>
 
 #### Sprint Goal
 
+| User Story ID | Title               | Description                                                  |
+| ------------- | ------------------- | ------------------------------------------------------------ |
+| 2.1           | Read Function       | As a developer, I want a read function so that it can be used as a method in the business layer to retrieve relevant information. |
+| 2.2           | Reading Information | As a user, I want to filter necessary information so that I can access information that is needed. |
+| 3.1           | Create Function     | As a developer, I want a Create function so that it can be used as a method in the business layer to create information and add to database. |
+| 4.1           | Update Function     | As a developer, I want a update function so that the method can be used to update data in the database. |
+| 5.1           | Delete Function     | As a developer, I want a delete function so that any wrong data can be removed from the database. |
+
+
+
+#### Sprint Start Board:
+
+![BoardDay2Start](BoardDay2Start.png)
+
+#### Tasks Completed
+
+During this sprint, a numerous of tasks were completed, these included:
+
+- Created the manager classes (Flight, Flight Details & Pilot) to access the database; still needs some extra unit testing
+- Made a simple GUI to test the retrieve functions as a user
+- Added another window "FlightDetailsWindow" to show the full details of the flight
+
+#### Demo
+
+- MainWindow: When user selects a flight and presses "Full Details" button...
+
+![MainWindowFirstLook](MainWindowFirstLook-1628149750836.png)
+
+- FullDetailsWindow: Flight details are shown given the flight ID
+
+![FlightDetailsWindowFirstLook](FlightDetailsWindowFirstLook.png)
+
+#### Sprint End Board
+
+![BoardDay2End](BoardDay2End.png)
+
 #### Sprint Review
 
-- List of backlog items "done", actions for any items not "done"
+| Tasks Done             | Notes                                                        |
+| ---------------------- | ------------------------------------------------------------ |
+| 2.1 - Read Function    | - Added a 'Retrieve' method for all the three manager classes (Flight, Flight Details and Pilot)<br />- Added a specific method in Flight Manager to return a formatted list given information from multiple tables |
+| 2.2 - Read Information | - Created a basic GUI to allow users to select from a View List, press for more details, full details show in another window |
+| 3.1 - Create Function  | - Added a 'Create' method which adds data into specific tables, with auto incrementing IDs |
+| 4.1 - Update Function  | - Added an 'Update' method to take in existing IDs and update the corresponding table data |
+| 5.1 - Delete Function  | - Added a 'Delete' method to delete any data corresponding to the ID given |
+
+| Tasks Not Done        | Actions                 |
+| :-------------------- | ----------------------- |
+| 2.1 - Read Function   | - Add more unit testing |
+| 3.1 - Create Function | - Add more unit testing |
+| 4.1 - Update Function | - Add more unit testing |
+| 5.1 - Delete Function | - Add more unit testing |
+
+
 
 #### Sprint Retrospective
 
-- what went well, improvements and action plan
+| What went well                                               | Improvements                                                 | Actions                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| - Created the necessary foundation in the manager classes to be used by GUI | - Write cleaner code                                         | - Add more unit testing for all the methods created in each manager class |
+| - Finished tasks set for sprint (excluding the unit tests)   | - Speed up the sprint progress and not spend all night on it | - Refactor some parts of code to be more "clean"             |
+| - Started a GUI to visualise how the app will be like        |                                                              |                                                              |
 
 -----------------------------
 
