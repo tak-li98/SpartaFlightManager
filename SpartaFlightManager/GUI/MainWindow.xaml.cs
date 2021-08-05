@@ -80,7 +80,7 @@ namespace GUI
             var inputArr =  flightBoard.SelectedValue.ToString();
             var sub = inputArr.Substring(inputArr.IndexOf("= ")+2, inputArr.IndexOf(",") - inputArr.IndexOf("=")-2);
             var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(sub));
-            OpenWindow(new FlightDetailsWindow());
+            OpenWindow(new FlightDetailsWindow(Int32.Parse(sub)));
         }
 
 

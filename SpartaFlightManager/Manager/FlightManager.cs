@@ -123,6 +123,48 @@ namespace Manager
                 db.SaveChanges();
             }
         }
+        public bool UpdateFlightDeparture(int flightId, string departureId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var updateFlightPath = db.FlightPaths.Where(f => f.FlightId == flightId && f.IsDepartElseArrival == true).FirstOrDefault();
+                if(updateFlightPath == null)
+                {
+                    return false;
+                }
+                updateFlightPath.AirportId = departureId;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch(Exception e)
+                {
+                    Debug.WriteLine($"Error updating flight {flightId}");
+                }
+            }
+            return true;
+        }
+        public bool UpdateFlightArrival(int flightId, string arrivalId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var updateFlightPath = db.FlightPaths.Where(f => f.FlightId == flightId && f.IsDepartElseArrival == false).FirstOrDefault();
+                if (updateFlightPath == null)
+                {
+                    return false;
+                }
+                updateFlightPath.AirportId = arrivalId;
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"Error updating flight {flightId}");
+                }
+            }
+            return true;
+        }
         public bool Update(int flightId, Status flightStatus, DateTime flightDate)
         {
             using (var db = new SpartaFlightContext())

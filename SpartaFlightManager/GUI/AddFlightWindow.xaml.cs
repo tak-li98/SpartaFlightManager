@@ -74,7 +74,7 @@ namespace GUI
 
         private void AddFlight_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void ClearField_Click(object sender, RoutedEventArgs e)
