@@ -21,6 +21,8 @@ namespace GUI
     public partial class FlightDetailsWindow : Window
     {
         private FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
+        private PilotManager _pilotManager = new PilotManager();
+        private AirlineManager _airlineManager = new AirlineManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -34,20 +36,34 @@ namespace GUI
         {
             InitializeComponent();
             CentreScreen();
+            
         }
         public FlightDetailsWindow(int selectedFlightId)
         {
             InitializeComponent();
             CentreScreen();
             _flightDetailsManager.SetFlightDetail(selectedFlightId);
+            FillComboBoxesWithItems();
             PopulateFlightDetailsTextBoxes();
+            
+        }
+        public void FillComboBoxesWithItems()
+        {
+            foreach (var item in _pilotManager.RetrieveAll())
+            {
+                pilotCombo.Items.Add(item.ToString());
+            }
+            foreach (var item in _airlineManager.RetrieveAll())
+            {
+                airlineCombo.Items.Add(item.AirlineName);
+            }
         }
         public void PopulateFlightDetailsTextBoxes()
         {
             var flightDetailStr = _flightDetailsManager.ReturnFlightDetailIDStrings();
             flightIdTxt.Text = flightDetailStr[0];
-            pilotTxt.Text = flightDetailStr[1];
-            airlineTxt.Text = flightDetailStr[2];
+            pilotCombo.Text = flightDetailStr[1];
+            airlineCombo.Text= flightDetailStr[2];
             planeModelTxt.Text = flightDetailStr[3];
             planeCapacityTxt.Text = flightDetailStr[4];
             passengerNumTxt.Text = flightDetailStr[5];
@@ -60,5 +76,6 @@ namespace GUI
             mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();
         }
+
     }
 }

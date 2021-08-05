@@ -59,7 +59,6 @@ namespace GUI
                     ,Status=results[i,8]
                 };
                 flightBoard.Items.Add(row);
-
             }
 
         }
@@ -78,6 +77,27 @@ namespace GUI
             flightDetailsWindow.Show();
             flightDetailsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();
+        }
+
+
+        private void AirlinesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AirportsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PilotsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlanesButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

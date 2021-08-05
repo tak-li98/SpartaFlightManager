@@ -3,11 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:GUI"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="600" Width="1000">
+    
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/photo-1499346030926-9a72daac6c63.jpg"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -29,22 +43,55 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <ListView x:Name="flightBoard" Width ="900" Height ="425" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="9" Grid.RowSpan="8" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black">
-            <ListView.View>
-                <GridView x:Name="gridView">
-                    <GridViewColumn x:Name="gridColID" DisplayMemberBinding="{Binding ID}" Header="ID"  />
-                    <GridViewColumn x:Name="gridColFlightNum" DisplayMemberBinding="{Binding FlightNumber}" Header="Flight Number"/>
-                    <GridViewColumn x:Name="gridColDepart" DisplayMemberBinding="{Binding Departure}" Header="Departure" />
-                    <GridViewColumn x:Name="gridColArrive" DisplayMemberBinding="{Binding Arrival}" Header="Arrival" />
-                    <GridViewColumn x:Name="gridColDate" DisplayMemberBinding="{Binding Date}" Header="Date" />
-                    <GridViewColumn x:Name="gridColTime" DisplayMemberBinding="{Binding Time}" Header="Time" />
-                    <GridViewColumn x:Name="gridColStatus" DisplayMemberBinding="{Binding Status}" Header="Status" Width="Auto"/>
-                    
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button x:Name="FullDetailsButton" IsEnabled="False" Content="Full Details" Width="100" Height="35" Grid.Column="7" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" Click="FullDetailsButton_Click" Background="#FFBD4A44"/>
 
+        <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="850" Background="#7FFFFFFF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="flightBoard" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False">
+                <ListView.View>
+                    <GridView x:Name="gridView">
+                        <GridViewColumn x:Name="gridColID" DisplayMemberBinding="{Binding ID}" Header="ID" Width="80" />
+                        <GridViewColumn x:Name="gridColFlightNum" DisplayMemberBinding="{Binding FlightNumber}" Header="Flight No." Width="120"/>
+                        <GridViewColumn x:Name="gridColDepart" DisplayMemberBinding="{Binding Departure}" Header="Departure" Width="150" />
+                        <GridViewColumn x:Name="gridColArrive" DisplayMemberBinding="{Binding Arrival}" Header="Arrival" Width="150" />
+                        <GridViewColumn x:Name="gridColDate" DisplayMemberBinding="{Binding Date}" Header="Date" Width="100" />
+                        <GridViewColumn x:Name="gridColTime" DisplayMemberBinding="{Binding Time}" Header="Time" Width="100"/>
+                        <GridViewColumn x:Name="gridColStatus" DisplayMemberBinding="{Binding Status}" Header="Status" Width="150"/>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Button  x:Name="FullDetailsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_FLIGHT DETAILS"  IsEnabled="False" Click="FullDetailsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_AIRLINES"  Click="AirlinesButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="PilotsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_PILOTS"   Click="PilotsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="PlanesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_PLANES"  Click="PlanesButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AddFlightsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_ADD NEW FLIGHT"  Click="PlanesButton_Click" Foreground="#DD000000" />
+        <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
+        <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
     </Grid>
 </Window>

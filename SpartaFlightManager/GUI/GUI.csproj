@@ -7,11 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
+    <None Remove="planeGlobe.gif" />
+    <None Remove="TempLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Manager\Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
+    <Resource Include="planeGlobe.gif" />
+    <Resource Include="TempLogo.png" />
   </ItemGroup>
 
 </Project>

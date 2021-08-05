@@ -10,7 +10,7 @@ namespace Database
     {
         public override string ToString()
         {
-            return $"Pilot ID {PilotId}: {Title} {FirstName} {LastName}";
+            return $"{Title} {FirstName} {LastName}";
         }
     }
 }
