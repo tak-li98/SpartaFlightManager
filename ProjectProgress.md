@@ -139,7 +139,7 @@ The main features of the application would be to:
 
 #### Sprint Start Board:
 
-![BoardDay2Start](BoardDay2Start.png)
+![BoardDay2Start](Images/BoardDay2Start.png)
 
 #### Tasks Completed
 
@@ -153,15 +153,15 @@ During this sprint, a numerous of tasks were completed, these included:
 
 - MainWindow: When user selects a flight and presses "Full Details" button...
 
-![MainWindowFirstLook](MainWindowFirstLook-1628149750836.png)
+![MainWindowFirstLook](Images/MainWindowFirstLook-1628149750836.png)
 
 - FullDetailsWindow: Flight details are shown given the flight ID
 
-![FlightDetailsWindowFirstLook](FlightDetailsWindowFirstLook.png)
+![FlightDetailsWindowFirstLook](Images/FlightDetailsWindowFirstLook.png)
 
 #### Sprint End Board
 
-![BoardDay2End](BoardDay2End.png)
+![BoardDay2End](Images/BoardDay2End.png)
 
 #### Sprint Review
 
