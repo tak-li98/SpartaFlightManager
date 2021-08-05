@@ -32,6 +32,12 @@ namespace GUI
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
+        public void OpenWindow(Window window)
+        {
+            window.Show();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Close();
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -74,9 +80,7 @@ namespace GUI
             var inputArr =  flightBoard.SelectedValue.ToString();
             var sub = inputArr.Substring(inputArr.IndexOf("= ")+2, inputArr.IndexOf(",") - inputArr.IndexOf("=")-2);
             var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(sub));
-            flightDetailsWindow.Show();
-            flightDetailsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            OpenWindow(new FlightDetailsWindow());
         }
 
 
@@ -93,6 +97,11 @@ namespace GUI
         private void PilotsButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AddFlightsButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenWindow(new AddFlightWindow());
         }
 
         private void PlanesButton_Click(object sender, RoutedEventArgs e)
