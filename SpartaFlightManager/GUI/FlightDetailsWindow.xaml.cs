@@ -116,11 +116,21 @@ namespace GUI
             pilotCombo.IsHitTestVisible = false;
             airlineCombo.IsHitTestVisible = false;
             planeCombo.IsHitTestVisible = false;
-            flightDurationTxt.IsReadOnly = false;
-            passengerNumTxt.IsReadOnly = false;
-            planeCapacityTxt.IsReadOnly = false;
+            flightDurationTxt.IsReadOnly = true;
+            passengerNumTxt.IsReadOnly = true;
             fdTitle.Content = "Flight Details";
             fdTitle.Foreground = new SolidColorBrush(Colors.Black);
+
+            //UPDATE FUNCTION
+            var flightId = Int32.Parse(flightIdTxt.Text);
+            var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
+            var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
+            var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
+            var durationInt = Int32.Parse(flightDurationTxt.Text);
+            var passengerNumInt = Int32.Parse(passengerNumTxt.Text);
+            var capacityInt = Int32.Parse(planeCapacityTxt.Text);
+
+            _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, durationInt, capacityInt);
 
         }
 
@@ -131,9 +141,13 @@ namespace GUI
             planeCombo.IsHitTestVisible = true;
             flightDurationTxt.IsReadOnly = false;
             passengerNumTxt.IsReadOnly = false;
-            planeCapacityTxt.IsReadOnly = false;
             fdTitle.Content = "EDIT MODE";
             fdTitle.Foreground = new SolidColorBrush(Colors.Red);
+        }
+
+        private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            planeCapacityTxt.Text = _planeManager.ReturnCapacity(planeCombo.Text).ToString();
         }
     }
 }

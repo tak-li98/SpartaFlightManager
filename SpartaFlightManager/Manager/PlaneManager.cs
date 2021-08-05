@@ -21,7 +21,15 @@ namespace Manager
         {
             using (var db = new SpartaFlightContext())
             {
-                return (int)db.Planes.Where(p => p.PlaneModel == "model").FirstOrDefault().Capacity;
+                return (int)db.Planes.Where(p => p.PlaneModel == model).FirstOrDefault().Capacity;
+            }
+        }
+
+        public int ReturnPlaneID(string str)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return db.Planes.Where(p => p.PlaneModel == str).FirstOrDefault().PlaneId;
             }
         }
     }

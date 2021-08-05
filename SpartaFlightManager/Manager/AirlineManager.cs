@@ -16,5 +16,13 @@ namespace Manager
                 return db.Airlines.ToList();
             }
         }
+
+        public int ReturnAirlineID(string str)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return db.Airlines.Where(a => a.AirlineName == str).FirstOrDefault().AirlineId;
+            }
+        }
     }
 }

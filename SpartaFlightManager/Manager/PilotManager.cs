@@ -22,7 +22,13 @@ namespace Manager
                 return db.Pilots.ToList();
             }
         }
-
+        public int ReturnPilotID(string str)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return db.Pilots.Where(p => str.Contains(p.FirstName) && str.Contains(p.LastName) && str.Contains(p.Title)).FirstOrDefault().PilotId;
+            }
+        }
         public void Create(string firstName, string lastName, string title = null)
         {
             var newPilot = new Pilot() { Title = title, FirstName = firstName, LastName = lastName };
