@@ -57,7 +57,7 @@ namespace Manager
                     join fp in db.FlightPaths on f.FlightId equals fp.FlightId
                     join ap in db.Airports on fp.AirportId equals ap.AirportId
                     where fp.IsDepartElseArrival == false
-                    orderby f.FlightDate
+                    orderby f.FlightDate descending
                     select new
                     {
                         ap.AirportId,

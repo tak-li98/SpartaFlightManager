@@ -23,6 +23,7 @@ namespace GUI
         private FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
         private PilotManager _pilotManager = new PilotManager();
         private AirlineManager _airlineManager = new AirlineManager();
+        private PlaneManager _planeManager = new PlaneManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -31,6 +32,12 @@ namespace GUI
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
+        public void OpenWindow(Window window)
+        {
+            window.Show();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Close();
         }
         public FlightDetailsWindow()
         {
@@ -57,6 +64,10 @@ namespace GUI
             {
                 airlineCombo.Items.Add(item.AirlineName);
             }
+            foreach (var item in _planeManager.RetrieveAll())
+            {
+                planeCombo.Items.Add(item.PlaneModel);
+            }
         }
         public void PopulateFlightDetailsTextBoxes()
         {
@@ -64,18 +75,50 @@ namespace GUI
             flightIdTxt.Text = flightDetailStr[0];
             pilotCombo.Text = flightDetailStr[1];
             airlineCombo.Text= flightDetailStr[2];
-            planeModelTxt.Text = flightDetailStr[3];
+            planeCombo.Text = flightDetailStr[3];
             planeCapacityTxt.Text = flightDetailStr[4];
             passengerNumTxt.Text = flightDetailStr[5];
             flightDurationTxt.Text = flightDetailStr[6];
         }
-        private void backBtn_Click(object sender, RoutedEventArgs e)
+        private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
-            var mainWindow = new MainWindow();
-            mainWindow.Show();
-            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            OpenWindow(new MainWindow());
         }
 
+        private void AirlinesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AirportsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PilotsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlanesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteFlight_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            //if (messageBoxResult == MessageBoxResult.Yes)
+        }
+
+        private void SaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditField_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

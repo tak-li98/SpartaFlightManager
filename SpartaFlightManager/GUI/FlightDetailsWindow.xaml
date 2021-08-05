@@ -45,24 +45,32 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.ColumnSpan="8" Height="AUTO" Grid.Column="0" Grid.Row="2" Grid.RowSpan="7" Stroke="Black" Width="auto" Fill="#7F92C8FF"/>
-        <Label Content="Flight ID" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center"/>
-        <Label Content="Pilot" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
-        <Label Content="Airline" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"/>
-        <Label Content="Plane model" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center"/>
-        <Label Content="Plane Capacity" Grid.Column="4" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center"/>
-        <Label Content="Passenger Number" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
+        <Rectangle Grid.ColumnSpan="8" Height="AUTO" Grid.Column="0" Grid.Row="2" Grid.RowSpan="8" Stroke="Black" Width="auto" Fill="#7F92C8FF"/>
+        <Label Content="Flight ID" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
+        <Label Content="Pilot" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"/>
+        <Label Content="Airline" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center"/>
+        <Label Content="Plane model" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center"/>
+        <Label Content="Plane Capacity" Grid.Column="4" Grid.ColumnSpan="2"  HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center"/>
+        <Label Content="Passenger Number" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center"/>
         <Label Content="Flight Duration" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"/>
-        <TextBox x:Name="flightIdTxt" Grid.ColumnSpan="3" IsEnabled="False" Grid.Column="2" HorizontalAlignment="Left" Width="200" Height="40" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
+        <TextBox x:Name="flightIdTxt" Grid.ColumnSpan="3" IsEnabled="False" Grid.Column="2" HorizontalAlignment="Left" Width="200" Height="40" Grid.Row="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <!--<TextBox x:Name="pilotTxt" Grid.ColumnSpan="3" Grid.Column="2" HorizontalAlignment="Left" Width="200" Height="40" Grid.Row="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />-->
         <!--<TextBox x:Name="airlineTxt" Grid.ColumnSpan="3" Grid.Column="2" HorizontalAlignment="Left" Width="200" Height="40" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />-->
-        <TextBox x:Name="planeCapacityTxt" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
-        <TextBox x:Name="passengerNumTxt" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
+        <TextBox x:Name="planeCapacityTxt" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
+        <TextBox x:Name="passengerNumTxt" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <TextBox x:Name="flightDurationTxt" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
-        <Button x:Name="backBtn" Content="Back" Grid.Column="0" Grid.ColumnSpan="2" Width="100" Height="40" HorizontalAlignment="Center"  Grid.Row="8" VerticalAlignment="Center" Click="backBtn_Click"/>
         <!--<ComboBox x:Name="pilotCombo" Grid.Column="2" Grid.Row="3" Width="200" Height="40" VerticalContentAlignment="Center" IsEditable="True"/>-->
-        <ComboBox x:Name="airlineCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="4" VerticalAlignment="Center" Width="180"/>
-        <ComboBox x:Name="pilotCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="180"/>
-        <ComboBox x:Name="planeCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Width="180"/>
+        <ComboBox x:Name="airlineCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center" Width="180"/>
+        <ComboBox x:Name="pilotCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center" Width="180"/>
+        <ComboBox x:Name="planeCombo" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Width="180"/>
+        <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
+        <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_FLIGHT BOARD" Click="FlightBoardButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_AIRLINES"  Click="AirlinesButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="PilotsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_PILOTS"   Click="PilotsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="PlanesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_PLANES"  Click="PlanesButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="EditFieldsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="EDIT FIELDS"  Click="EditField_Click" Foreground="#DD000000" />
+        <Button  x:Name="SaveChangesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="3" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="SAVE CHANGES"  Click="SaveChanges_Click" Foreground="#DD000000" />
+        <Button  x:Name="DeleteFlightButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="5" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="DELETE FLIGHT"  Click="DeleteFlight_Click" Foreground="#DD000000" />
     </Grid>
 </Window>
