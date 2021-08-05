@@ -34,6 +34,23 @@ namespace Manager
                 db.SaveChanges();
             }
         }
+        public string[] ReturnDepartureStr(int flightId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var airports = new string[2];
+                var query = db.FlightPaths.Where(fp => fp.FlightId == flightId && fp.IsDepartElseArrival == true);
+                foreach (var item in query)
+                {
+                    if(item.IsDepartElseArrival == true)
+                    {
+                        airports[0] = db.Airports.Where(i=>i.AirportId == item.AirportId).ToString();
+                    }
+                    airports[1] = db.Airports.Where(i=>i.AirportId == item.AirportId).ToString();
+                }
+                return airports;
+            }
+        }
         public List<string> ReturnFlightDetailIDStrings()
         {
             var outputList = new List<string>();
@@ -58,8 +75,8 @@ namespace Manager
                         p.Capacity,
                         fd.PassengerNumber,
                         fd.FlightDuration,
-                        f.FlightStatus,
-                        f.FlightDate
+                        f.FlightStatus
+                        
                     };
                 foreach (var item in query)
                 {

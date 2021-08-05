@@ -22,10 +22,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="/photo-1499346030926-9a72daac6c63.jpg"/>
         </Grid.Background>
-        <Grid.Effect>
-            <DropShadowEffect BlurRadius="40" ShadowDepth="4" Direction="90" Color="LightBlue"></DropShadowEffect>
-        </Grid.Effect>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>

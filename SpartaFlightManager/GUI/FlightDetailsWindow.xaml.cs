@@ -24,6 +24,7 @@ namespace GUI
         private PilotManager _pilotManager = new PilotManager();
         private AirlineManager _airlineManager = new AirlineManager();
         private PlaneManager _planeManager = new PlaneManager();
+        private FlightStatusManager _flightStatusManager = new FlightStatusManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -67,6 +68,13 @@ namespace GUI
             foreach (var item in _planeManager.RetrieveAll())
             {
                 planeCombo.Items.Add(item.PlaneModel);
+            }
+            foreach (var item in _flightStatusManager.RetrieveAll())
+            {
+                if (item.Status != "Arrived")
+                {
+                    statusCombo.Items.Add(item.Status);
+                }
             }
         }
         public void PopulateFlightDetailsTextBoxes()
@@ -135,6 +143,7 @@ namespace GUI
             pilotCombo.IsHitTestVisible = false;
             airlineCombo.IsHitTestVisible = false;
             planeCombo.IsHitTestVisible = false;
+            statusCombo.IsHitTestVisible = true;
             durationSlider.IsEnabled = false;
             passengerNumTxt.IsReadOnly = true;
             fdTitle.Content = "Flight Details";
@@ -146,6 +155,7 @@ namespace GUI
             pilotCombo.IsHitTestVisible = true;
             airlineCombo.IsHitTestVisible = true;
             planeCombo.IsHitTestVisible = true;
+            statusCombo.IsHitTestVisible = true;
             durationSlider.IsEnabled = true;
             passengerNumTxt.IsReadOnly = false;
             fdTitle.Content = "EDIT MODE";
