@@ -44,6 +44,7 @@ namespace Manager
                     join pl in db.Pilots on fd.PilotId equals pl.PilotId
                     join p in db.Planes on fd.PlaneId equals p.PlaneId
                     join a in db.Airlines on fd.AirlineId equals a.AirlineId
+                    where fd.FlightId == SelectedFlightDetail
                     select new
                     {
                         fd.FlightId,

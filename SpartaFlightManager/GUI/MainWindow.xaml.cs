@@ -62,12 +62,10 @@ namespace GUI
 
         private void FullDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            //foreach (var item in flightBoard.SelectedItem[0])
-            //{
 
-            //}
-            
-            var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(flightBoard.SelectedItem.ToString()));
+            var inputArr =  flightBoard.SelectedValue.ToString();
+            var sub = inputArr.Substring(inputArr.IndexOf("= ")+2, inputArr.IndexOf(",") - inputArr.IndexOf("=")-2);
+            var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(sub));
             flightDetailsWindow.Show();
             flightDetailsWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();

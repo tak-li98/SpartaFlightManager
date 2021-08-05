@@ -39,20 +39,19 @@ namespace GUI
         {
             InitializeComponent();
             CentreScreen();
+            _flightDetailsManager.SetFlightDetail(selectedFlightId);
+            PopulateFlightDetailsTextBoxes();
         }
         public void PopulateFlightDetailsTextBoxes()
         {
             var flightDetailStr = _flightDetailsManager.ReturnFlightDetailIDStrings();
-            if (_flightDetailsManager.SelectedFlightDetail != 0)
-            {
-                flightIdTxt.Text = flightDetailStr[0];
-                pilotTxt.Text = flightDetailStr[1];
-                airlineTxt.Text = flightDetailStr[2];
-                planeModelTxt.Text = flightDetailStr[3];
-                planeCapacityTxt.Text = flightDetailStr[4];
-                passengerNumTxt.Text = flightDetailStr[5];
-                flightDurationTxt.Text = flightDetailStr[6];
-            }
+            flightIdTxt.Text = flightDetailStr[0];
+            pilotTxt.Text = flightDetailStr[1];
+            airlineTxt.Text = flightDetailStr[2];
+            planeModelTxt.Text = flightDetailStr[3];
+            planeCapacityTxt.Text = flightDetailStr[4];
+            passengerNumTxt.Text = flightDetailStr[5];
+            flightDurationTxt.Text = flightDetailStr[6];
         }
         private void backBtn_Click(object sender, RoutedEventArgs e)
         {
