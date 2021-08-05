@@ -24,5 +24,6 @@ namespace Manager
                 return db.Regions.Where(r => r.RegionId == regionId).FirstOrDefault().RegionName;
             }
         }
+        
     }
 }

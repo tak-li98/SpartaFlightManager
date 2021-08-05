@@ -64,6 +64,7 @@ namespace GUI
             foreach (var item in _airportManager.RetrieveAll())
             {
                 departCombo.Items.Add(item.ToString());
+                arrivalCombo.Items.Add(item.ToString());
             }
         }
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
@@ -90,6 +91,23 @@ namespace GUI
         {
             string text = (sender as ComboBox).SelectedItem.ToString();
             regionTxt.Text = _airportManager.ReturnRegion(text);
+            airlineCombo.Items.Clear();
+            foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
+            {
+                airlineCombo.Items.Add(item.ToString());
+            }
+        }
+
+        private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string text = (sender as ComboBox).SelectedItem.ToString();
+            planeCapacityTxt.Text = _planeManager.ReturnCapacity(text).ToString();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            string time = (sender as Slider).Value.ToString();
+            durationLbl.Content = $"Flight duration ({time} hrs)";
         }
     }
 }
