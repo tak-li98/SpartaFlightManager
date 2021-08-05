@@ -16,5 +16,13 @@ namespace Manager
                 return db.Planes.ToList();
             }
         }
+
+        public int ReturnCapacity(string model)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return (int)db.Planes.Where(p => p.PlaneModel == "model").FirstOrDefault().Capacity;
+            }
+        }
     }
 }
