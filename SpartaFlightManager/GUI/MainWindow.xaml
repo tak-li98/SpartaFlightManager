@@ -12,14 +12,20 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
         FontFamily="{DynamicResource MaterialDesignFont}"
         Title="MainWindow" Height="600" Width="1000">
-    
-    <Grid>
+
+    <Grid Width="auto">
         <Grid.Background>
             <ImageBrush ImageSource="/photo-1499346030926-9a72daac6c63.jpg"/>
         </Grid.Background>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="40" ShadowDepth="4" Direction="90" Color="LightBlue"></DropShadowEffect>
+        </Grid.Effect>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -46,7 +52,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="800" Background="#7FFFFFFF">
+        <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="auto" Background="#7FFFFFFF">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

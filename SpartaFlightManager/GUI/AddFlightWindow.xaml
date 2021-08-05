@@ -14,7 +14,9 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
+     Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
      FontFamily="{DynamicResource MaterialDesignFont}">
     
     <Grid >

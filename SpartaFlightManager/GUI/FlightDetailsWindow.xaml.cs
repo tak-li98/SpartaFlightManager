@@ -78,7 +78,8 @@ namespace GUI
             planeCombo.Text = flightDetailStr[3];
             planeCapacityTxt.Text = flightDetailStr[4];
             passengerNumTxt.Text = flightDetailStr[5];
-            flightDurationTxt.Text = flightDetailStr[6];
+            durationSlider.Value = Int32.Parse(flightDetailStr[6]);
+            durationLbl.Content = $"Flight duration ({flightDetailStr[6]} hrs)";
         }
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
@@ -118,13 +119,13 @@ namespace GUI
             var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
             var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
             var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
-            var durationInt = Int32.Parse(flightDurationTxt.Text);
+            var durationInt = durationSlider.Value;
             var passengerNumInt = Int32.Parse(passengerNumTxt.Text);
             var capacityInt = Int32.Parse(planeCapacityTxt.Text);
 
             try
             {
-                _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, durationInt, capacityInt);
+                _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
             }
             catch(Exception ex)
             {
@@ -134,7 +135,7 @@ namespace GUI
             pilotCombo.IsHitTestVisible = false;
             airlineCombo.IsHitTestVisible = false;
             planeCombo.IsHitTestVisible = false;
-            flightDurationTxt.IsReadOnly = true;
+            durationSlider.IsEnabled = false;
             passengerNumTxt.IsReadOnly = true;
             fdTitle.Content = "Flight Details";
             fdTitle.Foreground = new SolidColorBrush(Colors.Black);
@@ -145,7 +146,7 @@ namespace GUI
             pilotCombo.IsHitTestVisible = true;
             airlineCombo.IsHitTestVisible = true;
             planeCombo.IsHitTestVisible = true;
-            flightDurationTxt.IsReadOnly = false;
+            durationSlider.IsEnabled = true;
             passengerNumTxt.IsReadOnly = false;
             fdTitle.Content = "EDIT MODE";
             fdTitle.Foreground = new SolidColorBrush(Colors.Red);
@@ -155,6 +156,12 @@ namespace GUI
         {
             string text = (sender as ComboBox).SelectedItem.ToString();
             planeCapacityTxt.Text = _planeManager.ReturnCapacity(text).ToString();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            string time = (sender as Slider).Value.ToString();
+            durationLbl.Content = $"Flight duration ({time} hrs)";
         }
     }
 }
