@@ -31,6 +31,13 @@ namespace Manager
                 return db.Flights.Select(i => i.FlightId).Max();
             }
         }
+        public int ReturnFlightDetailsIdGivenFlightId(int flightId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return db.FlightDetails.Where(f => f.FlightId == flightId).FirstOrDefault().FlightDetailsId;
+            }
+        }
         public void Create(int pilotId, int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive=false)
         {
             var LatestFlightId = ReturnLatestFlightId();
@@ -42,13 +49,7 @@ namespace Manager
                 db.SaveChanges();
             }
         }
-        public int ReturnFlightDetailsIdGivenFlightId(int flightId)
-        {
-            using (var db = new SpartaFlightContext())
-            {
-                return db.FlightDetails.Where(f => f.FlightId == flightId).FirstOrDefault().FlightDetailsId;
-            }
-        }
+        
         public string ReturnDepartureStr(int flightId)
         {
             using (var db = new SpartaFlightContext())

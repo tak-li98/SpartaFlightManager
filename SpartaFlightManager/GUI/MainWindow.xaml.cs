@@ -104,5 +104,10 @@ namespace GUI
         {
 
         }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

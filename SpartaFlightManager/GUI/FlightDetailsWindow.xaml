@@ -82,5 +82,10 @@
         <Label Content="Region" Width="100" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center"/>
         <Label Content="Arrival" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"/>
         <Label Content="Status" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center"/>
+        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Left" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" Margin="50,0,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

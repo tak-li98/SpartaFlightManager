@@ -126,7 +126,15 @@ namespace GUI
         private void DeleteFlight_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
-            //if (messageBoxResult == MessageBoxResult.Yes)
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                MessageBoxResult messageBoxResult2 = MessageBox.Show("Are you really sure?", "Delete Re-Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult2 == MessageBoxResult.Yes)
+                {
+                    _flightDetailsManager.Delete(_flightDetailsManager.ReturnFlightDetailsIdGivenFlightId(Int32.Parse(flightIdTxt.Text)));
+                    _flightManager.Delete(Int32.Parse(flightIdTxt.Text));
+                }
+            }
         }
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
@@ -186,6 +194,11 @@ namespace GUI
         {
             string time = (sender as Slider).Value.ToString();
             durationLbl.Content = $"Flight duration ({time} hrs)";
+        }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

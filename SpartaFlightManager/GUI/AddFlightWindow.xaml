@@ -73,12 +73,17 @@
         <ComboBox x:Name="pilotCombo"  Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Width="180"/>
         <ComboBox x:Name="planeCombo"  Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Width="180" SelectionChanged="planeCombo_SelectionChanged"/>
         <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
-        <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Height="50" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_FLIGHT BOARD" Click="FlightBoardButton_Click" Foreground="#DD000000" />
-        <Button  x:Name="ClearButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="CLEAR FIELDS"  Click="ClearField_Click" Foreground="#DD000000" />
+        <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Height="50" Grid.ColumnSpan="2" ToolTip="Go back to Flight Board"  Content="_FLIGHT BOARD" Click="FlightBoardButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="ClearButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="1" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="Clear all fields"  Content="CLEAR FIELDS"  Click="ClearField_Click" Foreground="#DD000000" />
         <Button  x:Name="AddFlightButton" IsEnabled="False" ToolTip="Please fill out all the details." ToolTipService.ShowOnDisabled="True" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="6" Grid.Row="9" Grid.ColumnSpan="2" Content="ADD FLIGHT"  Click="AddFlight_Click" Foreground="#DD000000" />
         <Label x:Name="afTitle" Content="Add a Flight" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="3" Width="200" Height="40" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"/>
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
         <DatePicker x:Name="datePicker" Focusable="False" DisplayDateStart="{x:Static sys:DateTime.Today}" Width="180" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDateChanged="selected_DateChanged" SourceUpdated="datePicker_SourceUpdated" />
         <materialDesign:TimePicker Focusable="False" x:Name="PresetTimePicker" Is24Hours="True" Width="180" Height="40" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="2" SelectedTimeChanged="PresetTimePicker_SelectedTimeChanged" />
+        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Left" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" Margin="50,0,0,0">
+            <Button.Background>
+                <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
