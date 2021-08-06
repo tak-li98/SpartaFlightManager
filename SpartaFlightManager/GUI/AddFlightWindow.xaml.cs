@@ -39,24 +39,42 @@ namespace GUI
         public bool CheckIfFieldsHaveValues()
         {
             if (departCombo.Text != string.Empty && arrivalCombo.Text != string.Empty && pilotCombo.Text != string.Empty && airlineCombo.Text != string.Empty
-                && planeCombo.Text != string.Empty && datePicker.Text != string.Empty && PresetTimePicker.Text != string.Empty
+                && planeCombo.Text != string.Empty && datePicker.Text != string.Empty && PresetTimePicker.Text!=null
                 && passengerNumTxt.Text != string.Empty)
             {
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
+            
         }
         public void CheckIfAddButtonOn()
         {
+            if (passengerNumTxt.Text != string.Empty)
+            {
+                if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                    {
+                        AddFlightButton.ToolTip = "Your passenger number is over capacity.";
+                        AddFlightButton.IsEnabled = false;
+                        ToolTipService.SetShowOnDisabled(AddFlightButton, true);
+                        return;
+                    }
+            }
             if (!CheckIfFieldsHaveValues())
             {
                 AddFlightButton.ToolTip = "Please fill out all the details";
                 AddFlightButton.IsEnabled = false;
                 ToolTipService.SetShowOnDisabled(AddFlightButton, true);
-                
+
             }
-            AddFlightButton.ToolTip = "Click here when you are ready to submit.";
-            AddFlightButton.IsEnabled = true;
+            else
+            {
+                AddFlightButton.ToolTip = "Click here when you are ready to submit.";
+                AddFlightButton.IsEnabled = true;
+            }
+
         }
         public void OpenWindow(Window window)
         {
@@ -131,15 +149,13 @@ namespace GUI
         {
             CheckIfAddButtonOn();
             string text = (sender as ComboBox).SelectedItem.ToString();
-            if(text != string.Empty)
-            {
                 regionTxt.Text = _airportManager.ReturnRegion(text);
                 airlineCombo.Items.Clear();
                 foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
                 {
                     airlineCombo.Items.Add(item.ToString());
                 }
-            }
+            
             
         }
 
@@ -149,7 +165,7 @@ namespace GUI
             string text = (sender as ComboBox).SelectedItem.ToString();
             planeCapacityTxt.Text = _planeManager.ReturnCapacity(text).ToString();
             passengerNumTxt.IsReadOnly = false;
-            passengerNumTxt.ToolTip = string.Empty;
+            passengerNumTxt.ToolTip = null;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -161,11 +177,20 @@ namespace GUI
 
         private void passengerNumTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!CheckIfFieldsHaveValues())
+            {
+                AddFlightButton.ToolTip = "Please fill out all the details";
+                AddFlightButton.IsEnabled = false;
+                ToolTipService.SetShowOnDisabled(AddFlightButton, true);
+                return;
+            }
             CheckIfPassengerNumOverCapacity();
+            
         }
         public void CheckIfPassengerNumOverCapacity()
         {
-            if (passengerNumTxt.Text != string.Empty)
+
+           if (passengerNumTxt.Text != string.Empty)
             {
                 if (planeCapacityTxt.Text != string.Empty)
                 {
@@ -183,7 +208,7 @@ namespace GUI
                         AddFlightButton.IsEnabled = true;
                     }
 
-                }
+                }  
             }
         }
         private void arrivalCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -197,6 +222,11 @@ namespace GUI
         }
 
         private void selected_DateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckIfAddButtonOn();
+        }
+
+        private void datePicker_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             CheckIfAddButtonOn();
         }

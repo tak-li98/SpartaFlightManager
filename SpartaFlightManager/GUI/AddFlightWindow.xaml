@@ -78,7 +78,7 @@
         <Button  x:Name="AddFlightButton" IsEnabled="False" ToolTip="Please fill out all the details." ToolTipService.ShowOnDisabled="True" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="6" Grid.Row="9" Grid.ColumnSpan="2" Content="ADD FLIGHT"  Click="AddFlight_Click" Foreground="#DD000000" />
         <Label x:Name="afTitle" Content="Add a Flight" FontWeight="Bold" Grid.ColumnSpan="2" Grid.Column="3" Width="200" Height="40" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"  Grid.Row="2" VerticalAlignment="Center"/>
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
-        <DatePicker x:Name="datePicker" Focusable="False" DisplayDateStart="{x:Static sys:DateTime.Today}" Width="180" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDateChanged="selected_DateChanged" />
+        <DatePicker x:Name="datePicker" Focusable="False" DisplayDateStart="{x:Static sys:DateTime.Today}" Width="180" Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" materialDesign:HintAssist.Hint="Pick Date" Style="{StaticResource MaterialDesignOutlinedDatePicker}" SelectedDateChanged="selected_DateChanged" SourceUpdated="datePicker_SourceUpdated" />
         <materialDesign:TimePicker Focusable="False" x:Name="PresetTimePicker" Is24Hours="True" Width="180" Height="40" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="2" SelectedTimeChanged="PresetTimePicker_SelectedTimeChanged" />
     </Grid>
 </Window>
