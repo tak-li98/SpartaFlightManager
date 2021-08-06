@@ -74,7 +74,8 @@ namespace GUI
 
         private void AddFlight_Click(object sender, RoutedEventArgs e)
         {
-            
+            var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
+           //_flightManager.Create() 
         }
 
         private void ClearField_Click(object sender, RoutedEventArgs e)

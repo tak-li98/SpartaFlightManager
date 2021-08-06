@@ -26,6 +26,7 @@ namespace GUI
         private AirportManager _airportManager = new AirportManager();
         private PlaneManager _planeManager = new PlaneManager();
         private FlightStatusManager _flightStatusManager = new FlightStatusManager();
+        private FlightManager _flightManager = new FlightManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -138,16 +139,20 @@ namespace GUI
             var durationInt = durationSlider.Value;
             var passengerNumInt = Int32.Parse(passengerNumTxt.Text);
             var capacityInt = Int32.Parse(planeCapacityTxt.Text);
+            var statusId = _flightManager.ReturnStatusId(statusCombo.Text);
 
             try
             {
                 _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
+                _flightManager.Update(flightId, (Status)statusId);
+                
             }
             catch(Exception ex)
             {
-                MessageBox.Show("The passenger number is greater than the capacity!");
+                MessageBox.Show(ex.Message);
                 return;
             }
+
             pilotCombo.IsHitTestVisible = false;
             airlineCombo.IsHitTestVisible = false;
             planeCombo.IsHitTestVisible = false;

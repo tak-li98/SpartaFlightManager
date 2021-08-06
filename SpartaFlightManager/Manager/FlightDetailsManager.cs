@@ -24,9 +24,17 @@ namespace Manager
                 return db.FlightDetails.ToList();
             }
         }
-        public void Create(int flightId, int pilotId, int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive=false)
+        public int ReturnLatestFlightId()
         {
-            var newFDetails = new FlightDetail() {FlightId = flightId,PilotId = pilotId, AirlineId=airlineId
+            using (var db = new SpartaFlightContext()) 
+            {
+                return db.FlightDetails.Select(i => i.FlightId).Max();
+            }
+        }
+        public void Create(int pilotId, int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive=false)
+        {
+            var LatestFlightId = ReturnLatestFlightId();
+            var newFDetails = new FlightDetail() {FlightId = LatestFlightId,PilotId = pilotId, AirlineId=airlineId
                 ,PlaneId=planeId,PassengerNumber=passengerNumber,FlightDuration=flightDuration, Archive = archive };
             using (var db = new SpartaFlightContext())
             {

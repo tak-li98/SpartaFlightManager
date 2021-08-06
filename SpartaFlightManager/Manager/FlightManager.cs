@@ -28,6 +28,13 @@ namespace Manager
                 return db.Flights.ToList();
             }
         }
+        public int ReturnStatusId(string statusStr)
+        {
+            using (var db= new SpartaFlightContext())
+            {
+                return db.FlightStatuses.Where(s => s.Status == statusStr).FirstOrDefault().FlightStatusId;
+            }
+        }
         public string[,] ReturnFlightBoardInfoFromFlights()
         {
             using (var db = new SpartaFlightContext())
@@ -90,9 +97,9 @@ namespace Manager
                 return info;
             }
         }
-        public void Create(Status flightStatus, DateTime flightDate, string departureId,string arrivalId)
+        public void Create(DateTime flightDate, string departureId,string arrivalId)
         {
-
+            var flightStatus = Status.SCHEDULED;
             var newFlight = new Flight() { FlightStatusId = (int)flightStatus, FlightDate = flightDate };
             using (var db = new SpartaFlightContext())
             {
@@ -165,7 +172,7 @@ namespace Manager
             }
             return true;
         }
-        public bool Update(int flightId, Status flightStatus, DateTime flightDate)
+        public bool Update(int flightId, Status flightStatus)
         {
             using (var db = new SpartaFlightContext())
             {
@@ -174,9 +181,12 @@ namespace Manager
                 {
                     return false;
                 }
+                if(updateFlight.FlightDate>DateTime.Today && flightStatus == Status.ARRIVED)
+                {
+                    throw new ArgumentException("Flight can't arrive if it hasn't left!");
+                }
                 updateFlight.FlightId = flightId;
                 updateFlight.FlightStatusId = (int)flightStatus;
-                updateFlight.FlightDate = flightDate;
 
                 try
                 {
