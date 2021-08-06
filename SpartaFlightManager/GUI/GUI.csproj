@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="400px-Exit_sign_text_%28red%29.svg.png" />
+    <None Remove="landing.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
     <None Remove="planeGlobe.gif" />
     <None Remove="TempLogo.png" />
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <Resource Include="400px-Exit_sign_text_(red).svg.png" />
+    <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
     <Resource Include="planeGlobe.gif" />
     <Resource Include="TempLogo.png" />

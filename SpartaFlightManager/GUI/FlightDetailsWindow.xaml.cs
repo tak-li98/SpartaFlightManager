@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using Manager;
 
 namespace GUI
@@ -146,10 +147,17 @@ namespace GUI
             var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
             var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
             var durationInt = durationSlider.Value;
-            var passengerNumInt = Int32.Parse(passengerNumTxt.Text);
+            int passengerNumInt = 0;
             var capacityInt = Int32.Parse(planeCapacityTxt.Text);
             var statusId = _flightManager.ReturnStatusId(statusCombo.Text);
-
+            try
+            {
+                passengerNumInt= Int32.Parse(passengerNumTxt.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Passenger number is empty!");
+            }
             try
             {
                 _flightDetailsManager.Update(flightDetailsId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
@@ -199,6 +207,20 @@ namespace GUI
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void minimiseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        private static readonly Regex _regex = new Regex("[^0-9]");
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
         }
     }
 }

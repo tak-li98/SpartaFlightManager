@@ -61,7 +61,7 @@
         <TextBox x:Name="arrivalTxt" Focusable="False" Grid.ColumnSpan="3" IsReadOnly="True" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <TextBox x:Name="regionTxt" Focusable="False" Grid.ColumnSpan="3" IsReadOnly="True" Grid.Column="2" HorizontalAlignment="Left" Width="200" Height="40" Grid.Row="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <TextBox x:Name="planeCapacityTxt" IsReadOnly="True" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="7" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
-        <TextBox x:Name="passengerNumTxt" IsReadOnly="True" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />               
+        <TextBox x:Name="passengerNumTxt" PreviewTextInput="PreviewTextInput" IsReadOnly="True" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />               
         <ComboBox x:Name="airlineCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="7" VerticalAlignment="Center" Width="180"/>
         <ComboBox x:Name="pilotCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Width="180"/>
         <ComboBox x:Name="statusCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="180"/>
@@ -82,9 +82,14 @@
         <Label Content="Region" Width="100" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center"/>
         <Label Content="Arrival" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="4" VerticalAlignment="Center"/>
         <Label Content="Status" Grid.Column="4" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center"/>
-        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Left" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" Margin="50,0,0,0">
+        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Center" Width="100" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" BorderBrush="#FFF02920" >
             <Button.Background>
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Top" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
     </Grid>

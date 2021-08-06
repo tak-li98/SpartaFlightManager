@@ -49,7 +49,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="auto" Background="#7FFFFFFF">
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -101,9 +101,14 @@
         <Button  x:Name="AddFlightsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  Content="_ADD NEW FLIGHT"  Click="AddFlightsButton_Click" Foreground="#DD000000" />
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
         <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
-        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Center" Width="100" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click">
+        <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Center" Width="100" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" BorderBrush="#FFF02920">
             <Button.Background>
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Bottom" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
     </Grid>

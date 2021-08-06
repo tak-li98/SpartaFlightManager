@@ -87,7 +87,7 @@ The main features of the application would be to:
 
 #### ERD:
 
-![ERD](Images/ERD.png)
+![spartaFlightERD](spartaFlightERD.png)
 
 
 
@@ -141,13 +141,7 @@ The main features of the application would be to:
 
 ![BoardDay2Start](Images/BoardDay2Start.png)
 
-#### Tasks Completed
 
-During this sprint, a numerous of tasks were completed, these included:
-
-- Created the manager classes (Flight, Flight Details & Pilot) to access the database; still needs some extra unit testing
-- Made a simple GUI to test the retrieve functions as a user
-- Added another window "FlightDetailsWindow" to show the full details of the flight
 
 #### Demo
 
@@ -192,21 +186,77 @@ During this sprint, a numerous of tasks were completed, these included:
 
 -----------------------------
 
+
+
 ### <u>Sprint 3</u>
 
 #### Sprint Goal
 
+| User Story ID | Title             | Description                                                  |
+| ------------- | ----------------- | ------------------------------------------------------------ |
+| 3.2           | Creating New Data | As a user, I want to be able to create new data entries so that it can be added to the database. |
+| 4.2           | Modifying Data    | As a user, I want to be able to retrieve the correct flight information so that I can modify it. |
+| 5.2           | Deleting Data     | As a user, I want to be able to delete flights so that redundant and mistakenly added flights can be removed. |
+| 7.1           | Create Wireframe  | As a developer, I want a wireframe so that I can know how the GUI would look like, |
+
+#### Sprint Start Board:
+
+![BoardDay3Start](Images/BoardDay3Start.png)
+
+#### Tasks Completed
+
+During this sprint, a numerous of tasks were completed, these included:
+
+- Wireframe was completed
+- Main, 'Flight Details' and 'Add Flights' window created which allows for users to select a flight and update some flight details.
+
+
+
+#### Wireframe:
+
+![WireFrame1](Images/WireFrame1.png)
+
+![WireFrame2](Images/WireFrame2.png)
+
+#### Demo:
+
+- Mainwindow:
+
+![MainWindowGUI](Images/MainWindowGUI.png)
+
+- Flight Details Window:
+
+![FlightDetailsGUI](Images/FlightDetailsGUI.png)
+
+- Add Flights Window:
+
+![AddFlightsGUI](Images/AddFlightsGUI.png)
+
+
+
+#### Sprint End Board:
+
+![BoardDay3End](BoardDay3End.png)
+
 #### Sprint Review
 
-- List of backlog items "done", actions for any items not "done"
+| Tasks Done             | Notes                                                        |
+| ---------------------- | ------------------------------------------------------------ |
+| 4.2 - Modifying Data   | - Flight details are modified in the 'Flight details' window |
+| 7.1 - Create Wireframe | - Wireframe for each window created in Draw.io               |
+
+| Tasks Not Done          | Actions                  |
+| :---------------------- | ------------------------ |
+| 3.2 - Creating New Data | - To be done next sprint |
+| 5.2 - Delete Data       | - To be done next sprint |
 
 #### Sprint Retrospective
 
-| What went well                                               | Improvements                                                 | Actions                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| - Created the necessary foundation in the manager classes to be used by GUI | - Write cleaner code                                         | - Add more unit testing for all the methods created in each manager class |
-| - Finished tasks set for sprint (excluding the unit tests)   | - Speed up the sprint progress and not spend all night on it | - Refactor some parts of code to be more "clean"             |
-| - Started a GUI to visualise how the app will be like        |                                                              |                                                              |
+| What went well                                               | Improvements                       | Actions                                                      |
+| ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
+| - Created GUI resembling wireframe                           | - Need to write unit tests         | - Add more unit testing for all the methods created in each manager class |
+| - GUI functions well with business layer                     | - Comment code to be more readable | - Add create and delete functions                            |
+| - Dynamic airline combo list and region text depending on departure |                                    |                                                              |
 
 -----------------------------------------
 

@@ -133,6 +133,10 @@ namespace Manager
                 {
                     throw new ArgumentException("Passenger number is greater than capacity!");
                 }
+                if (passengerNumber.ToString() == string.Empty)
+                {
+                    throw new ArgumentException("Passenger number is empty!");
+                }
                 updateFDetails.FlightId = flightId;
                 updateFDetails.PilotId = pilotId;
                 updateFDetails.AirlineId = airlineId;

@@ -109,5 +109,10 @@ namespace GUI
         {
             Application.Current.Shutdown();
         }
+
+        private void minimiseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
