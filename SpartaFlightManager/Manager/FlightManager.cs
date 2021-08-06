@@ -28,6 +28,7 @@ namespace Manager
                 return db.Flights.ToList();
             }
         }
+        
         public int ReturnStatusId(string statusStr)
         {
             using (var db= new SpartaFlightContext())
@@ -35,6 +36,7 @@ namespace Manager
                 return db.FlightStatuses.Where(s => s.Status == statusStr).FirstOrDefault().FlightStatusId;
             }
         }
+
         public string[,] ReturnFlightBoardInfoFromFlights()
         {
             using (var db = new SpartaFlightContext())
@@ -47,7 +49,7 @@ namespace Manager
                     join fd in db.FlightDetails on f.FlightId equals fd.FlightId
                     join al in db.Airlines on fd.AirlineId equals al.AirlineId
                     where fp.IsDepartElseArrival == true
-                    orderby f.FlightDate
+                    //orderby f.FlightDate
                     select new
                     {
                         f.FlightId,
@@ -64,7 +66,7 @@ namespace Manager
                     join fp in db.FlightPaths on f.FlightId equals fp.FlightId
                     join ap in db.Airports on fp.AirportId equals ap.AirportId
                     where fp.IsDepartElseArrival == false
-                    orderby f.FlightDate descending
+                   // orderby f.FlightDate descending
                     select new
                     {
                         ap.AirportId,

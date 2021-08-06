@@ -24,7 +24,13 @@ namespace Manager
                 return db.Regions.Where(r => r.RegionId == regionId).FirstOrDefault().RegionName;
             }
         }
-
+        public string ReturnAirportIdGivenAirportStr(string airportStr)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                return db.Airports.Where(a => airportStr.Contains(a.AirportId)&&airportStr.Contains(a.Country) && airportStr.Contains(a.City)).FirstOrDefault().AirportId;
+            }
+        }
         public string ReturnRegionGivenFlightId(int flightId)
         {
             using (var db = new SpartaFlightContext())

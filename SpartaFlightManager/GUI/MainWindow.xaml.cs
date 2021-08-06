@@ -45,10 +45,6 @@ namespace GUI
             PopulateListView();
 
         }
-        public void GetFlightBoardInfo()
-        {
-
-        }
        
         private void PopulateListView()
         {

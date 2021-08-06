@@ -133,6 +133,7 @@ namespace GUI
         {
             //UPDATE FUNCTION
             var flightId = Int32.Parse(flightIdTxt.Text);
+            var flightDetailsId = _flightDetailsManager.ReturnFlightDetailsIdGivenFlightId(flightId);
             var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
             var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
             var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
@@ -143,7 +144,7 @@ namespace GUI
 
             try
             {
-                _flightDetailsManager.Update(flightId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
+                _flightDetailsManager.Update(flightDetailsId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
                 _flightManager.Update(flightId, (Status)statusId);
                 
             }

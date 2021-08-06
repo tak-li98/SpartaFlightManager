@@ -25,6 +25,7 @@ namespace GUI
         FlightManager _flightManager = new FlightManager();
         PlaneManager _planeManager = new PlaneManager();
         AirportManager _airportManager = new AirportManager();
+        FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
         
         public void CentreScreen()
         {
@@ -34,6 +35,28 @@ namespace GUI
             double windowHeight = this.Height;
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
+        public bool CheckIfFieldsHaveValues()
+        {
+            if (departCombo.Text != string.Empty && arrivalCombo.Text != string.Empty && pilotCombo.Text != string.Empty && airlineCombo.Text != string.Empty
+                && planeCombo.Text != string.Empty && datePicker.Text != string.Empty && PresetTimePicker.Text != string.Empty
+                && passengerNumTxt.Text != string.Empty)
+            {
+                return true;
+            }
+            return false;
+        }
+        public void CheckIfAddButtonOn()
+        {
+            if (!CheckIfFieldsHaveValues())
+            {
+                AddFlightButton.ToolTip = "Please fill out all the details";
+                AddFlightButton.IsEnabled = false;
+                ToolTipService.SetShowOnDisabled(AddFlightButton, true);
+                
+            }
+            AddFlightButton.ToolTip = "Click here when you are ready to submit.";
+            AddFlightButton.IsEnabled = true;
         }
         public void OpenWindow(Window window)
         {
@@ -46,10 +69,11 @@ namespace GUI
             InitializeComponent();
             CentreScreen();
             FillComboBoxesWithItems();
+           
         }
         public void FillComboBoxesWithItems()
         {
-            foreach (var item in _pilotManager.RetrieveAll())
+            foreach (var item in _pilotManager.RetrieveAll()) //Add customisation to partial class if you want specific string in list
             {
                 pilotCombo.Items.Add(item.ToString());
             }
@@ -74,41 +98,107 @@ namespace GUI
 
         private void AddFlight_Click(object sender, RoutedEventArgs e)
         {
-            var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
-           //_flightManager.Create() 
+                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Flight Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
+                    var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
+                    var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
+                    var passengerNum = Int32.Parse(passengerNumTxt.Text);
+                    var flightDuration = (int)durationSlider.Value;
+                    var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
+                    var departId = _airportManager.ReturnAirportIdGivenAirportStr(departCombo.Text);
+                    var arrivalId = _airportManager.ReturnAirportIdGivenAirportStr(arrivalCombo.Text);
+                    _flightManager.Create(DateTime.Parse(dateTime), departId, arrivalId);
+                    _flightDetailsManager.Create(pilotId, airlineId, planeId, passengerNum, flightDuration);
+                }
+
         }
 
         private void ClearField_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new AddFlightWindow());
+            this.Close();
+            
         }
 
         private void PresetTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
         {
-
+            CheckIfAddButtonOn();
         }
 
         private void departCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CheckIfAddButtonOn();
             string text = (sender as ComboBox).SelectedItem.ToString();
-            regionTxt.Text = _airportManager.ReturnRegion(text);
-            airlineCombo.Items.Clear();
-            foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
+            if(text != string.Empty)
             {
-                airlineCombo.Items.Add(item.ToString());
+                regionTxt.Text = _airportManager.ReturnRegion(text);
+                airlineCombo.Items.Clear();
+                foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
+                {
+                    airlineCombo.Items.Add(item.ToString());
+                }
             }
+            
         }
 
         private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CheckIfAddButtonOn();
             string text = (sender as ComboBox).SelectedItem.ToString();
             planeCapacityTxt.Text = _planeManager.ReturnCapacity(text).ToString();
+            passengerNumTxt.IsReadOnly = false;
+            passengerNumTxt.ToolTip = string.Empty;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+           
             string time = (sender as Slider).Value.ToString();
             durationLbl.Content = $"Flight duration ({time} hrs)";
+        }
+
+        private void passengerNumTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckIfPassengerNumOverCapacity();
+        }
+        public void CheckIfPassengerNumOverCapacity()
+        {
+            if (passengerNumTxt.Text != string.Empty)
+            {
+                if (planeCapacityTxt.Text != string.Empty)
+                {
+                    if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                    {
+
+                        AddFlightButton.ToolTip = "Your passenger number is over capacity.";
+                        AddFlightButton.IsEnabled = false;
+                        ToolTipService.SetShowOnDisabled(AddFlightButton, true);
+
+                    }
+                    else
+                    {
+                        AddFlightButton.ToolTip = "Click here when you are ready to submit.";
+                        AddFlightButton.IsEnabled = true;
+                    }
+
+                }
+            }
+        }
+        private void arrivalCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckIfAddButtonOn();
+        }
+
+        private void airlineCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckIfAddButtonOn();
+        }
+
+        private void selected_DateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            CheckIfAddButtonOn();
         }
     }
 }

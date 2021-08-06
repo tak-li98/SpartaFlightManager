@@ -202,7 +202,11 @@ During this sprint, a numerous of tasks were completed, these included:
 
 #### Sprint Retrospective
 
-- what went well, improvements and action plan
+| What went well                                               | Improvements                                                 | Actions                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| - Created the necessary foundation in the manager classes to be used by GUI | - Write cleaner code                                         | - Add more unit testing for all the methods created in each manager class |
+| - Finished tasks set for sprint (excluding the unit tests)   | - Speed up the sprint progress and not spend all night on it | - Refactor some parts of code to be more "clean"             |
+| - Started a GUI to visualise how the app will be like        |                                                              |                                                              |
 
 -----------------------------------------
 
