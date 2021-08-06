@@ -34,21 +34,30 @@ namespace Manager
                 db.SaveChanges();
             }
         }
-        public string[] ReturnDepartureStr(int flightId)
+        public string ReturnDepartureStr(int flightId)
         {
             using (var db = new SpartaFlightContext())
             {
-                var airports = new string[2];
-                var query = db.FlightPaths.Where(fp => fp.FlightId == flightId && fp.IsDepartElseArrival == true);
-                foreach (var item in query)
-                {
-                    if(item.IsDepartElseArrival == true)
-                    {
-                        airports[0] = db.Airports.Where(i=>i.AirportId == item.AirportId).ToString();
-                    }
-                    airports[1] = db.Airports.Where(i=>i.AirportId == item.AirportId).ToString();
-                }
-                return airports;
+                var id = db.FlightPaths.Where(fp => fp.FlightId == flightId && fp.IsDepartElseArrival == true).FirstOrDefault();
+                var departure = db.Airports.Where(i => i.AirportId == id.AirportId).FirstOrDefault();
+                return $"{departure.City}, {departure.Country} ({departure.AirportId})";
+            }
+        }
+        public string ReturnArrivalStr(int flightId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var id = db.FlightPaths.Where(fp => fp.FlightId == flightId && fp.IsDepartElseArrival == false).FirstOrDefault();
+                var arrival = db.Airports.Where(i => i.AirportId == id.AirportId).FirstOrDefault();
+                return $"{arrival.City}, {arrival.Country} ({arrival.AirportId})";
+            }
+        }
+        public string ReturnStatusGivenFlightId(int flightId)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var statusId = db.Flights.Where(i => i.FlightId == flightId).FirstOrDefault();
+                return db.FlightStatuses.Where(i => i.FlightStatusId == statusId.FlightStatusId).FirstOrDefault().Status;
             }
         }
         public List<string> ReturnFlightDetailIDStrings()

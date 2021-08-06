@@ -23,6 +23,7 @@ namespace GUI
         private FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
         private PilotManager _pilotManager = new PilotManager();
         private AirlineManager _airlineManager = new AirlineManager();
+        private AirportManager _airportManager = new AirportManager();
         private PlaneManager _planeManager = new PlaneManager();
         private FlightStatusManager _flightStatusManager = new FlightStatusManager();
         public void CentreScreen()
@@ -52,7 +53,7 @@ namespace GUI
             CentreScreen();
             _flightDetailsManager.SetFlightDetail(selectedFlightId);
             FillComboBoxesWithItems();
-            PopulateFlightDetailsTextBoxes();
+            PopulateFlightDetailsTextBoxes(selectedFlightId);
             
         }
         public void FillComboBoxesWithItems()
@@ -61,33 +62,40 @@ namespace GUI
             {
                 pilotCombo.Items.Add(item.ToString());
             }
-            foreach (var item in _airlineManager.RetrieveAll())
-            {
-                airlineCombo.Items.Add(item.AirlineName);
-            }
+
+            //foreach (var item in _airlineManager.RetrieveAll())
+            //{
+            //    airlineCombo.Items.Add(item.AirlineName);
+            //}
             foreach (var item in _planeManager.RetrieveAll())
             {
                 planeCombo.Items.Add(item.PlaneModel);
             }
             foreach (var item in _flightStatusManager.RetrieveAll())
             {
-                if (item.Status != "Arrived")
-                {
                     statusCombo.Items.Add(item.Status);
-                }
             }
         }
-        public void PopulateFlightDetailsTextBoxes()
+        public void PopulateFlightDetailsTextBoxes(int flightId)
         {
             var flightDetailStr = _flightDetailsManager.ReturnFlightDetailIDStrings();
             flightIdTxt.Text = flightDetailStr[0];
             pilotCombo.Text = flightDetailStr[1];
-            airlineCombo.Text= flightDetailStr[2];
             planeCombo.Text = flightDetailStr[3];
             planeCapacityTxt.Text = flightDetailStr[4];
             passengerNumTxt.Text = flightDetailStr[5];
             durationSlider.Value = Int32.Parse(flightDetailStr[6]);
             durationLbl.Content = $"Flight duration ({flightDetailStr[6]} hrs)";
+            departureTxt.Text = _flightDetailsManager.ReturnDepartureStr(flightId);
+            regionTxt.Text = _airportManager.ReturnRegionGivenFlightId(flightId);
+            arrivalTxt.Text = _flightDetailsManager.ReturnArrivalStr(flightId);
+            statusCombo.Text = _flightDetailsManager.ReturnStatusGivenFlightId(flightId);
+            airlineCombo.Items.Clear();
+            foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(departureTxt.Text))
+            {
+                airlineCombo.Items.Add(item.ToString());
+            }
+            airlineCombo.Text = flightDetailStr[2];
         }
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
