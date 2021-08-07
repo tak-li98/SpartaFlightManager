@@ -75,6 +75,7 @@ namespace GUI
         private void AddPilotButton_Click(object sender, RoutedEventArgs e)
         {
             pilotBoard.Visibility = Visibility.Hidden;
+            addPilotPanel.Visibility = Visibility.Visible;
         }
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
@@ -90,6 +91,11 @@ namespace GUI
         private void EditPilotButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void imageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

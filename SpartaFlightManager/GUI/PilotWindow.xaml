@@ -73,7 +73,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView x:Name="pilotBoard" VerticalContentAlignment="Stretch" FontSize="20" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False">
+            <ListView x:Name="pilotBoard" VerticalContentAlignment="Stretch" FontSize="20" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="10" Grid.RowSpan="10" SelectionChanged="ListView_SelectionChanged" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
@@ -97,6 +97,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
         </Grid>
         <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="Go back to flight board"  Content="_FLIGHT BOARD"  Click="FlightBoardButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="See all Airports"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
@@ -116,5 +117,40 @@
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
+        <DockPanel Visibility="Hidden" x:Name="addPilotPanel" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Title:" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label Content="First Name:" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label Content="Surname:" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <ComboBox x:Name="titleCombo" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="150">
+                    <ComboBoxItem>Mr.</ComboBoxItem>
+                    <ComboBoxItem>Mrs.</ComboBoxItem>
+                    <ComboBoxItem>Miss.</ComboBoxItem>
+                    <ComboBoxItem>Ms.</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="firstNameTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <TextBox x:Name="surnameTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Rectangle Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="300" Grid.RowSpan="4" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="300" Fill="#7F57E4D1"/>
+                <Button x:Name="imageBtn" Content="Add Photo" Grid.ColumnSpan="2" Width="150" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="imageBtn_Click"/>
+            </Grid>
+        </DockPanel>
+
     </Grid>
 </Window>
