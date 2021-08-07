@@ -33,5 +33,33 @@ namespace Manager
                 return db.Airlines.Where(a => a.RegionId == regionId).Select(i => i.AirlineName).ToList();
             }
         }
+
+        public List<AirlineRegion> ReturnAirlineAndRegion()
+        {
+            var list = new List<AirlineRegion>();
+            using (var db = new SpartaFlightContext())
+            {
+                
+                var query =
+                    from a in db.Airlines
+                    join r in db.Regions on a.RegionId equals r.RegionId
+                    select new
+                    {
+                        a.AirlineName,
+                        a.AirlineCode,
+                        r.RegionName
+                    };
+                foreach (var item in query)
+                {
+                    AirlineRegion airlineRegion = new AirlineRegion();
+                    airlineRegion.AirlineName = item.AirlineName;
+                    airlineRegion.AirlineCode = item.AirlineCode;
+                    airlineRegion.RegionName = item.RegionName;
+                    list.Add(airlineRegion);
+                }
+                return list;
+            }
+        }
+
     }
 }
