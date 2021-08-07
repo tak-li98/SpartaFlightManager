@@ -17,12 +17,11 @@ using Manager;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for Airlines.xaml
+    /// Interaction logic for PlaneWindow.xaml
     /// </summary>
-    public partial class AirlineWindow : Window
+    public partial class PlaneWindow : Window
     {
-        private AirlineManager _airlineManager = new AirlineManager();
-
+        PlaneManager _planeManager = new PlaneManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -39,27 +38,20 @@ namespace GUI
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();
         }
-        public AirlineWindow()
+        public PlaneWindow()
         {
             InitializeComponent();
             CentreScreen();
             PopulateViewList();
+
         }
-
-
         public void PopulateViewList()
         {
-            airlineBoard.ItemsSource = _airlineManager.ReturnAirlineAndRegion();
+            planeBoard.ItemsSource = _planeManager.RetrieveAll();
         }
-
-        private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
+        private void AirlinesButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenWindow(new MainWindow());
-        }
-
-        private void AirportsButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            OpenWindow(new AirlineWindow());
         }
 
         private void PilotsButton_Click(object sender, RoutedEventArgs e)
@@ -67,14 +59,14 @@ namespace GUI
 
         }
 
-        private void PlanesButton_Click(object sender, RoutedEventArgs e)
+        private void AirportsButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenWindow(new PlaneWindow());
+
         }
 
-        private void minimiseBtn_Click(object sender, RoutedEventArgs e)
+        private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            OpenWindow(new MainWindow());
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
@@ -82,22 +74,26 @@ namespace GUI
             Application.Current.Shutdown();
         }
 
-        private void airlineBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void minimiseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void planeBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MoreInfoButton.IsEnabled = true;
-            if(airlineBoard.SelectedItem != null)
+            if (planeBoard.SelectedItem != null)
             {
-                _airlineManager.SetSelectedAirline(airlineBoard.SelectedItem);
+                _planeManager.SetSelectedPlane(planeBoard.SelectedItem);
             }
         }
 
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
-            var something = airlineBoard.SelectedItems[0];
-            var airlineSelected = _airlineManager.SelectedAirlineRegion.AirlineName.Replace(" ", "");
+            var planeSelected = _planeManager.SelectedPlane.PlaneModel;
             ProcessStartInfo link = new ProcessStartInfo();
             link.UseShellExecute = true;
-            link.FileName = "https://www.google.com/search?q=" + airlineSelected + "+airline";
+            link.FileName = "https://www.google.com/search?q=" + planeSelected;
             Process.Start(link);
         }
     }

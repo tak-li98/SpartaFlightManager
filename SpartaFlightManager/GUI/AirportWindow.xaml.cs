@@ -11,18 +11,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Diagnostics;
 using Manager;
 
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for Airlines.xaml
+    /// Interaction logic for AirportWindow.xaml
     /// </summary>
-    public partial class AirlineWindow : Window
+    public partial class AirportWindow : Window
     {
-        private AirlineManager _airlineManager = new AirlineManager();
-
+        AirportManager _airportManager = new AirportManager();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -39,17 +37,15 @@ namespace GUI
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.Close();
         }
-        public AirlineWindow()
+        public AirportWindow()
         {
             InitializeComponent();
             CentreScreen();
-            PopulateViewList();
         }
 
-
-        public void PopulateViewList()
+        private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
-            airlineBoard.ItemsSource = _airlineManager.ReturnAirlineAndRegion();
+
         }
 
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
@@ -57,9 +53,9 @@ namespace GUI
             OpenWindow(new MainWindow());
         }
 
-        private void AirportsButton_Click(object sender, RoutedEventArgs e)
+        private void AirlinesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new AirlineWindow());
         }
 
         private void PilotsButton_Click(object sender, RoutedEventArgs e)
@@ -80,25 +76,6 @@ namespace GUI
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void airlineBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MoreInfoButton.IsEnabled = true;
-            if(airlineBoard.SelectedItem != null)
-            {
-                _airlineManager.SetSelectedAirline(airlineBoard.SelectedItem);
-            }
-        }
-
-        private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            var something = airlineBoard.SelectedItems[0];
-            var airlineSelected = _airlineManager.SelectedAirlineRegion.AirlineName.Replace(" ", "");
-            ProcessStartInfo link = new ProcessStartInfo();
-            link.UseShellExecute = true;
-            link.FileName = "https://www.google.com/search?q=" + airlineSelected + "+airline";
-            Process.Start(link);
         }
     }
 }

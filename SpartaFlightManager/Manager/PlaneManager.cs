@@ -13,7 +13,7 @@ namespace Manager
         {
             using (var db = new SpartaFlightContext())
             {
-                return db.Planes.ToList();
+                return db.Planes.OrderBy(i => i.Capacity).ToList();
             }
         }
 
@@ -31,6 +31,11 @@ namespace Manager
             {
                 return db.Planes.Where(p => p.PlaneModel == str).FirstOrDefault().PlaneId;
             }
+        }
+        public Plane SelectedPlane { get; set; }
+        public void SetSelectedPlane(object selectedItem)
+        {
+            SelectedPlane = (Plane)selectedItem;
         }
     }
 }

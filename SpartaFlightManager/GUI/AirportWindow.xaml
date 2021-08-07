@@ -1,4 +1,4 @@
-﻿<Window x:Class="GUI.AirlineWindow"
+﻿<Window x:Class="GUI.AirportWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,7 +16,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="AirlineWindow" Height="600" Width="1000">
+        Title="AirportWindow" Height="600" Width="1000">
 
     <Grid Width="auto">
         <Grid.Background>

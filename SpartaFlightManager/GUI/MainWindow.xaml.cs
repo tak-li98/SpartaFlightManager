@@ -102,7 +102,7 @@ namespace GUI
 
         private void PlanesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new PlaneWindow());
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)

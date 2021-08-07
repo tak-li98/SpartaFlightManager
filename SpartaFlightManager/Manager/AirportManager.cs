@@ -9,6 +9,35 @@ namespace Manager
 {
     public class AirportManager
     {
+        public List<AirportRegion> ReturnAirportAndRegion()
+        {
+            var list = new List<AirportRegion>();
+            using (var db = new SpartaFlightContext())
+            {
+                var query =
+                    from a in db.Airports
+                    join r in db.Regions on a.RegionId equals r.RegionId
+                    orderby r.RegionName
+                    select new
+                    {
+                        a.AirportId,
+                        a.City,
+                        a.Country,
+                        r.RegionName
+                    };
+                foreach (var item in query)
+                {
+                    AirportRegion airportRegion = new AirportRegion();
+                    airportRegion.AirportID = item.AirportId;
+                    airportRegion.City = item.City;
+                    airportRegion.Country = item.Country;
+                    airportRegion.RegionName = item.RegionName;
+                    list.Add(airportRegion);
+                }
+                return list;
+            }
+        }
+
         public List<Airport> RetrieveAll()
         {
             using (var db = new SpartaFlightContext())
