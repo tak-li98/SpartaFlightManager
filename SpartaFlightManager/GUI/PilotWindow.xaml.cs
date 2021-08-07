@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -95,6 +98,31 @@ namespace GUI
 
         private void imageBtn_Click(object sender, RoutedEventArgs e)
         {
+            //ProcessStartInfo link = new ProcessStartInfo();
+            //link.UseShellExecute = true;
+            //link.FileName = @"C:\Users";
+            //Process.Start(link);
+            var firstName = firstNameTxt.Text;
+            var surname = surnameTxt.Text;
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                imageBox.Fill = new ImageBrush { ImageSource = new BitmapImage(new Uri(filename)) };
+            }
+            try
+            {
+                var fileNameToSave = firstName+surname+ System.IO.Path.GetExtension(dlg.FileName);
+                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+ fileNameToSave);
+                File.Copy(dlg.FileName,fileNameToSave);
+            }
+            finally
+            {
+
+            }
             
         }
     }

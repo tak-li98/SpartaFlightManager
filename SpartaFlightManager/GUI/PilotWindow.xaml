@@ -147,7 +147,7 @@
                 </ComboBox>
                 <TextBox x:Name="firstNameTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center"/>
                 <TextBox x:Name="surnameTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="3"  TextWrapping="Wrap" VerticalAlignment="Center"/>
-                <Rectangle Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="300" Grid.RowSpan="4" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="300" Fill="#7F57E4D1"/>
+                <Rectangle x:Name="imageBox" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="300" Grid.RowSpan="4" Grid.Row="1" VerticalAlignment="Top" Width="300" Fill="#7F57E4D1"/>
                 <Button x:Name="imageBtn" Content="Add Photo" Grid.ColumnSpan="2" Width="150" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="imageBtn_Click"/>
             </Grid>
         </DockPanel>
