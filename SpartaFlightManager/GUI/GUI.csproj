@@ -10,6 +10,16 @@
     <None Remove="400px-Exit_sign_text_%28red%29.svg.png" />
     <None Remove="landing.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
+    <None Remove="PilotPics\Atchu Soorasangaram.jpg" />
+    <None Remove="PilotPics\Chris Rafferty.jpg" />
+    <None Remove="PilotPics\Denzel Estacio.jpg" />
+    <None Remove="PilotPics\Jacob Chan.jpg" />
+    <None Remove="PilotPics\Keagan Gonsalves.png" />
+    <None Remove="PilotPics\Ronil Goldenwalla.jpg" />
+    <None Remove="PilotPics\Sabir Nisar.jpg" />
+    <None Remove="PilotPics\Samuel Adedina.jpg" />
+    <None Remove="PilotPics\Tak Li.jpg" />
+    <None Remove="PilotPics\Umar Majid.jpg" />
     <None Remove="planeGlobe.gif" />
     <None Remove="TempLogo.png" />
   </ItemGroup>
@@ -27,6 +37,16 @@
     <Resource Include="400px-Exit_sign_text_(red).svg.png" />
     <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
+    <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />
+    <Resource Include="PilotPics\Chris Rafferty.jpg" />
+    <Resource Include="PilotPics\Denzel Estacio.jpg" />
+    <Resource Include="PilotPics\Jacob Chan.jpg" />
+    <Resource Include="PilotPics\Keagan Gonsalves.png" />
+    <Resource Include="PilotPics\Ronil Goldenwalla.jpg" />
+    <Resource Include="PilotPics\Sabir Nisar.jpg" />
+    <Resource Include="PilotPics\Samuel Adedina.jpg" />
+    <Resource Include="PilotPics\Tak Li.jpg" />
+    <Resource Include="PilotPics\Umar Majid.jpg" />
     <Resource Include="planeGlobe.gif" />
     <Resource Include="TempLogo.png" />
   </ItemGroup>

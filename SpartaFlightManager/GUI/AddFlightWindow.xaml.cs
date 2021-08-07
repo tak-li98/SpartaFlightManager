@@ -115,7 +115,7 @@ namespace GUI
             OpenWindow(new MainWindow());
         }
 
-        private void AddFlight_Click(object sender, RoutedEventArgs e)
+        private async void AddFlight_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Flight Confirmation", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
@@ -130,6 +130,23 @@ namespace GUI
                 var arrivalId = _airportManager.ReturnAirportIdGivenAirportStr(arrivalCombo.Text);
                 _flightManager.Create(DateTime.Parse(dateTime), departId, arrivalId);
                 _flightDetailsManager.Create(pilotId, airlineId, planeId, passengerNum, flightDuration);
+
+                //Display success label
+                AddFlightButton.IsEnabled = false;
+                FlightBoardButton.IsEnabled = false;
+                successLbl.Content = "Added Flight Successfully!";
+                await Task.Delay(2000);
+                successLbl.Content = string.Empty;
+                refreshLbl.Content = "Page refreshing in";
+                await Task.Delay(1000);
+                refreshLbl.Content = "Page refreshing in 3..";
+                await Task.Delay(1000);
+                refreshLbl.Content = "Page refreshing in 3..2..";
+                await Task.Delay(1000);
+                refreshLbl.Content = "Page refreshing in 3..2..1..";
+                await Task.Delay(1000);
+                OpenWindow(new AddFlightWindow());
+                this.Close();
             }
 
         }

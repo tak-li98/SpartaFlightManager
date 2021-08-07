@@ -20,12 +20,32 @@ namespace GUI
     /// </summary>
     public partial class PilotWindow : Window
     {
-       
+        PilotManager _pilotManager = new PilotManager();
+        public void CentreScreen()
+        {
+            double screenWidth = SystemParameters.PrimaryScreenWidth;
+            double screenHeight = SystemParameters.PrimaryScreenHeight;
+            double windowWidth = this.Width;
+            double windowHeight = this.Height;
+            this.Left = (screenWidth / 2) - (windowWidth / 2);
+            this.Top = (screenHeight / 2) - (windowHeight / 2);
+        }
+        public void OpenWindow(Window window)
+        {
+            window.Show();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Close();
+        }
         public PilotWindow()
         {
             InitializeComponent();
+            CentreScreen();
+            PopulateViewList();
         }
-
+        public void PopulateViewList()
+        {
+            pilotBoard.ItemsSource = _pilotManager.RetrieveAll();
+        }
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -62,6 +82,11 @@ namespace GUI
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditPilotButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

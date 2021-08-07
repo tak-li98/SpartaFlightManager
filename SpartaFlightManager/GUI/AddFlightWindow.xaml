@@ -64,8 +64,6 @@
         <Slider x:Name="durationSlider" Value="40" Grid.Column="5" Width="200" VerticalAlignment="Center" Grid.ColumnSpan="3" Grid.Row="5" Minimum="0" Maximum="24" Style="{StaticResource MaterialDesignDiscreteSlider}" TickFrequency="{Binding DiscreteHorizontal.TickFrequency}" TickPlacement="BottomRight" Foreground="Black" ValueChanged="Slider_ValueChanged" />
         <TextBox x:Name="planeCapacityTxt" IsReadOnly="True" Focusable="False" ToolTip="Please pick a plane model." Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="7" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <TextBox x:Name="passengerNumTxt" PreviewTextInput="PreviewTextInput" IsReadOnly="True" ToolTip="Please pick a plane model first." Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="6" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" TextChanged="passengerNumTxt_TextChanged" />
-        <TextBox x:Name="flightDurationTxt"  Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Width="200" Height="40" Grid.Row="5" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
-        
         <ComboBox x:Name="arrivalCombo"  Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="5" VerticalAlignment="Center" Width="180" SelectionChanged="arrivalCombo_SelectionChanged"/>
         <TextBox x:Name="regionTxt" IsReadOnly="True" Focusable="False" ToolTip="Please pick a departure." Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Width="180" Height="40" Grid.Row="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" />
         <ComboBox x:Name="departCombo"   Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left"  Grid.Row="3" VerticalAlignment="Center" Width="180" SelectionChanged="departCombo_SelectionChanged"/>
@@ -90,5 +88,7 @@
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
+        <Label x:Name="successLbl"  Grid.Column="3" Grid.ColumnSpan="3" Foreground="ForestGreen" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
+        <Label x:Name="refreshLbl" HorizontalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center"/>
     </Grid>
 </Window>

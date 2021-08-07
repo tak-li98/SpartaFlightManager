@@ -7,11 +7,12 @@ using Database;
 using System.Diagnostics;
 namespace Manager
 {
+
     public class PilotManager
     {
         public Pilot SelectedPilot { get; set; }
 
-        public void SetPilot(object selectedItem)
+        public void SetSelectedPilot(object selectedItem)
         {
             SelectedPilot = (Pilot)selectedItem;
         }
