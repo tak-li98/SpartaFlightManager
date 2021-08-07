@@ -27,39 +27,39 @@ namespace FlightManagerTests
             }
         }
 
-        [Test]
-        [Category("HAPPY")]
-        public void CheckIfNewFlightAddedDatabaseIncreasesBy1()
-        {
-            using (var db = new SpartaFlightContext())
-            {
-                var initialCount = db.Flights.Count();
-                _flightManager.Create(Status.SCHEDULED, new DateTime(2025, 12, 25, 12, 0, 0),"LHR","DAL");
-                var finalCount = db.Flights.Count();
-                Assert.That(finalCount - initialCount, Is.EqualTo(1));
-            }
-        }
-        [Test]
-        [Category("HAPPY")]
-        public void CheckIfFlightIsUpdated()
-        {
-            using (var db = new SpartaFlightContext())
-            {
-                var flightId = db.Flights.Where(f => f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0)).FirstOrDefault().FlightId;
-                var flightUpdate = _flightManager.Update(flightId, Status.DELAYED, new DateTime(2026, 12, 25, 12, 0, 0));
-                var updateFlightId =
-                    from f in db.Flights
-                    where f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0)
-                    select new { f.FlightStatusId };
-                var updateStatus = 0;
-                foreach (var item in updateFlightId)
-                {
-                    updateStatus = item.FlightStatusId;
-                }
-                Assert.That(flightUpdate, Is.True);
-                Assert.That(updateStatus, Is.EqualTo((int)Status.DELAYED));
-            }
-        }
+        //[Test]
+        //[Category("HAPPY")]
+        //public void CheckIfNewFlightAddedDatabaseIncreasesBy1()
+        //{
+        //    using (var db = new SpartaFlightContext())
+        //    {
+        //        var initialCount = db.Flights.Count();
+        //        _flightManager.Create(Status.SCHEDULED, new DateTime(2025, 12, 25, 12, 0, 0),"LHR","DAL");
+        //        var finalCount = db.Flights.Count();
+        //        Assert.That(finalCount - initialCount, Is.EqualTo(1));
+        //    }
+        //}
+        //[Test]
+        //[Category("HAPPY")]
+        //public void CheckIfFlightIsUpdated()
+        //{
+        //    using (var db = new SpartaFlightContext())
+        //    {
+        //        var flightId = db.Flights.Where(f => f.FlightDate == new DateTime(2025, 12, 25, 12, 0, 0)).FirstOrDefault().FlightId;
+        //        var flightUpdate = _flightManager.Update(flightId, Status.DELAYED, new DateTime(2026, 12, 25, 12, 0, 0));
+        //        var updateFlightId =
+        //            from f in db.Flights
+        //            where f.FlightDate == new DateTime(2026, 12, 25, 12, 0, 0)
+        //            select new { f.FlightStatusId };
+        //        var updateStatus = 0;
+        //        foreach (var item in updateFlightId)
+        //        {
+        //            updateStatus = item.FlightStatusId;
+        //        }
+        //        Assert.That(flightUpdate, Is.True);
+        //        Assert.That(updateStatus, Is.EqualTo((int)Status.DELAYED));
+        //    }
+        //}
         [Test]
         [Category("HAPPY")]
         public void CheckIfFlightIsDeleted()

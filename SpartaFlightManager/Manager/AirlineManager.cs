@@ -16,7 +16,11 @@ namespace Manager
                 return db.Airlines.ToList();
             }
         }
-
+        public AirlineRegion SelectedAirlineRegion { get; set; }
+        public void SetSelectedAirline(object airlineRegionItem)
+        {
+            SelectedAirlineRegion = (AirlineRegion)airlineRegionItem;
+        }
         public int ReturnAirlineID(string str)
         {
             using (var db = new SpartaFlightContext())
@@ -43,6 +47,7 @@ namespace Manager
                 var query =
                     from a in db.Airlines
                     join r in db.Regions on a.RegionId equals r.RegionId
+                    orderby r.RegionName
                     select new
                     {
                         a.AirlineName,
