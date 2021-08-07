@@ -32,7 +32,7 @@ namespace Manager
             //}
 
             //PILOT MANAGER MANUAL TESTING
-            PilotManager _pilotManager = new PilotManager();
+            //PilotManager _pilotManager = new PilotManager();
             ////READ
             //var pilots = _pilotManager.RetrieveAll();
             //foreach (var pilot in pilots)

@@ -26,7 +26,7 @@ namespace Manager
         }
         public int ReturnLatestFlightId()
         {
-            using (var db = new SpartaFlightContext()) 
+            using (var db = new SpartaFlightContext())
             {
                 return db.Flights.Select(i => i.FlightId).Max();
             }
@@ -38,18 +38,27 @@ namespace Manager
                 return db.FlightDetails.Where(f => f.FlightId == flightId).FirstOrDefault().FlightDetailsId;
             }
         }
-        public void Create(int pilotId, int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive=false)
+        public void Create(int pilotId, int airlineId, int planeId, int passengerNumber, int flightDuration, bool archive = false)
         {
             var LatestFlightId = ReturnLatestFlightId();
-            var newFDetails = new FlightDetail() {FlightId = LatestFlightId,PilotId = pilotId, AirlineId=airlineId
-                ,PlaneId=planeId,PassengerNumber=passengerNumber,FlightDuration=flightDuration, Archive = archive };
+            var newFDetails = new FlightDetail()
+            {
+                FlightId = LatestFlightId,
+                PilotId = pilotId,
+                AirlineId = airlineId
+                ,
+                PlaneId = planeId,
+                PassengerNumber = passengerNumber,
+                FlightDuration = flightDuration,
+                Archive = archive
+            };
             using (var db = new SpartaFlightContext())
             {
                 db.FlightDetails.Add(newFDetails);
                 db.SaveChanges();
             }
         }
-        
+
         public string ReturnDepartureStr(int flightId)
         {
             using (var db = new SpartaFlightContext())
@@ -101,7 +110,7 @@ namespace Manager
                         fd.PassengerNumber,
                         fd.FlightDuration,
                         f.FlightStatus
-                        
+
                     };
                 foreach (var item in query)
                 {
@@ -112,15 +121,15 @@ namespace Manager
                     outputList.Add(item.Capacity.ToString()); // 4 element 
                     outputList.Add(item.PassengerNumber.ToString()); // 5 element 
                     outputList.Add(item.FlightDuration.ToString()); // 6 element 
-                    //outputList.Add(item.FlightStatus.ToString()); // 7 element 
-                   // outputList.Add(item.FlightDate.ToShortDateString()); // 8 element 
-                    //outputList.Add(item.FlightDate.ToShortTimeString()); // 9 element 
+                                                                    //outputList.Add(item.FlightStatus.ToString()); // 7 element 
+                                                                    // outputList.Add(item.FlightDate.ToShortDateString()); // 8 element 
+                                                                    //outputList.Add(item.FlightDate.ToShortTimeString()); // 9 element 
                 }
                 return outputList;
             }
         }
-        public bool Update(int flightDetailsId,int flightId, int pilotId, 
-            int airlineId, int planeId, int passengerNumber, int flightDuration,int capacity, bool archive = false)
+        public bool Update(int flightDetailsId, int flightId, int pilotId,
+            int airlineId, int planeId, int passengerNumber, int flightDuration, int capacity, bool archive = false)
         {
             using (var db = new SpartaFlightContext())
             {
@@ -150,7 +159,7 @@ namespace Manager
                 }
                 catch (Exception e)
                 {
-                   
+
                     Debug.WriteLine($"Error updating flight detail {flightDetailsId}");
                     return false;
                 }

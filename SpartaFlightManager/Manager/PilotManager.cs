@@ -32,14 +32,14 @@ namespace Manager
         public void Create(string firstName, string lastName, string title = null)
         {
             var newPilot = new Pilot() { Title = title, FirstName = firstName, LastName = lastName };
-            using(var db = new SpartaFlightContext())
+            using (var db = new SpartaFlightContext())
             {
                 db.Pilots.Add(newPilot);
                 db.SaveChanges();
             }
         }
 
-        public bool Update(int pilotId,string firstName, string lastName, string title = null)
+        public bool Update(int pilotId, string firstName, string lastName, string title = null)
         {
             using (var db = new SpartaFlightContext())
             {
@@ -69,7 +69,7 @@ namespace Manager
             using (var db = new SpartaFlightContext())
             {
                 var delPilot = db.Pilots.Where(p => p.PilotId == pilotId);
-                if(delPilot == null)
+                if (delPilot == null)
                 {
                     return false;
                 }

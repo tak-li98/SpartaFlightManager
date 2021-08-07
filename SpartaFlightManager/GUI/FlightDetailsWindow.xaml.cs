@@ -47,7 +47,7 @@ namespace GUI
         {
             InitializeComponent();
             CentreScreen();
-            
+
         }
         public FlightDetailsWindow(int selectedFlightId)
         {
@@ -56,7 +56,7 @@ namespace GUI
             _flightDetailsManager.SetFlightDetail(selectedFlightId);
             FillComboBoxesWithItems();
             PopulateFlightDetailsTextBoxes(selectedFlightId);
-            
+
         }
         public void FillComboBoxesWithItems()
         {
@@ -75,7 +75,7 @@ namespace GUI
             }
             foreach (var item in _flightStatusManager.RetrieveAll())
             {
-                    statusCombo.Items.Add(item.Status);
+                statusCombo.Items.Add(item.Status);
             }
         }
         public void PopulateFlightDetailsTextBoxes(int flightId)
@@ -152,7 +152,7 @@ namespace GUI
             var statusId = _flightManager.ReturnStatusId(statusCombo.Text);
             try
             {
-                passengerNumInt= Int32.Parse(passengerNumTxt.Text.Trim());
+                passengerNumInt = Int32.Parse(passengerNumTxt.Text.Trim());
             }
             catch (Exception ex)
             {
@@ -162,9 +162,9 @@ namespace GUI
             {
                 _flightDetailsManager.Update(flightDetailsId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
                 _flightManager.Update(flightId, (Status)statusId);
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 return;

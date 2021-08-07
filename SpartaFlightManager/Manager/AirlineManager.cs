@@ -43,7 +43,7 @@ namespace Manager
             var list = new List<AirlineRegion>();
             using (var db = new SpartaFlightContext())
             {
-                
+
                 var query =
                     from a in db.Airlines
                     join r in db.Regions on a.RegionId equals r.RegionId

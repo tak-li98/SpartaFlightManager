@@ -85,7 +85,7 @@ namespace GUI
         private void airlineBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MoreInfoButton.IsEnabled = true;
-            if(airlineBoard.SelectedItem != null)
+            if (airlineBoard.SelectedItem != null)
             {
                 _airlineManager.SetSelectedAirline(airlineBoard.SelectedItem);
             }

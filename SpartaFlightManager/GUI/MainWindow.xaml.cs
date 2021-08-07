@@ -45,20 +45,27 @@ namespace GUI
             PopulateListView();
 
         }
-       
+
         private void PopulateListView()
         {
             var results = _flightManager.ReturnFlightBoardInfoFromFlights();
             for (int i = 0; i < results.Length / 12; i++)
             {
-                var row = new {
-                    ID = results[i,1]
-                    ,FlightNumber = $"{results[i, 0]}0{results[i, 1]}"
-                    ,Departure = $"{results[i,3]} ({results[i,5]})"
-                    ,Arrival = $"{results[i, 9]} ({results[i, 11]})"
-                    ,Date= results[i,6]
-                    ,Time=results[i,7]
-                    ,Status=results[i,8]
+                var row = new
+                {
+                    ID = results[i, 1]
+                    ,
+                    FlightNumber = $"{results[i, 0]}0{results[i, 1]}"
+                    ,
+                    Departure = $"{results[i, 3]} ({results[i, 5]})"
+                    ,
+                    Arrival = $"{results[i, 9]} ({results[i, 11]})"
+                    ,
+                    Date = results[i, 6]
+                    ,
+                    Time = results[i, 7]
+                    ,
+                    Status = results[i, 8]
                 };
                 flightBoard.Items.Add(row);
             }
@@ -73,8 +80,8 @@ namespace GUI
         private void FullDetailsButton_Click(object sender, RoutedEventArgs e)
         {
 
-            var inputArr =  flightBoard.SelectedValue.ToString();
-            var sub = inputArr.Substring(inputArr.IndexOf("= ")+2, inputArr.IndexOf(",") - inputArr.IndexOf("=")-2);
+            var inputArr = flightBoard.SelectedValue.ToString();
+            var sub = inputArr.Substring(inputArr.IndexOf("= ") + 2, inputArr.IndexOf(",") - inputArr.IndexOf("=") - 2);
             var flightDetailsWindow = new FlightDetailsWindow(Int32.Parse(sub));
             OpenWindow(new FlightDetailsWindow(Int32.Parse(sub)));
         }

@@ -206,6 +206,11 @@ namespace Database
                     .IsUnicode(false)
                     .HasColumnName("lastName");
 
+                entity.Property(e => e.PhotoLink)
+                    .HasMaxLength(40)
+                    .IsUnicode(false)
+                    .HasColumnName("photoLink");
+
                 entity.Property(e => e.Title)
                     .HasMaxLength(6)
                     .IsUnicode(false)

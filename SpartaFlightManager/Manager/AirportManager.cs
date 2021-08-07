@@ -61,7 +61,7 @@ namespace Manager
         {
             using (var db = new SpartaFlightContext())
             {
-                return db.Airports.Where(a => airportStr.Contains(a.AirportId)&&airportStr.Contains(a.Country) && airportStr.Contains(a.City)).FirstOrDefault().AirportId;
+                return db.Airports.Where(a => airportStr.Contains(a.AirportId) && airportStr.Contains(a.Country) && airportStr.Contains(a.City)).FirstOrDefault().AirportId;
             }
         }
         public string ReturnRegionGivenFlightId(int flightId)
@@ -74,6 +74,6 @@ namespace Manager
             }
         }
 
-        
+
     }
 }

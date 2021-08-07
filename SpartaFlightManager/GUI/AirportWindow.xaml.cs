@@ -46,14 +46,14 @@ namespace GUI
         }
         public void PopulateViewList()
         {
-            airportBoard.ItemsSource=_airportManager.ReturnAirportAndRegion();
+            airportBoard.ItemsSource = _airportManager.ReturnAirportAndRegion();
         }
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
             var airport = _airportManager.SelectedAirport.AirportID;
             ProcessStartInfo link = new ProcessStartInfo();
             link.UseShellExecute = true;
-            link.FileName = "https://www.google.com/search?q=" + airport+" airport";
+            link.FileName = "https://www.google.com/search?q=" + airport + " airport";
             Process.Start(link);
         }
 

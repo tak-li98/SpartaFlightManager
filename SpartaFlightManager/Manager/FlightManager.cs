@@ -28,10 +28,10 @@ namespace Manager
                 return db.Flights.ToList();
             }
         }
-        
+
         public int ReturnStatusId(string statusStr)
         {
-            using (var db= new SpartaFlightContext())
+            using (var db = new SpartaFlightContext())
             {
                 return db.FlightStatuses.Where(s => s.Status == statusStr).FirstOrDefault().FlightStatusId;
             }
@@ -66,7 +66,7 @@ namespace Manager
                     join fp in db.FlightPaths on f.FlightId equals fp.FlightId
                     join ap in db.Airports on fp.AirportId equals ap.AirportId
                     where fp.IsDepartElseArrival == false
-                   // orderby f.FlightDate descending
+                    // orderby f.FlightDate descending
                     select new
                     {
                         ap.AirportId,
@@ -99,7 +99,7 @@ namespace Manager
                 return info;
             }
         }
-        public void Create(DateTime flightDate, string departureId,string arrivalId)
+        public void Create(DateTime flightDate, string departureId, string arrivalId)
         {
             var flightStatus = Status.SCHEDULED;
             var newFlight = new Flight() { FlightStatusId = (int)flightStatus, FlightDate = flightDate };
@@ -137,7 +137,7 @@ namespace Manager
             using (var db = new SpartaFlightContext())
             {
                 var updateFlightPath = db.FlightPaths.Where(f => f.FlightId == flightId && f.IsDepartElseArrival == true).FirstOrDefault();
-                if(updateFlightPath == null)
+                if (updateFlightPath == null)
                 {
                     return false;
                 }
@@ -146,7 +146,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Debug.WriteLine($"Error updating flight {flightId}");
                 }
@@ -183,7 +183,7 @@ namespace Manager
                 {
                     return false;
                 }
-                if(updateFlight.FlightDate>DateTime.Today && flightStatus == Status.ARRIVED)
+                if (updateFlight.FlightDate > DateTime.Today && flightStatus == Status.ARRIVED)
                 {
                     throw new ArgumentException("Flight can't arrive if it hasn't left!");
                 }
@@ -209,7 +209,7 @@ namespace Manager
             {
                 var delFlightPath = db.FlightPaths.Where(fp => fp.FlightId == flightId);
                 var delFlight = db.Flights.Where(f => f.FlightId == flightId);
-                if(delFlightPath == null)
+                if (delFlightPath == null)
                 {
                     return false;
                 }

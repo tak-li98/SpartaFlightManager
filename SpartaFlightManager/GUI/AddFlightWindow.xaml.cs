@@ -27,7 +27,7 @@ namespace GUI
         PlaneManager _planeManager = new PlaneManager();
         AirportManager _airportManager = new AirportManager();
         FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
-        
+
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -40,7 +40,7 @@ namespace GUI
         public bool CheckIfFieldsHaveValues()
         {
             if (departCombo.Text != string.Empty && arrivalCombo.Text != string.Empty && pilotCombo.Text != string.Empty && airlineCombo.Text != string.Empty
-                && planeCombo.Text != string.Empty && datePicker.Text != string.Empty && PresetTimePicker.Text!=null
+                && planeCombo.Text != string.Empty && datePicker.Text != string.Empty && PresetTimePicker.Text != null
                 && passengerNumTxt.Text != string.Empty)
             {
                 return true;
@@ -49,19 +49,19 @@ namespace GUI
             {
                 return false;
             }
-            
+
         }
         public void CheckIfAddButtonOn()
         {
             if (passengerNumTxt.Text != string.Empty)
             {
                 if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
-                    {
-                        AddFlightButton.ToolTip = "Your passenger number is over capacity.";
-                        AddFlightButton.IsEnabled = false;
-                        ToolTipService.SetShowOnDisabled(AddFlightButton, true);
-                        return;
-                    }
+                {
+                    AddFlightButton.ToolTip = "Your passenger number is over capacity.";
+                    AddFlightButton.IsEnabled = false;
+                    ToolTipService.SetShowOnDisabled(AddFlightButton, true);
+                    return;
+                }
             }
             if (!CheckIfFieldsHaveValues())
             {
@@ -88,7 +88,7 @@ namespace GUI
             InitializeComponent();
             CentreScreen();
             FillComboBoxesWithItems();
-           
+
         }
         public void FillComboBoxesWithItems()
         {
@@ -117,20 +117,20 @@ namespace GUI
 
         private void AddFlight_Click(object sender, RoutedEventArgs e)
         {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Flight Confirmation", System.Windows.MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.Yes)
-                {
-                    var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
-                    var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
-                    var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
-                    var passengerNum = Int32.Parse(passengerNumTxt.Text);
-                    var flightDuration = (int)durationSlider.Value;
-                    var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
-                    var departId = _airportManager.ReturnAirportIdGivenAirportStr(departCombo.Text);
-                    var arrivalId = _airportManager.ReturnAirportIdGivenAirportStr(arrivalCombo.Text);
-                    _flightManager.Create(DateTime.Parse(dateTime), departId, arrivalId);
-                    _flightDetailsManager.Create(pilotId, airlineId, planeId, passengerNum, flightDuration);
-                }
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Flight Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
+                var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
+                var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
+                var passengerNum = Int32.Parse(passengerNumTxt.Text);
+                var flightDuration = (int)durationSlider.Value;
+                var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
+                var departId = _airportManager.ReturnAirportIdGivenAirportStr(departCombo.Text);
+                var arrivalId = _airportManager.ReturnAirportIdGivenAirportStr(arrivalCombo.Text);
+                _flightManager.Create(DateTime.Parse(dateTime), departId, arrivalId);
+                _flightDetailsManager.Create(pilotId, airlineId, planeId, passengerNum, flightDuration);
+            }
 
         }
 
@@ -138,7 +138,7 @@ namespace GUI
         {
             OpenWindow(new AddFlightWindow());
             this.Close();
-            
+
         }
 
         private void PresetTimePicker_SelectedTimeChanged(object sender, RoutedPropertyChangedEventArgs<DateTime?> e)
@@ -150,14 +150,14 @@ namespace GUI
         {
             CheckIfAddButtonOn();
             string text = (sender as ComboBox).SelectedItem.ToString();
-                regionTxt.Text = _airportManager.ReturnRegion(text);
-                airlineCombo.Items.Clear();
-                foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
-                {
-                    airlineCombo.Items.Add(item.ToString());
-                }
-            
-            
+            regionTxt.Text = _airportManager.ReturnRegion(text);
+            airlineCombo.Items.Clear();
+            foreach (var item in _airlineManager.ReturnAirlinesGivenRegion(text))
+            {
+                airlineCombo.Items.Add(item.ToString());
+            }
+
+
         }
 
         private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -171,7 +171,7 @@ namespace GUI
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-           
+
             string time = (sender as Slider).Value.ToString();
             durationLbl.Content = $"Flight duration ({time} hrs)";
         }
@@ -186,12 +186,12 @@ namespace GUI
                 return;
             }
             CheckIfPassengerNumOverCapacity();
-            
+
         }
         public void CheckIfPassengerNumOverCapacity()
         {
 
-           if (passengerNumTxt.Text != string.Empty)
+            if (passengerNumTxt.Text != string.Empty)
             {
                 if (planeCapacityTxt.Text != string.Empty)
                 {
@@ -209,7 +209,7 @@ namespace GUI
                         AddFlightButton.IsEnabled = true;
                     }
 
-                }  
+                }
             }
         }
         private void arrivalCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
