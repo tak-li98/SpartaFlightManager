@@ -99,8 +99,7 @@ namespace GUI
 
         private void PilotsButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
+            OpenWindow(new PilotWindow());        }
 
         private void AddFlightsButton_Click(object sender, RoutedEventArgs e)
         {

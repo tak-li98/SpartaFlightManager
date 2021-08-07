@@ -178,10 +178,12 @@ namespace GUI
             passengerNumTxt.IsReadOnly = true;
             fdTitle.Content = "Flight Details";
             fdTitle.Foreground = new SolidColorBrush(Colors.Black);
+            EditFieldsButton.IsEnabled = true;
         }
 
         private void EditField_Click(object sender, RoutedEventArgs e)
         {
+            SaveChangesButton.IsEnabled = true;
             pilotCombo.IsHitTestVisible = true;
             airlineCombo.IsHitTestVisible = true;
             planeCombo.IsHitTestVisible = true;
@@ -190,6 +192,7 @@ namespace GUI
             passengerNumTxt.IsReadOnly = false;
             fdTitle.Content = "EDIT MODE";
             fdTitle.Foreground = new SolidColorBrush(Colors.Red);
+            EditFieldsButton.IsEnabled = false;
         }
 
         private void planeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
