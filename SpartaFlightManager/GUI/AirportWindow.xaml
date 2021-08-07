@@ -73,7 +73,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ListView x:Name="airlineBoard" VerticalContentAlignment="Stretch" FontSize="20" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False" SelectionChanged="airlineBoard_SelectionChanged">
+            <ListView x:Name="airportBoard" VerticalContentAlignment="Stretch" FontSize="20" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="0" Opacity="1" Grid.ColumnSpan="10" Grid.RowSpan="10" Background="#FF5BA6F1" Foreground="Black" IsSynchronizedWithCurrentItem="False" SelectionChanged="airlineBoard_SelectionChanged">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center" ></Setter>
@@ -83,8 +83,9 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView x:Name="gridView">
-                        <GridViewColumn x:Name="airlineCOde" DisplayMemberBinding="{Binding AirlineCode}" Header="Airline Code" Width="auto" />
-                        <GridViewColumn x:Name="airlineName" DisplayMemberBinding="{Binding AirlineName}" Header="Airline Name" Width="auto"/>
+                        <GridViewColumn x:Name="airportId" DisplayMemberBinding="{Binding AirportID}" Header="Airport ID" Width="auto" />
+                        <GridViewColumn x:Name="city" DisplayMemberBinding="{Binding City}" Header="City" Width="auto"/>
+                        <GridViewColumn x:Name="country" DisplayMemberBinding="{Binding Country}" Header="Country" Width="auto" />
                         <GridViewColumn x:Name="regionName" DisplayMemberBinding="{Binding RegionName}" Header="Region" Width="200" />
                     </GridView>
                 </ListView.View>
@@ -92,7 +93,7 @@
         </Grid>
         <Button  x:Name="MoreInfoButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" IsEnabled="false" Grid.Row="5" Grid.ColumnSpan="2" ToolTip="Find out more about this airline"  Content="_MORE INFO"  Click="MoreInfoButton_Click" Foreground="#DD000000" />
         <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="Go back to Flight Board"  Content="_FLIGHT BOARD"  Click="FlightBoardButton_Click" Foreground="#DD000000" />
-        <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="See all Airports"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="See all Airlines"  Content="_AIRLINES"   Click="AirlinesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="PilotsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" ToolTip="See all Pilots"  Content="_PILOTS"   Click="PilotsButton_Click" Foreground="#DD000000" />
         <Button  x:Name="PlanesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="See all Planes"  Content="_PLANES"  Click="PlanesButton_Click" Foreground="#DD000000" />
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>

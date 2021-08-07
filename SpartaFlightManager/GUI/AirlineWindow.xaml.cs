@@ -93,7 +93,6 @@ namespace GUI
 
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
-            var something = airlineBoard.SelectedItems[0];
             var airlineSelected = _airlineManager.SelectedAirlineRegion.AirlineName.Replace(" ", "");
             ProcessStartInfo link = new ProcessStartInfo();
             link.UseShellExecute = true;

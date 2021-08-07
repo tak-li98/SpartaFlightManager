@@ -37,7 +37,11 @@ namespace Manager
                 return list;
             }
         }
-
+        public AirportRegion SelectedAirport { get; set; }
+        public void SetSelectedAirport(object item)
+        {
+            SelectedAirport = (AirportRegion)item;
+        }
         public List<Airport> RetrieveAll()
         {
             using (var db = new SpartaFlightContext())

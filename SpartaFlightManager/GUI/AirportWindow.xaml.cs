@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using Manager;
 
 namespace GUI
@@ -41,11 +42,19 @@ namespace GUI
         {
             InitializeComponent();
             CentreScreen();
+            PopulateViewList();
         }
-
+        public void PopulateViewList()
+        {
+            airportBoard.ItemsSource=_airportManager.ReturnAirportAndRegion();
+        }
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var airport = _airportManager.SelectedAirport.AirportID;
+            ProcessStartInfo link = new ProcessStartInfo();
+            link.UseShellExecute = true;
+            link.FileName = "https://www.google.com/search?q=" + airport+" airport";
+            Process.Start(link);
         }
 
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
@@ -76,6 +85,12 @@ namespace GUI
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void airlineBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MoreInfoButton.IsEnabled = true;
+            _airportManager.SetSelectedAirport(airportBoard.SelectedItem);
         }
     }
 }
