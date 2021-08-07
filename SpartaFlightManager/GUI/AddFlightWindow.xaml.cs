@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using Manager;
 
 namespace GUI
@@ -239,6 +240,16 @@ namespace GUI
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private static readonly Regex _regex = new Regex("[^0-9]");
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+        private void PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
         }
     }
 }

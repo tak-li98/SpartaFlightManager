@@ -236,7 +236,7 @@ During this sprint, a numerous of tasks were completed, these included:
 
 #### Sprint End Board:
 
-![BoardDay3End](BoardDay3End.png)
+![BoardDay3End](Images/BoardDay3End.png)
 
 #### Sprint Review
 
@@ -263,6 +263,22 @@ During this sprint, a numerous of tasks were completed, these included:
 ### <u>Sprint 4</u>
 
 #### Sprint Goal
+
+| User Story ID | Title               | Description                                                  |
+| ------------- | ------------------- | ------------------------------------------------------------ |
+| 2.2           | Reading Information | As a user, I want to filter necessary information so that I can access information that is needed. |
+| 3.2           | Creating New Data   | As a user, I want to be able to create new data entries so that it can be added to the database. |
+| 5.2           | Deleting Data       | As a user, I want to be able to delete flights so that redundant and mistakenly added flights can be removed |
+
+
+
+#### Sprint Start Board:
+
+![BoardDay4Start](Images/BoardDay4End.png)
+
+#### Sprint End Board:
+
+![BoardDay4End](Images/BoardDay4End.png)
 
 #### Sprint Review
 

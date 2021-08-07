@@ -222,5 +222,6 @@ namespace GUI
         {
             e.Handled = !IsTextAllowed(e.Text);
         }
+
     }
 }
