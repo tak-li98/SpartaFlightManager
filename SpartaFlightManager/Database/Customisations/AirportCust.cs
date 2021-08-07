@@ -10,7 +10,7 @@ namespace Database
     {
         public override string ToString()
         {
-            // return $"{City}, {Country} ({AirportId})";
+             return $"{City}, {Country} ({AirportId})";
         }
     }
 }
