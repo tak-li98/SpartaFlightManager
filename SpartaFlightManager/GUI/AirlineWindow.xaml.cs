@@ -32,6 +32,13 @@ namespace GUI
             this.Left = (screenWidth / 2) - (windowWidth / 2);
             this.Top = (screenHeight / 2) - (windowHeight / 2);
         }
+
+        public void OpenWindow(Window window)
+        {
+            window.Show();
+            window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            this.Close();
+        }
         public AirlineWindow()
         {
             InitializeComponent();
@@ -39,10 +46,6 @@ namespace GUI
             PopulateViewList();
         }
 
-        private void AirlinesButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         public void PopulateViewList()
         {
@@ -52,7 +55,7 @@ namespace GUI
 
         private void FlightBoardButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new MainWindow());
         }
 
         private void AirportsButton_Click(object sender, RoutedEventArgs e)
@@ -72,12 +75,12 @@ namespace GUI
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.WindowState = WindowState.Minimized;
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
 
         private void airlineBoard_SelectionChanged(object sender, SelectionChangedEventArgs e)
