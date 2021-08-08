@@ -47,7 +47,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.2"/>
         <Rectangle Grid.ColumnSpan="8" Height="AUTO" Grid.Column="0" Grid.Row="2" Grid.RowSpan="8" Stroke="Black" Width="auto" Fill="#7F92C8FF"/>
         <Label Content="Flight ID" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
         <Label Content="Pilot" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center"/>
@@ -86,12 +86,12 @@
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Top" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
+        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50" ToolTip="Minimise App"  Grid.Row="10" VerticalAlignment="Bottom" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
-        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.2"/>
+        
         <Image Source="/flightmtext.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="6"  HorizontalAlignment="Center"/>
     </Grid>
 </Window>
