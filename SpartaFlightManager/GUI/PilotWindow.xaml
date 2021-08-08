@@ -186,6 +186,7 @@
                 <Rectangle x:Name="imageEditBox" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="300" Grid.RowSpan="4" Grid.Row="1" VerticalAlignment="Top" Width="300" Fill="#7F57E4D1"/>
                 <Button x:Name="imageEditBtn" Content="Add Photo" Grid.ColumnSpan="2" Width="150" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="imageEditBtn_Click"/>
                 <Button x:Name="savePilotBtn" Content="Save Changes" IsEnabled="False" Grid.ColumnSpan="2" Width="150" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="savePilotBtn_Click"/>
+                <Button x:Name="delPilotBtn" Content="Delete Pilot"  Grid.ColumnSpan="2" Width="150" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="delPilotBtn_Click"/>
                 <Label x:Name="saveLbl" Content="" IsEnabled="False" Foreground="ForestGreen" FontSize="20" Grid.ColumnSpan="2" Width="200" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="{x:Null}"/>
             </Grid>
         </DockPanel>

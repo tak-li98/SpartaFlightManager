@@ -40,8 +40,30 @@ namespace Manager
                 db.SaveChanges();
             }
         }
+        public bool UpdatePhoto(int pilotId,string photoLink = null)
+        {
+            using (var db = new SpartaFlightContext())
+            {
+                var updatePilot = db.Pilots.Where(f => f.PilotId == pilotId).FirstOrDefault();
+                if (updatePilot == null)
+                {
+                    return false;
+                }
+                updatePilot.PhotoLink = photoLink;
 
-        public bool Update(int pilotId, string firstName, string lastName, string title = null,string photoLink = null)
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine($"Error updating pilot {pilotId}");
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool Update(int pilotId, string firstName, string lastName, string title = null)
         {
             using (var db = new SpartaFlightContext())
             {
@@ -53,15 +75,7 @@ namespace Manager
                 updatePilot.FirstName = firstName;
                 updatePilot.LastName = lastName;
                 updatePilot.Title = title;
-                if(photoLink == null)
-                {
-                updatePilot.PhotoLink = "PilotPics/Default.jpg";
-                }
-                else
-                {
-                    updatePilot.PhotoLink = $"PilotPics/{firstName} {lastName}.bmp";
-                }
-                
+
                 try
                 {
                     db.SaveChanges();

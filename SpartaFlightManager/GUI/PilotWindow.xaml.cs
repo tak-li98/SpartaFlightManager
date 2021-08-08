@@ -120,10 +120,17 @@ namespace GUI
                 surnameEditTxt.Text = _pilotManager.SelectedPilot.LastName;
                 if (_pilotManager.SelectedPilot.PhotoLink != null)
                 {
-                    imageEditBox.Fill = new ImageBrush
+                    try
                     {
-                        ImageSource = new BitmapImage(new Uri("pack://application:,,,/" + _pilotManager.SelectedPilot.PhotoLink))
-                    };
+                        imageEditBox.Fill = new ImageBrush
+                        {
+                            ImageSource = new BitmapImage(new Uri("pack://application:,,,/" + _pilotManager.SelectedPilot.PhotoLink))
+                        };
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                  };
                 return;
             }
@@ -138,11 +145,9 @@ namespace GUI
             }
 
         }
-
+        public string PhotoPath;
         private void imageBtn_Click(object sender, RoutedEventArgs e)
         {
-            var firstName = firstNameTxt.Text;
-            var surname = surnameTxt.Text;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
@@ -155,19 +160,20 @@ namespace GUI
             try
             {
                 var fileNameToSave = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
-                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+fileNameToSave);
+                var imagePath = System.IO.Path.Combine(fileNameToSave);
                 File.Copy(dlg.FileName,imagePath);
+                PhotoPath = fileNameToSave;
             }
             catch(Exception ex)
             {
+                PhotoPath = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
                 MessageBox.Show(ex.Message);
             }
             
         }
         private void imageEditBtn_Click(object sender, RoutedEventArgs e)
         {
-            var firstName = firstNameEditTxt.Text;
-            var surname = surnameEditTxt.Text;
+
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
@@ -180,11 +186,14 @@ namespace GUI
             try
             {
                 var fileNameToSave = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
-                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\" + fileNameToSave);
+                var imagePath = System.IO.Path.Combine(fileNameToSave);
                 File.Copy(dlg.FileName, imagePath);
+                PhotoPath = fileNameToSave;
+                _pilotManager.UpdatePhoto(_pilotManager.SelectedPilot.PilotId, PhotoPath);
             }
             catch (Exception ex)
             {
+                PhotoPath = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
                 MessageBox.Show(ex.Message);
             }
 
@@ -194,7 +203,7 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Pilot Confirmation", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                _pilotManager.Create(firstNameTxt.Text, surnameTxt.Text, titleCombo.Text);
+                _pilotManager.Create(firstNameTxt.Text, surnameTxt.Text, titleCombo.Text,PhotoPath);
                 addedLbl.Content = "PILOT ADDED!";
                 addPilotBtn.IsEnabled = false;
                 await Task.Delay(1500);
@@ -251,6 +260,21 @@ namespace GUI
                 return;
             }
             savePilotBtn.IsEnabled = false;
+        }
+        private void delPilotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Pilot Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                _pilotManager.Delete(_pilotManager.SelectedPilot.PilotId);
+                editPilotPanel.Visibility = Visibility.Hidden;
+                pilotBoard.Visibility = Visibility.Visible;
+                PopulateViewList();
+                EditPilotButton.Content = "EDIT PILOT";
+                EditPilotButton.IsEnabled = false;
+                AddPilotButton.Visibility = Visibility.Visible;
+            }
+                
         }
     }
 }
