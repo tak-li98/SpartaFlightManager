@@ -91,6 +91,7 @@ namespace GUI
                 addPilotPanel.Visibility = Visibility.Hidden;
                 AddPilotButton.Content = "ADD NEW PILOT";
                 EditPilotButton.Visibility = Visibility.Visible;
+                PopulateViewList();
                 return;
             }
             
@@ -117,6 +118,13 @@ namespace GUI
                 titleEditCombo.Text = _pilotManager.SelectedPilot.Title;
                 firstNameEditTxt.Text = _pilotManager.SelectedPilot.FirstName;
                 surnameEditTxt.Text = _pilotManager.SelectedPilot.LastName;
+                if (_pilotManager.SelectedPilot.PhotoLink != null)
+                {
+                    imageEditBox.Fill = new ImageBrush
+                    {
+                        ImageSource = new BitmapImage(new Uri("pack://application:,,,/" + _pilotManager.SelectedPilot.PhotoLink))
+                    };
+                 };
                 return;
             }
             if (EditPilotButton.Content.ToString() == "GO BACK")
@@ -133,10 +141,6 @@ namespace GUI
 
         private void imageBtn_Click(object sender, RoutedEventArgs e)
         {
-            //ProcessStartInfo link = new ProcessStartInfo();
-            //link.UseShellExecute = true;
-            //link.FileName = @"C:\Users";
-            //Process.Start(link);
             var firstName = firstNameTxt.Text;
             var surname = surnameTxt.Text;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
@@ -150,8 +154,8 @@ namespace GUI
             }
             try
             {
-                var fileNameToSave = firstName+surname+ System.IO.Path.GetExtension(dlg.FileName);
-                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+firstName +" "+surname+ ".bmp");
+                var fileNameToSave = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
+                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+fileNameToSave);
                 File.Copy(dlg.FileName,imagePath);
             }
             catch(Exception ex)
@@ -160,13 +164,42 @@ namespace GUI
             }
             
         }
+        private void imageEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var firstName = firstNameEditTxt.Text;
+            var surname = surnameEditTxt.Text;
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                imageEditBox.Fill = new ImageBrush { ImageSource = new BitmapImage(new Uri(filename)) };
+            }
+            try
+            {
+                var fileNameToSave = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName) + System.IO.Path.GetExtension(dlg.FileName);
+                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\" + fileNameToSave);
+                File.Copy(dlg.FileName, imagePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-        private void addPilotBtn_Click(object sender, RoutedEventArgs e)
+        }
+        private async void addPilotBtn_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Pilot Confirmation", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 _pilotManager.Create(firstNameTxt.Text, surnameTxt.Text, titleCombo.Text);
+                addedLbl.Content = "PILOT ADDED!";
+                addPilotBtn.IsEnabled = false;
+                await Task.Delay(1500);
+                addPilotBtn.IsEnabled = true;
+                addedLbl.Content = string.Empty;
             }
         }
 
