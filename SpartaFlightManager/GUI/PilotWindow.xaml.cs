@@ -282,13 +282,21 @@ namespace GUI
             MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Delete Pilot Confirmation", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                _pilotManager.Delete(_pilotManager.SelectedPilot.PilotId);
-                editPilotPanel.Visibility = Visibility.Hidden;
-                pilotBoard.Visibility = Visibility.Visible;
-                PopulateViewList();
-                EditPilotButton.Content = "EDIT PILOT";
-                EditPilotButton.IsEnabled = false;
-                AddPilotButton.Visibility = Visibility.Visible;
+                try
+                {
+                    _pilotManager.Delete(_pilotManager.SelectedPilot.PilotId);
+                    editPilotPanel.Visibility = Visibility.Hidden;
+                    pilotBoard.Visibility = Visibility.Visible;
+                    PopulateViewList();
+                    EditPilotButton.Content = "EDIT PILOT";
+                    EditPilotButton.IsEnabled = false;
+                    AddPilotButton.Visibility = Visibility.Visible;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Please assign a new pilot to flight associated to this pilot before deleting.");
+                }
+                
             }
                 
         }

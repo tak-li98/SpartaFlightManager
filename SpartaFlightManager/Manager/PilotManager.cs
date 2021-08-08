@@ -104,6 +104,7 @@ namespace Manager
                 }
                 foreach (var pilot in delPilot)
                 {
+
                     db.Pilots.RemoveRange(pilot);
                 }
                 db.SaveChanges();
