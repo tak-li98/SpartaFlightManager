@@ -35,6 +35,9 @@
 
   <ItemGroup>
     <Resource Include="400px-Exit_sign_text_(red).svg.png" />
+    <AdditionalFiles Include="App.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AdditionalFiles>
     <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
     <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />

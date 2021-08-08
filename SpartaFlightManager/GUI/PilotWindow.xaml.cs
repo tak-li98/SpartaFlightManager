@@ -77,8 +77,21 @@ namespace GUI
 
         private void AddPilotButton_Click(object sender, RoutedEventArgs e)
         {
-            pilotBoard.Visibility = Visibility.Hidden;
-            addPilotPanel.Visibility = Visibility.Visible;
+            if (AddPilotButton.Content.ToString() == "ADD NEW PILOT")
+            {
+                pilotBoard.Visibility = Visibility.Hidden;
+                addPilotPanel.Visibility = Visibility.Visible;
+                AddPilotButton.Content = "GO BACK";
+                return;
+            }
+            if(AddPilotButton.Content.ToString() == "GO BACK")
+            {
+                pilotBoard.Visibility = Visibility.Visible;
+                addPilotPanel.Visibility = Visibility.Hidden;
+                AddPilotButton.Content = "ADD NEW PILOT";
+                return;
+            }
+            
         }
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
@@ -106,7 +119,7 @@ namespace GUI
             var surname = surnameTxt.Text;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.DefaultExt = ".png";
-            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+            dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
@@ -116,14 +129,39 @@ namespace GUI
             try
             {
                 var fileNameToSave = firstName+surname+ System.IO.Path.GetExtension(dlg.FileName);
-                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+ fileNameToSave);
-                File.Copy(dlg.FileName,fileNameToSave);
+                var imagePath = System.IO.Path.Combine(@"..\..\..\PilotPics\"+firstName +" "+surname+ ".bmp");
+                File.Copy(dlg.FileName,imagePath);
             }
-            finally
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void addPilotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Add Pilot Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                _pilotManager.Create(firstNameTxt.Text, surnameTxt.Text, titleCombo.Text);
+            }
+        }
+
+        private void title_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(titleCombo.Text!=null && firstNameTxt.Text!=string.Empty && surnameTxt.Text != string.Empty)
+            {
+                addPilotBtn.IsEnabled = true;
+            }
+        }
+
+        private void nameTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (titleCombo.Text != null && firstNameTxt.Text != string.Empty && surnameTxt.Text != string.Empty)
+            {
+                addPilotBtn.IsEnabled = true;
+            }
         }
     }
 }
