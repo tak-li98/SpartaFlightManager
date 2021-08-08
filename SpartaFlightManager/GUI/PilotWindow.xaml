@@ -104,7 +104,7 @@
         <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" ToolTip="See all Airlines"  Content="_AIRLINES"   Click="AirlinesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="PlanesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="See all Planes"  Content="_PLANES"  Click="PlanesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AddPilotButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ToolTip="Add a new Pilot"  Content="ADD NEW PILOT"  Click="AddPilotButton_Click" Foreground="#DD000000" />
-        <Button  x:Name="EditPilotButton" IsEnabled="false" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2" ToolTip="Edit selected Pilot"  Content="_EDIT PILOT"  Click="EditPilotButton_Click" Foreground="#DD000000" />
+        <Button  x:Name="EditPilotButton" IsEnabled="false" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="6" Grid.Row="2" Grid.ColumnSpan="2" ToolTip="Edit selected Pilot"  Content="EDIT PILOT"  Click="EditPilotButton_Click" Foreground="#DD000000" />
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
         <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
         <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Center" Width="100" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" BorderBrush="#FFF02920">
@@ -152,6 +152,41 @@
                 <Button x:Name="addPilotBtn" Content="Add Pilot" IsEnabled="False" Grid.ColumnSpan="2" Width="150" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="addPilotBtn_Click"/>
             </Grid>
         </DockPanel>
-
+        <DockPanel Visibility="Hidden" x:Name="editPilotPanel" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="8" Grid.RowSpan="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Content="Title:" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label Content="First Name:" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label Content="Surname:" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <ComboBox x:Name="titleEditCombo" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="150" SelectionChanged="titleEdit_SelectionChanged">
+                    <ComboBoxItem>Mr.</ComboBoxItem>
+                    <ComboBoxItem>Mrs.</ComboBoxItem>
+                    <ComboBoxItem>Miss.</ComboBoxItem>
+                    <ComboBoxItem>Ms.</ComboBoxItem>
+                </ComboBox>
+                <TextBox x:Name="firstNameEditTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" TextChanged="nameEditTxt_TextChanged"/>
+                <TextBox x:Name="surnameEditTxt" Grid.ColumnSpan="3" Grid.Column="1" HorizontalAlignment="Center" Width="150" Grid.Row="3"  TextWrapping="Wrap"  VerticalAlignment="Center" TextChanged="nameEditTxt_TextChanged"/>
+                <Rectangle x:Name="imageEditBox" Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Center" Height="300" Grid.RowSpan="4" Grid.Row="1" VerticalAlignment="Top" Width="300" Fill="#7F57E4D1"/>
+                <Button x:Name="imageEditBtn" Content="Add Photo" Grid.ColumnSpan="2" Width="150" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="imageBtn_Click"/>
+                <Button x:Name="savePilotBtn" Content="Save Changes" IsEnabled="False" Grid.ColumnSpan="2" Width="150" Grid.Column="0" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="White" Click="savePilotBtn_Click"/>
+                <Label x:Name="saveLbl" Content="CHANGES SAVED" IsEnabled="False" Foreground="ForestGreen" FontSize="20" Grid.ColumnSpan="2" Width="200" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Background="{x:Null}"/>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>

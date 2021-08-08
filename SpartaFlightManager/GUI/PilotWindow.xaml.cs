@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.IO;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -73,12 +72,14 @@ namespace GUI
         {
             EditPilotButton.IsEnabled = true;
             _pilotManager.SetSelectedPilot(pilotBoard.SelectedItem);
+
         }
 
         private void AddPilotButton_Click(object sender, RoutedEventArgs e)
         {
             if (AddPilotButton.Content.ToString() == "ADD NEW PILOT")
             {
+                EditPilotButton.Visibility = Visibility.Hidden;
                 pilotBoard.Visibility = Visibility.Hidden;
                 addPilotPanel.Visibility = Visibility.Visible;
                 AddPilotButton.Content = "GO BACK";
@@ -89,6 +90,7 @@ namespace GUI
                 pilotBoard.Visibility = Visibility.Visible;
                 addPilotPanel.Visibility = Visibility.Hidden;
                 AddPilotButton.Content = "ADD NEW PILOT";
+                EditPilotButton.Visibility = Visibility.Visible;
                 return;
             }
             
@@ -106,6 +108,26 @@ namespace GUI
 
         private void EditPilotButton_Click(object sender, RoutedEventArgs e)
         {
+            if (EditPilotButton.Content.ToString() == "EDIT PILOT")
+            {
+                AddPilotButton.Visibility = Visibility.Hidden;
+                editPilotPanel.Visibility = Visibility.Visible;
+                pilotBoard.Visibility = Visibility.Hidden;
+                EditPilotButton.Content = "GO BACK";
+                titleEditCombo.Text = _pilotManager.SelectedPilot.Title;
+                firstNameEditTxt.Text = _pilotManager.SelectedPilot.FirstName;
+                surnameEditTxt.Text = _pilotManager.SelectedPilot.LastName;
+                return;
+            }
+            if (EditPilotButton.Content.ToString() == "GO BACK")
+            {
+                editPilotPanel.Visibility = Visibility.Hidden;
+                pilotBoard.Visibility = Visibility.Visible;
+                AddPilotButton.Visibility = Visibility.Visible;
+                PopulateViewList();
+                EditPilotButton.Content = "EDIT PILOT";
+                return;
+            }
 
         }
 
@@ -153,7 +175,9 @@ namespace GUI
             if(titleCombo.Text!=null && firstNameTxt.Text!=string.Empty && surnameTxt.Text != string.Empty)
             {
                 addPilotBtn.IsEnabled = true;
+                return;
             }
+            addPilotBtn.IsEnabled = false;
         }
 
         private void nameTxt_TextChanged(object sender, TextChangedEventArgs e)
@@ -161,7 +185,39 @@ namespace GUI
             if (titleCombo.Text != null && firstNameTxt.Text != string.Empty && surnameTxt.Text != string.Empty)
             {
                 addPilotBtn.IsEnabled = true;
+                return;
             }
+            addPilotBtn.IsEnabled = false;
+        }
+
+        private async void savePilotBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _pilotManager.Update(_pilotManager.SelectedPilot.PilotId, firstNameEditTxt.Text, surnameEditTxt.Text, titleEditCombo.Text);
+            savePilotBtn.IsEnabled = false;
+            saveLbl.Content = "CHANGES SAVED!";
+            await Task.Delay(1500);
+            saveLbl.Content = string.Empty;
+            savePilotBtn.IsEnabled = true;
+        }
+
+        private void titleEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (titleEditCombo.Text != null && firstNameEditTxt.Text != string.Empty && surnameEditTxt.Text != string.Empty)
+            {
+                savePilotBtn.IsEnabled = true;
+                return;
+            }
+            savePilotBtn.IsEnabled = false;
+        }
+
+        private void nameEditTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (titleEditCombo.Text != null && firstNameEditTxt.Text != string.Empty && surnameEditTxt.Text != string.Empty)
+            {
+                savePilotBtn.IsEnabled = true;
+                return;
+            }
+            savePilotBtn.IsEnabled = false;
         }
     }
 }
