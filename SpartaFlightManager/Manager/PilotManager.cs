@@ -21,7 +21,7 @@ namespace Manager
         {
             using (var db = new SpartaFlightContext())
             {
-                return db.Pilots.ToList();
+                return db.Pilots.OrderBy(i=>i.FirstName).ToList();
             }
         }
         public int ReturnPilotID(string str)

@@ -234,12 +234,16 @@ namespace GUI
 
         private async void savePilotBtn_Click(object sender, RoutedEventArgs e)
         {
-            _pilotManager.Update(_pilotManager.SelectedPilot.PilotId, firstNameEditTxt.Text, surnameEditTxt.Text, titleEditCombo.Text);
-            savePilotBtn.IsEnabled = false;
-            saveLbl.Content = "CHANGES SAVED!";
-            await Task.Delay(1500);
-            saveLbl.Content = string.Empty;
-            savePilotBtn.IsEnabled = true;
+            MessageBoxResult messageBoxResult = MessageBox.Show("Are you sure?", "Save Changes Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                _pilotManager.Update(_pilotManager.SelectedPilot.PilotId, firstNameEditTxt.Text, surnameEditTxt.Text, titleEditCombo.Text);
+                savePilotBtn.IsEnabled = false;
+                saveLbl.Content = "CHANGES SAVED!";
+                await Task.Delay(1500);
+                saveLbl.Content = string.Empty;
+                savePilotBtn.IsEnabled = true;
+            }   
         }
 
         private void titleEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)

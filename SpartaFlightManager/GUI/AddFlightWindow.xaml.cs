@@ -134,6 +134,7 @@ namespace GUI
                 //Display success label
                 AddFlightButton.IsEnabled = false;
                 FlightBoardButton.IsEnabled = false;
+                ClearButton.IsEnabled = false;
                 successLbl.Content = "Added Flight Successfully!";
                 await Task.Delay(2000);
                 successLbl.Content = string.Empty;
