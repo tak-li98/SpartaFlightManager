@@ -17,6 +17,7 @@
     <None Remove="airport.png" />
     <None Remove="applogo.png" />
     <None Remove="flightboard.png" />
+    <None Remove="FlightManagerIntro.mp4" />
     <None Remove="flightmtext.png" />
     <None Remove="landing.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
@@ -44,6 +45,7 @@
     <None Remove="PilotPics\Umar Majid.jpg" />
     <None Remove="plane.png" />
     <None Remove="planeGlobe.gif" />
+    <None Remove="startlogo.png" />
     <None Remove="TempLogo.png" />
   </ItemGroup>
 
@@ -75,6 +77,7 @@
     <Resource Include="airport.png" />
     <Resource Include="applogo.png" />
     <Resource Include="flightboard.png" />
+    <Resource Include="FlightManagerIntro.mp4" />
     <Resource Include="flightmtext.png" />
     <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
@@ -103,6 +106,7 @@
     <Resource Include="PilotPics\Umar Majid.jpg" />
     <Resource Include="plane.png" />
     <Resource Include="planeGlobe.gif" />
+    <Resource Include="startlogo.png" />
     <Resource Include="TempLogo.png" />
   </ItemGroup>
 

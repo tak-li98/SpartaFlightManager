@@ -31,8 +31,12 @@ namespace Manager
                 return db.Pilots.Where(p => str.Contains(p.FirstName) && str.Contains(p.LastName) && str.Contains(p.Title)).FirstOrDefault().PilotId;
             }
         }
-        public void Create(string firstName, string lastName, string title = null,string photoLink = "PilotPics/Default.jpg")
+        public void Create(string firstName, string lastName, string title = null,string photoLink = null)
         {
+            if(photoLink == null)
+            {
+                photoLink = "PilotPics/Default.jpg";
+            }
             var newPilot = new Pilot() { Title = title, FirstName = firstName, LastName = lastName , PhotoLink = photoLink};
             using (var db = new SpartaFlightContext())
             {

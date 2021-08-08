@@ -143,6 +143,9 @@ namespace GUI
                 editPilotPanel.Visibility = Visibility.Hidden;
                 pilotBoard.Visibility = Visibility.Visible;
                 AddPilotButton.Visibility = Visibility.Visible;
+                titleCombo.SelectedIndex = -1;
+                firstNameTxt.Text = string.Empty;
+                surnameTxt.Text = string.Empty;
                 PopulateViewList();
                 EditPilotButton.Content = "EDIT PILOT";
                 return;
@@ -209,6 +212,9 @@ namespace GUI
             {
                 _pilotManager.Create(firstNameTxt.Text, surnameTxt.Text, titleCombo.Text,PhotoPath);
                 addedLbl.Content = "PILOT ADDED!";
+                titleCombo.SelectedIndex = -1;
+                firstNameTxt.Text = string.Empty;
+                surnameTxt.Text = string.Empty;
                 addPilotBtn.IsEnabled = false;
                 await Task.Delay(1500);
                 addPilotBtn.IsEnabled = true;
