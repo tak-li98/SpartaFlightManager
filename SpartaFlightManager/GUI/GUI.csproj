@@ -12,10 +12,14 @@
 
   <ItemGroup>
     <None Remove="400px-Exit_sign_text_%28red%29.svg.png" />
+    <None Remove="airline.png" />
+    <None Remove="airport.png" />
     <None Remove="applogo.png" />
+    <None Remove="flightboard.png" />
     <None Remove="flightmtext.png" />
     <None Remove="landing.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
+    <None Remove="pilot.png" />
     <None Remove="PilotPics\Atchu Soorasangaram.jpg" />
     <None Remove="PilotPics\Default.jpg" />
     <None Remove="PilotPics\Denzel Estacio.jpg" />
@@ -37,6 +41,7 @@
     <None Remove="PilotPics\Sarah Connor.jpg" />
     <None Remove="PilotPics\Tak Li.jpg" />
     <None Remove="PilotPics\Umar Majid.jpg" />
+    <None Remove="plane.png" />
     <None Remove="planeGlobe.gif" />
     <None Remove="TempLogo.png" />
   </ItemGroup>
@@ -65,10 +70,14 @@
     <None Include="AssemblyInfo.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <Resource Include="airline.png" />
+    <Resource Include="airport.png" />
     <Resource Include="applogo.png" />
+    <Resource Include="flightboard.png" />
     <Resource Include="flightmtext.png" />
     <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
+    <Resource Include="pilot.png" />
     <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />
     <Resource Include="PilotPics\Chris Rafferty.jpg" />
     <Resource Include="PilotPics\Default.jpg" />
@@ -91,6 +100,7 @@
     <Resource Include="PilotPics\Sarah Connor.jpg" />
     <Resource Include="PilotPics\Tak Li.jpg" />
     <Resource Include="PilotPics\Umar Majid.jpg" />
+    <Resource Include="plane.png" />
     <Resource Include="planeGlobe.gif" />
     <Resource Include="TempLogo.png" />
   </ItemGroup>

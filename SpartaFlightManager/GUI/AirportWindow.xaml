@@ -47,7 +47,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.5"/>
         <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="auto" Background="#7FFFFFFF">
 
             <Grid.ColumnDefinitions>
@@ -102,12 +102,13 @@
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Bottom" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
+        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" ToolTip="Minimise App"  Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Bottom" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
         <Image Source="/flightmtext.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="6"  HorizontalAlignment="Center"/>
-        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.5"/>
+        <Image Source="/airport.png" Grid.Row="10" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="5" HorizontalAlignment="Center"/>
+        
     </Grid>
 </Window>

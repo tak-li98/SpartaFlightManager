@@ -47,7 +47,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.2"/>
         <Rectangle Grid.ColumnSpan="8" Height="AUTO" Grid.Column="0" Grid.Row="2" Grid.RowSpan="8" Stroke="Black" Width="auto" Fill="#7F92C8FF"/>
         <Label Content="Flight ID" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center"/>
         <Label Content="Pilot" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center"/>
@@ -66,7 +66,6 @@
         <ComboBox x:Name="pilotCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="6" VerticalAlignment="Center" Width="180"/>
         <ComboBox x:Name="statusCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="3" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Width="180"/>
         <ComboBox x:Name="planeCombo" IsEditable="False" IsHitTestVisible="False" Grid.ColumnSpan="2" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="8" VerticalAlignment="Center" Width="180" SelectionChanged="planeCombo_SelectionChanged"/>
-        <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
         <Button  x:Name="FlightBoardButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" ToolTip="Go back to Flight Board"  Content="_FLIGHT BOARD" Click="FlightBoardButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="See all Airlines"  Content="_AIRLINES"  Click="AirlinesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="See all Airports"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
@@ -87,10 +86,12 @@
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50"  Grid.Row="10" VerticalAlignment="Top" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
+        <Button x:Name="minimiseBtn" HorizontalAlignment="Center" Width="50" Height="50" ToolTip="Minimise App"  Grid.Row="10" VerticalAlignment="Top" Click="minimiseBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
+        
+        <Image Source="/flightmtext.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="6"  HorizontalAlignment="Center"/>
     </Grid>
 </Window>
