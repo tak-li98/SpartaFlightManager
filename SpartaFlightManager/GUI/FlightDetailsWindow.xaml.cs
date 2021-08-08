@@ -162,6 +162,7 @@ namespace GUI
             {
                 _flightDetailsManager.Update(flightDetailsId, flightId, pilotId, airlineId, planeId, passengerNumInt, (int)durationInt, capacityInt);
                 _flightManager.Update(flightId, (Status)statusId);
+                SaveChangesButton.IsEnabled = false;
 
             }
             catch (Exception ex)

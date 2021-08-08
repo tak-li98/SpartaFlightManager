@@ -12,22 +12,23 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="LoadingScreenWindow" Height="550" Width="1000">
+        Title="LoadingScreenWindow" Height="550" Width="1000" Background="#F6FFFFFF">
 
 
 
     <Grid Width="auto" Background="#7FFFFFFF">
-        <MediaElement Source="/FlightManagerIntro.mp4" Height="600" Width="1000" Position="00:00:00" Opacity="0.3" IsMuted="True"></MediaElement>
-        <Button x:Name="startBtn" HorizontalAlignment="Center" Height="300" Width="600" VerticalAlignment="Center" Click="startBtn_Click">
+        <Image x:Name="gif" Height="600" Width="1000" Visibility="Hidden"  gif:ImageBehavior.AnimatedSource="/introPlane.gif" gif:ImageBehavior.AnimationSpeedRatio="0.8" Source="/introPlane.gif"/>
+        <Button x:Name="startBtn" HorizontalAlignment="Center" Height="300" Width="600"  VerticalAlignment="Center" Click="startBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/startlogo.png"/>
             </Button.Background>
         </Button>
-        <Image HorizontalAlignment="Center" Height="100" Width="700" VerticalAlignment="Top" Source="/flightmtext.png" Margin="0,457,0,0"/>
+        <Image x:Name="title" HorizontalAlignment="Center" Height="100" Width="700" VerticalAlignment="Top" Source="/flightmtext.png" Margin="0,457,0,0"/>
+        <Image x:Name="welcome" Visibility="Hidden" HorizontalAlignment="Left" Height="100" Width="700" VerticalAlignment="Top" Source="/welcome.png" Margin="4,450,0,0"/>
+        <Image x:Name="onboard" Visibility="Hidden" HorizontalAlignment="Left" Height="100" Width="700" VerticalAlignment="Top" Source="/onboard.png" Margin="464,450,0,0"/>
 
 
     </Grid>

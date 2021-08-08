@@ -17,9 +17,10 @@
     <None Remove="airport.png" />
     <None Remove="applogo.png" />
     <None Remove="flightboard.png" />
-    <None Remove="FlightManagerIntro.mp4" />
     <None Remove="flightmtext.png" />
+    <None Remove="introPlane.gif" />
     <None Remove="landing.png" />
+    <None Remove="onboard.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
     <None Remove="pilot.png" />
     <None Remove="PilotPics\Atchu Soorasangaram.jpg" />
@@ -45,8 +46,10 @@
     <None Remove="PilotPics\Umar Majid.jpg" />
     <None Remove="plane.png" />
     <None Remove="planeGlobe.gif" />
+    <None Remove="sfmIntro.wav" />
     <None Remove="startlogo.png" />
     <None Remove="TempLogo.png" />
+    <None Remove="welcome.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,9 +80,12 @@
     <Resource Include="airport.png" />
     <Resource Include="applogo.png" />
     <Resource Include="flightboard.png" />
-    <Resource Include="FlightManagerIntro.mp4" />
     <Resource Include="flightmtext.png" />
+    <Resource Include="introPlane.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="landing.png" />
+    <Resource Include="onboard.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
     <Resource Include="pilot.png" />
     <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />
@@ -106,8 +112,12 @@
     <Resource Include="PilotPics\Umar Majid.jpg" />
     <Resource Include="plane.png" />
     <Resource Include="planeGlobe.gif" />
+    <Resource Include="sfmIntro.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="startlogo.png" />
     <Resource Include="TempLogo.png" />
+    <Resource Include="welcome.png" />
   </ItemGroup>
 
   <ItemGroup>

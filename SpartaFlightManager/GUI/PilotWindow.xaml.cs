@@ -119,6 +119,7 @@ namespace GUI
                 editPilotPanel.Visibility = Visibility.Visible;
                 pilotBoard.Visibility = Visibility.Hidden;
                 EditPilotButton.Content = "GO BACK";
+                EditPilotButton.ToolTip = "Go back to pilots";
                 titleEditCombo.Text = _pilotManager.SelectedPilot.Title;
                 firstNameEditTxt.Text = _pilotManager.SelectedPilot.FirstName;
                 surnameEditTxt.Text = _pilotManager.SelectedPilot.LastName;
@@ -140,6 +141,7 @@ namespace GUI
             }
             if (EditPilotButton.Content.ToString() == "GO BACK")
             {
+                EditPilotButton.ToolTip = "Edit selected pilot";
                 editPilotPanel.Visibility = Visibility.Hidden;
                 pilotBoard.Visibility = Visibility.Visible;
                 AddPilotButton.Visibility = Visibility.Visible;
