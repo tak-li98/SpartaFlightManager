@@ -106,22 +106,22 @@ namespace GUI
 
         private void AirlinesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new AirlineWindow());
         }
 
         private void AirportsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new AirportWindow());
         }
 
         private void PilotsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new PilotWindow());
         }
 
         private void PlanesButton_Click(object sender, RoutedEventArgs e)
         {
-
+            OpenWindow(new PlaneWindow());
         }
 
         private void DeleteFlight_Click(object sender, RoutedEventArgs e)
@@ -209,6 +209,7 @@ namespace GUI
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
+
             Application.Current.Shutdown();
         }
 

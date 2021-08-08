@@ -22,6 +22,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/photo-1499346030926-9a72daac6c63.jpg"/>
         </Grid.Background>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -46,8 +47,9 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            
         </Grid.RowDefinitions>
-
+        <Image Source="/applogo.png" Grid.Row="3" Grid.RowSpan="8" Grid.Column="0" Grid.ColumnSpan="8" Opacity="0.5"/>
         <Grid Grid.ColumnSpan="8" Grid.RowSpan="8" Grid.Row="2" Grid.Column="0" Width="auto" Background="#7FFFFFFF">
 
             <Grid.ColumnDefinitions>
@@ -93,6 +95,7 @@
                 </ListView.View>
             </ListView>
         </Grid>
+        
         <Button  x:Name="FullDetailsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" ToolTip="Find out more about this flight"  Content="_FLIGHT DETAILS"  IsEnabled="False" Click="FullDetailsButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AirlinesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="6" Grid.ColumnSpan="2" ToolTip="See all Airlines"  Content="_AIRLINES"  Click="AirlinesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AirportssButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="7" Grid.ColumnSpan="2" ToolTip="See all Airports"  Content="_AIRPORTS"   Click="AirportsButton_Click" Foreground="#DD000000" />
@@ -100,7 +103,7 @@
         <Button  x:Name="PlanesButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="8" Grid.Row="9" Grid.ColumnSpan="2" ToolTip="See all Planes"  Content="_PLANES"  Click="PlanesButton_Click" Foreground="#DD000000" />
         <Button  x:Name="AddFlightsButton" Background="White" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="150" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" ToolTip="Add a new flight"  Content="_ADD NEW FLIGHT"  Click="AddFlightsButton_Click" Foreground="#DD000000" />
         <Image Grid.Column="8" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="2" Height="150" Width="150" gif:ImageBehavior.AnimatedSource="/planeGlobe.gif" gif:ImageBehavior.AnimationSpeedRatio="1"/>
-        <Image Source="/TempLogo.png" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2"  Grid.ColumnSpan="4" Width="auto" Height="100"/>
+
         <Button x:Name="exitBtn" Grid.Column="8" HorizontalAlignment="Center" Width="100" Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Click="exitBtn_Click" BorderBrush="#FFF02920">
             <Button.Background>
                 <ImageBrush ImageSource="/400px-Exit_sign_text_(red).svg.png"/>
@@ -111,5 +114,6 @@
                 <ImageBrush ImageSource="/landing.png"/>
             </Button.Background>
         </Button>
+        <Image Source="/flightmtext.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="6"  HorizontalAlignment="Center"/>
     </Grid>
 </Window>

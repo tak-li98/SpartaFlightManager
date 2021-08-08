@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <None Remove="400px-Exit_sign_text_%28red%29.svg.png" />
+    <None Remove="applogo.png" />
+    <None Remove="flightmtext.png" />
     <None Remove="landing.png" />
     <None Remove="photo-1499346030926-9a72daac6c63.jpg" />
     <None Remove="PilotPics\Atchu Soorasangaram.jpg" />
@@ -63,6 +65,8 @@
     <None Include="AssemblyInfo.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <Resource Include="applogo.png" />
+    <Resource Include="flightmtext.png" />
     <Resource Include="landing.png" />
     <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
     <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />
