@@ -268,13 +268,13 @@ During this sprint, a numerous of tasks were completed, these included:
 | ------------- | ------------------- | ------------------------------------------------------------ |
 | 2.2           | Reading Information | As a user, I want to filter necessary information so that I can access information that is needed. |
 | 3.2           | Creating New Data   | As a user, I want to be able to create new data entries so that it can be added to the database. |
-| 5.2           | Deleting Data       | As a user, I want to be able to delete flights so that redundant and mistakenly added flights can be removed |
+| 5.2           | Deleting Data       | As a user, I want to be able to delete flights so that redundant and mistakenly added flights can be removed. |
 
 
 
 #### Sprint Start Board:
 
-![BoardDay4Start](Images/BoardDay4End.png)
+![BoardDay4Start](Images/BoardDay4Start.png)
 
 #### Sprint End Board:
 
@@ -282,11 +282,23 @@ During this sprint, a numerous of tasks were completed, these included:
 
 #### Sprint Review
 
-- List of backlog items "done", actions for any items not "done"
+| Tasks Done                | Notes                                                        |
+| ------------------------- | ------------------------------------------------------------ |
+| 2.2 - Reading Information | - Made windows for the plane, airline and airports which retrieves and displays the correct info |
+|                           |                                                              |
+
+| Tasks Not Done            | Actions                                     |
+| :------------------------ | ------------------------------------------- |
+| 2.2 - Reading Information | - Add a pilots window                       |
+| 3.2 - Creating New Data   | - Add create pilot function in pilot window |
+| 5.2 - Delete Data         | - Allow pilots to be deleted                |
 
 #### Sprint Retrospective
 
-- what went well, improvements and action plan
+| What went well                                       | Improvements               | Actions                                                      |
+| ---------------------------------------------------- | -------------------------- | ------------------------------------------------------------ |
+| - Creating windows that are consistent with that app | - Need to write unit tests | - Add more unit testing for all the methods created in each manager class |
+| - Utilising business layer well to shorten code      |                            | - Add a pilot window with create and delete functions        |
 
 ----------------------------------
 
@@ -294,13 +306,39 @@ During this sprint, a numerous of tasks were completed, these included:
 
 #### Sprint Goal
 
+| User Story ID | Title               | Description                                                  |
+| ------------- | ------------------- | ------------------------------------------------------------ |
+| 2.2           | Reading Information | As a user, I want to filter necessary information so that I can access information that is needed. (For Pilot Window) |
+| 3.2           | Creating New Data   | As a user, I want to be able to create new data entries so that it can be added to the database. (For Pilot Window) |
+| 5.2           | Deleting Data       | As a user, I want to be able to delete flights so that redundant and mistakenly added flights can be removed. (For Pilot Window) |
+
+#### Sprint Start Board:
+
+![BoardDay5Start](Images/BoardDay5Start.png)
+
+
+
+#### Sprint End Board:
+
+![BoardDay5End](Images/BoardDay5End.png)
+
 #### Sprint Review
 
-- List of backlog items "done", actions for any items not "done"
+| Tasks Done                | Notes                               |
+| ------------------------- | ----------------------------------- |
+| 2.2 - Reading Information | - Made windows for the pilot window |
+| 3.2 - Creating New Data   | - Can create a new pilot            |
+| 5.2 - Delete Data         | - Can delete a pilot                |
+
+| Tasks Not Done                               | Actions                                                      |
+| :------------------------------------------- | ------------------------------------------------------------ |
+| 3.2 Creating New Data - Adding profile photo | - Find a way to display the image in the app<br />- Allow for non-resource images to be used in app |
 
 #### Sprint Retrospective
 
-- what went well, improvements and action plan
+| What went well                                   | Improvements                             | Actions                                                      |
+| ------------------------------------------------ | ---------------------------------------- | ------------------------------------------------------------ |
+| - Pilot window is simple and functions as needed | - Need to make adding profile photo work | - Find solution to add profile picture and have it show up in the list |
 
 ----------------------------------
 
@@ -308,11 +346,67 @@ During this sprint, a numerous of tasks were completed, these included:
 
 #### Sprint Goal
 
+| User Story ID | Title                   | Description                                                  |
+| ------------- | ----------------------- | ------------------------------------------------------------ |
+| 7.2           | Create Design Standards | As a developer, I want a design standard so that the interface is consistent throughout. |
+| 7.3           | Create Design Features  | As a developer, I want graphically pleasant icons and interface objects so that it can liven up the app. |
+
+#### Sprint Start Board:
+
+![BoardDay6Start](Images/BoardDay6Start.png)
+
+#### Demo:
+
+- Loading Screen:
+
+![LoadingScreenWindow](Images/LoadingScreenWindow.png)
+
+- Main Window:
+
+  ![FinalFlightBoard](Images/FinalFlightBoard.png)
+
+- Add Flight Window:
+
+![FinalAddFlights](Images/FinalAddFlights.png)
+
+- Flight Details Window:
+
+![FinalFlightDetails](Images/FinalFlightDetails.png)
+
+- Airlines Window:
+
+![FinalAirlines](Images/FinalAirlines.png)
+
+- Planes Window:
+
+![FinalPlanes](Images/FinalPlanes.png)
+
+- Pilots Window:
+
+![FinalPilots](Images/FinalPilots.png)
+
+#### Sprint End Board:
+
+![BoardDay6End](Images/BoardDay6End.png)
+
 #### Sprint Review
 
-- List of backlog items "done", actions for any items not "done"
+| Tasks Done                   | Notes                                                        |
+| ---------------------------- | ------------------------------------------------------------ |
+| 7.3 - Create Design Features | - Created app logo, window header texts<br />- Added a loading screen |
+
+| Tasks Not Done                | Actions                                                      |
+| :---------------------------- | ------------------------------------------------------------ |
+| 7.2 - Create Design Standards | - None (Not necessary as design throughout app has been consistent without a written standard) |
 
 #### Sprint Retrospective
 
-- what went well, improvements and action plan
+| What went well                              | Improvements                   | Actions                         |
+| ------------------------------------------- | ------------------------------ | ------------------------------- |
+| - Adding a loading screen with sound effect | - Even more outstanding design | - Fix up the pilot photo adding |
+| - Every window linked to each other well    |                                |                                 |
+
+-----------------------
+
+### <u>Sprint 7</u>
 
