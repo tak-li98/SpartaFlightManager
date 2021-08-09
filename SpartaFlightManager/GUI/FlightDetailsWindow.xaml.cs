@@ -134,6 +134,11 @@ namespace GUI
                 {
                     _flightDetailsManager.Delete(_flightDetailsManager.ReturnFlightDetailsIdGivenFlightId(Int32.Parse(flightIdTxt.Text)));
                     _flightManager.Delete(Int32.Parse(flightIdTxt.Text));
+                    MessageBoxResult messageBoxResult3 = MessageBox.Show("Flight deleted!", "Flight Deleted.", MessageBoxButton.OK);
+                    if(messageBoxResult3 == MessageBoxResult.OK)
+                    {
+                        OpenWindow(new MainWindow());
+                    }
                 }
             }
         }
