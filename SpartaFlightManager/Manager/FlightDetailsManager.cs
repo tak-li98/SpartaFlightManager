@@ -121,9 +121,7 @@ namespace Manager
                     outputList.Add(item.Capacity.ToString()); // 4 element 
                     outputList.Add(item.PassengerNumber.ToString()); // 5 element 
                     outputList.Add(item.FlightDuration.ToString()); // 6 element 
-                                                                    //outputList.Add(item.FlightStatus.ToString()); // 7 element 
-                                                                    // outputList.Add(item.FlightDate.ToShortDateString()); // 8 element 
-                                                                    //outputList.Add(item.FlightDate.ToShortTimeString()); // 9 element 
+                                                                    
                 }
                 return outputList;
             }
