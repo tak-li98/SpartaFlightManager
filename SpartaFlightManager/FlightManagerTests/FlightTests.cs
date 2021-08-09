@@ -75,26 +75,7 @@ namespace FlightManagerTests
             }
         }
 
-        [Test]
-        [Category("HAPPY")]
-        public void CheckIfFlightBoardInfoReturnedIsCorrect()
-        {
-            var infoReturned = _flightManager.ReturnFlightBoardInfoFromFlights();
-            var expected = new string[] { "DL", "1", "Delta Air Lines", "Atlanta, GA", "United States", "ATL", "10/08/2021", "15:00", "Scheduled", "Beijing", "China", "BJS" };
-            Assert.That(infoReturned[0,0], Is.EqualTo(expected[0]));
-            Assert.That(infoReturned[0,1], Is.EqualTo(expected[1]));
-            Assert.That(infoReturned[0,2], Is.EqualTo(expected[2]));
-            Assert.That(infoReturned[0,3], Is.EqualTo(expected[3]));
-            Assert.That(infoReturned[0,4], Is.EqualTo(expected[4]));
-            Assert.That(infoReturned[0,5], Is.EqualTo(expected[5]));
-            Assert.That(infoReturned[0,6], Is.EqualTo(expected[6]));
-            Assert.That(infoReturned[0,7], Is.EqualTo(expected[7]));
-            Assert.That(infoReturned[0,8], Is.EqualTo(expected[8]));
-            Assert.That(infoReturned[0,9], Is.EqualTo(expected[9]));
-            Assert.That(infoReturned[0,10], Is.EqualTo(expected[10]));
-            Assert.That(infoReturned[0,11], Is.EqualTo(expected[11]));
-        }
-
+ 
         [Test]
         public void ReturnsTheRightStatusFromStatusID()
         {

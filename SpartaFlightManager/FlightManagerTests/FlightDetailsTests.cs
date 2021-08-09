@@ -53,7 +53,7 @@ namespace FlightManagerTests
                 Assert.That(_flightDetailsManager.ReturnLatestFlightId, Is.EqualTo(flightId));
             }
         }
-
+        [TearDown]
         public void Teardown()
         {
             using (var db = new SpartaFlightContext())

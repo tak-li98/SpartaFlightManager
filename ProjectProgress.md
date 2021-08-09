@@ -408,5 +408,5 @@ During this sprint, a numerous of tasks were completed, these included:
 
 -----------------------
 
-### <u>Sprint 7</u>
+### Overall Project Retrospective
 
