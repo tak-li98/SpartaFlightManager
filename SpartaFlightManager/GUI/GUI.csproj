@@ -16,6 +16,7 @@
     <None Remove="airline.png" />
     <None Remove="airport.png" />
     <None Remove="applogo.png" />
+    <None Remove="clouds.jpg" />
     <None Remove="flightboard.png" />
     <None Remove="flightmtext.png" />
     <None Remove="introPlane.gif" />
@@ -79,6 +80,7 @@
     <Resource Include="airline.png" />
     <Resource Include="airport.png" />
     <Resource Include="applogo.png" />
+    <Resource Include="clouds.jpg" />
     <Resource Include="flightboard.png" />
     <Resource Include="flightmtext.png" />
     <Resource Include="introPlane.gif">

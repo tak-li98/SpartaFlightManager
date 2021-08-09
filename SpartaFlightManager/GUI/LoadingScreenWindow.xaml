@@ -19,7 +19,10 @@
 
 
 
-    <Grid Width="auto" Background="#7FFFFFFF">
+    <Grid Width="auto">
+        <Grid.Background>
+            <ImageBrush ImageSource="/clouds.jpg"/>
+        </Grid.Background>
         <Image x:Name="gif" Height="600" Width="1000" Visibility="Hidden"  gif:ImageBehavior.AnimatedSource="/introPlane.gif" gif:ImageBehavior.AnimationSpeedRatio="0.8" Source="/introPlane.gif"/>
         <Button x:Name="startBtn" HorizontalAlignment="Center" Height="300" Width="600"  VerticalAlignment="Center" Click="startBtn_Click" BorderBrush="{x:Null}">
             <Button.Background>
