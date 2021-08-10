@@ -6,7 +6,6 @@ In this README there will be instructions on how to setup the app on your local 
 
 -------------------------------
 
-[TOC]
 
 Before you start make sure you have 'Data storage and processing' installed
 
