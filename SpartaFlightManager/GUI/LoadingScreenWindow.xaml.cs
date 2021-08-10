@@ -40,13 +40,13 @@ namespace GUI
         public LoadingScreenWindow()
         {
             InitializeComponent();
-            player.LoadAsync();
+            //player.LoadAsync();
             CentreScreen();
         }
 
         private async void startBtn_Click(object sender, RoutedEventArgs e)
         {
-            player.Play();
+            //player.Play();
             welcome.Visibility = Visibility.Visible;
             onboard.Visibility = Visibility.Visible;
             gif.Visibility = Visibility.Visible;
