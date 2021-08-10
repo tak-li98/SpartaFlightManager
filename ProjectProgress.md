@@ -87,7 +87,7 @@ The main features of the application would be to:
 
 #### ERD:
 
-![spartaFlightERD](spartaFlightERD.png)
+![spartaFlightERD](Images/spartaFlightERD.png)
 
 
 
@@ -142,6 +142,12 @@ The main features of the application would be to:
 ![BoardDay2Start](Images/BoardDay2Start.png)
 
 
+
+#### Class Diagram:
+
+The class diagram can also be found in  the Database project folder, named 'SpartaFlightClassDiagram.cd'.
+
+![ClassDiagram](Images/ClassDiagram.png)
 
 #### Demo
 

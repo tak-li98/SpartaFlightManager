@@ -75,7 +75,7 @@ namespace FlightManagerTests
             }
         }
 
- 
+
         [Test]
         public void ReturnsTheRightStatusFromStatusID()
         {

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Database.Region">
+    <Position X="12.75" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAgAAAAAAAAAAAAAAQAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Region.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Airlines" />
+      <Property Name="Airports" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.FlightStatus">
+    <Position X="2" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FlightStatus.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Flights" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.FlightPath">
+    <Position X="11" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAFABAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>FlightPath.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.FlightDetail">
+    <Position X="6.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAEAAAAAAAAAIAAAABAgCAAEABAgAAAAAIAAEAAgAA=</HashCode>
+      <FileName>FlightDetail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.Flight">
+    <Position X="6" Y="1.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAkAAAEACAAAAAAAABIAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Customisations\FlightCust.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="FlightDetails" />
+      <Property Name="FlightPaths" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.Airport">
+    <Position X="13" Y="4.25" Width="1.75" />
+    <AssociationLine Name="FlightPaths" Type="Database.FlightPath">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.11" Y="0.06" Height="0.182" Width="2.429" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAAgAAAMAAAAAAAABAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Customisations\AirportCust.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="FlightPaths" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.Airline">
+    <Position X="6.25" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAgAEAAIAAACAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Airline.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="FlightDetails" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.Plane">
+    <Position X="9.5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAACACAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Plane.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="FlightDetails" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Database.Pilot">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAEAEACBAAAAAAAAAAAAAEAAAAAAAAAg=</HashCode>
+      <FileName>Customisations\PilotCust.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="FlightDetails" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

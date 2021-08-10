@@ -31,7 +31,7 @@ namespace FlightManagerTests
                 var lastRegionId = db.Regions.Select(i => i.RegionId).Max();
                 db.Regions.Add(newRegion);
                 db.SaveChanges();
-                var newAirline = new Airline() { AirlineName = "Test Airline", AirlineCode = "TA",RegionId = lastRegionId }; //new airline
+                var newAirline = new Airline() { AirlineName = "Test Airline", AirlineCode = "TA", RegionId = lastRegionId }; //new airline
                 var lastAirlineId = db.Airlines.Select(i => i.AirlineId).Max();
                 db.Airlines.Add(newAirline);
                 db.SaveChanges();
@@ -40,8 +40,9 @@ namespace FlightManagerTests
                 db.Planes.Add(newPlane);
                 db.SaveChanges();
                 var newFlightDetails = new FlightDetail() { FlightId = lastFlightId, PilotId = lastPilotId, AirlineId = lastAirlineId, PassengerNumber = 200, PlaneId = lastPlaneId, FlightDuration = 5, Archive = false };
-                db.SaveChanges();
                 db.FlightDetails.Add(newFlightDetails);
+                db.SaveChanges();
+                
             }
         }
         [Test]
@@ -67,23 +68,23 @@ namespace FlightManagerTests
                 db.SaveChanges();
 
                 var lastRegionId = db.Regions.Select(i => i.RegionId).Max();
-                db.Regions.RemoveRange(db.Regions.Where(r=>r.RegionId == lastRegionId));
+                db.Regions.RemoveRange(db.Regions.Where(r => r.RegionId == lastRegionId));
                 db.SaveChanges();
 
                 var lastAirlineId = db.Airlines.Select(i => i.AirlineId).Max();
-                db.Airlines.RemoveRange(db.Airlines.Where(a=>a.AirlineId == lastAirlineId));
+                db.Airlines.RemoveRange(db.Airlines.Where(a => a.AirlineId == lastAirlineId));
                 db.SaveChanges();
 
                 var lastPlaneId = db.Planes.Select(i => i.PlaneId).Max();
                 db.Planes.RemoveRange(db.Planes.Where(a => a.PlaneId == lastPlaneId));
                 db.SaveChanges();
-                
+
                 var lastFlightId = db.Flights.Select(i => i.FlightId).Max();
                 db.Flights.RemoveRange(db.Flights.Where(i => i.FlightId == lastFlightId));
                 db.SaveChanges();
 
-          
-                
+
+
             }
         }
     }
