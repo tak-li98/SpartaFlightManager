@@ -24,7 +24,7 @@ The main features of the application would be to:
 4. Delete or cancel any existing flights
 5. Flight statuses such as scheduled, depart/arrived can be auto-determined through date check
 
-6. (Extra feature if enough time): Change reversion option through use of a history logger
+6. (Extra feature if enough time): Reversion option through use of a history logger
 
 
 
@@ -52,15 +52,15 @@ The main features of the application would be to:
 ### Project Definition of Done
 - [ ] All requirements for any given page have been fulfilled according to the Epics
 
-- [ ] No unnecessary wastage of interface space
+- [x] No unnecessary wastage of interface space
 
 - [ ] All necessary unit testing has been created and passes without any fails
 
 - [ ] Documentation has been fully prepared: README instructs how to use program, SCRUM board for each sprint has been shown, notes of where class diagrams are, overall project retrospective
 
-- [ ] Interface design follows a defined standard
+- [x] Interface design follows a defined standard
 
-- [ ] Project published and .exe can be run and used as expected 
+- [x] Project published and .exe can be run and used as expected 
 
 
 
@@ -408,5 +408,30 @@ During this sprint, a numerous of tasks were completed, these included:
 
 -----------------------
 
-### Overall Project Retrospective
+### <u>Overall Project Retrospective</u>
+
+What went well?
+
+- Had a minimum viable product (MVP)
+- Application met my expectation of how I wanted it to look
+- Made good use and full implementation of CRUD operations 
+- App doesn't crash (or I hope not?)
+
+
+
+What I had learnt?
+
+- How to manage the sprints
+- How to manage workload
+- Build a database from scratch, scaffold it to classes, make manager classes to manage the data and GUI to utilise the database
+- Breaking down problems into smaller sections 
+- Being a tester, developer and BA all at once
+
+
+
+What did not go as well as expected?
+
+- Lack of unit testing
+- Documentation quality fell off towards the end sprints
+- Defining enough user requirements/user stories
 
