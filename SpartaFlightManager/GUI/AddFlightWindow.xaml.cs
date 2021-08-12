@@ -21,21 +21,21 @@ namespace GUI
     /// </summary>
     public partial class AddFlightWindow : Window
     {
-        PilotManager _pilotManager = new PilotManager();
-        AirlineManager _airlineManager = new AirlineManager();
-        FlightManager _flightManager = new FlightManager();
-        PlaneManager _planeManager = new PlaneManager();
-        AirportManager _airportManager = new AirportManager();
-        FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
+        PilotManager _pilotManager = new ();
+        AirlineManager _airlineManager = new ();
+        FlightManager _flightManager = new ();
+        PlaneManager _planeManager = new ();
+        AirportManager _airportManager = new ();
+        FlightDetailsManager _flightDetailsManager = new ();
 
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
+            double windowWidth = Width;
+            double windowHeight = Height;
+            Left = (screenWidth / 2) - (windowWidth / 2);
+            Top = (screenHeight / 2) - (windowHeight / 2);
         }
         public bool CheckIfFieldsHaveValues()
         {
@@ -55,7 +55,7 @@ namespace GUI
         {
             if (passengerNumTxt.Text != string.Empty)
             {
-                if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                if (int.Parse(passengerNumTxt.Text) > int.Parse(planeCapacityTxt.Text))
                 {
                     AddFlightButton.ToolTip = "Your passenger number is over capacity.";
                     AddFlightButton.IsEnabled = false;
@@ -81,7 +81,7 @@ namespace GUI
         {
             window.Show();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            Close();
         }
         public AddFlightWindow()
         {
@@ -123,7 +123,7 @@ namespace GUI
                 var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
                 var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
                 var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
-                var passengerNum = Int32.Parse(passengerNumTxt.Text);
+                var passengerNum = int.Parse(passengerNumTxt.Text);
                 var flightDuration = (int)durationSlider.Value;
                 var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
                 var departId = _airportManager.ReturnAirportIdGivenAirportStr(departCombo.Text);
@@ -147,7 +147,7 @@ namespace GUI
                 refreshLbl.Content = "Page refreshing in 3..2..1..";
                 await Task.Delay(1000);
                 OpenWindow(new AddFlightWindow());
-                this.Close();
+                Close();
             }
 
         }
@@ -155,7 +155,7 @@ namespace GUI
         private void ClearField_Click(object sender, RoutedEventArgs e)
         {
             OpenWindow(new AddFlightWindow());
-            this.Close();
+            Close();
 
         }
 
@@ -213,7 +213,7 @@ namespace GUI
             {
                 if (planeCapacityTxt.Text != string.Empty)
                 {
-                    if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                    if (int.Parse(passengerNumTxt.Text) > int.Parse(planeCapacityTxt.Text))
                     {
 
                         AddFlightButton.ToolTip = "Your passenger number is over capacity.";
@@ -261,7 +261,7 @@ namespace GUI
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+           WindowState = WindowState.Minimized;
         }
 
         private static readonly Regex _regex = new Regex("[^0-9]");

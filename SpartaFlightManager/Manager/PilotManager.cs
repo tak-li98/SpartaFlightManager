@@ -19,10 +19,8 @@ namespace Manager
         }
         public List<Pilot> RetrieveAll()
         {
-            using (var db = new SpartaFlightContext())
-            {
-                return db.Pilots.OrderBy(i=>i.FirstName).ToList();
-            }
+            using var db = new SpartaFlightContext();
+            return db.Pilots.OrderBy(i => i.FirstName).ToList();
         }
         public int ReturnPilotID(string str)
         {
@@ -38,11 +36,9 @@ namespace Manager
                 photoLink = "PilotPics/Default.jpg";
             }
             var newPilot = new Pilot() { Title = title, FirstName = firstName, LastName = lastName , PhotoLink = photoLink};
-            using (var db = new SpartaFlightContext())
-            {
-                db.Pilots.Add(newPilot);
-                db.SaveChanges();
-            }
+            using var db = new SpartaFlightContext();
+            db.Pilots.Add(newPilot);
+            db.SaveChanges();
         }
         public bool UpdatePhoto(int pilotId,string photoLink = null)
         {
@@ -59,7 +55,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Debug.WriteLine($"Error updating pilot {pilotId}");
                     return false;
@@ -84,7 +80,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Debug.WriteLine($"Error updating pilot {pilotId}");
                     return false;

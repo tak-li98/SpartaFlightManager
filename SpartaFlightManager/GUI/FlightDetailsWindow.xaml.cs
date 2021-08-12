@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using Manager;
 
@@ -21,27 +13,28 @@ namespace GUI
     /// </summary>
     public partial class FlightDetailsWindow : Window
     {
-        private FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
-        private PilotManager _pilotManager = new PilotManager();
-        private AirlineManager _airlineManager = new AirlineManager();
-        private AirportManager _airportManager = new AirportManager();
-        private PlaneManager _planeManager = new PlaneManager();
-        private FlightStatusManager _flightStatusManager = new FlightStatusManager();
-        private FlightManager _flightManager = new FlightManager();
+        //Implement interface to reduce the number of managers required
+        FlightDetailsManager _flightDetailsManager = new ();
+        PilotManager _pilotManager = new ();
+        AirlineManager _airlineManager = new ();
+        AirportManager _airportManager = new ();
+        PlaneManager _planeManager = new ();
+        FlightStatusManager _flightStatusManager = new ();
+        FlightManager _flightManager = new ();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
+            double windowWidth = Width;
+            double windowHeight = Height;
+            Left = (screenWidth / 2) - (windowWidth / 2);
+            Top = (screenHeight / 2) - (windowHeight / 2);
         }
         public void OpenWindow(Window window)
         {
             window.Show();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            Close();
         }
         public FlightDetailsWindow()
         {
@@ -159,7 +152,7 @@ namespace GUI
             {
                 passengerNumInt = Int32.Parse(passengerNumTxt.Text.Trim());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Passenger number is empty!");
             }
@@ -226,7 +219,7 @@ namespace GUI
         {
             this.WindowState = WindowState.Minimized;
         }
-        private static readonly Regex _regex = new Regex("[^0-9]");
+        private static readonly Regex _regex = new ("[^0-9]");
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);

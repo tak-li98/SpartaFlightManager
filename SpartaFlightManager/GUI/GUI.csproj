@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>applogo.ico</ApplicationIcon>
+    <ApplicationIcon>Images\applogo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +19,8 @@
     <None Remove="clouds.jpg" />
     <None Remove="flightboard.png" />
     <None Remove="flightmtext.png" />
+    <None Remove="Images\mainClouds.jpg" />
+    <None Remove="Images\photo-1499346030926-9a72daac6c63.jpg" />
     <None Remove="introPlane.gif" />
     <None Remove="landing.png" />
     <None Remove="onboard.png" />
@@ -73,23 +75,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="400px-Exit_sign_text_(red).svg.png" />
+    <Resource Include="Images\400px-Exit_sign_text_%28red%29.svg.png" />
     <None Include="AssemblyInfo.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <Resource Include="airline.png" />
-    <Resource Include="airport.png" />
-    <Resource Include="applogo.png" />
-    <Resource Include="clouds.jpg" />
-    <Resource Include="flightboard.png" />
-    <Resource Include="flightmtext.png" />
-    <Resource Include="introPlane.gif">
+    <Resource Include="Images\airline.png" />
+    <Resource Include="Images\airport.png" />
+    <Resource Include="Images\applogo.png" />
+    <Resource Include="Images\clouds.jpg" />
+    <Resource Include="Images\flightboard.png" />
+    <Resource Include="Images\flightmtext.png" />
+    <Resource Include="Images\introPlane.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="landing.png" />
-    <Resource Include="onboard.png" />
-    <Resource Include="photo-1499346030926-9a72daac6c63.jpg" />
-    <Resource Include="pilot.png" />
+    <Resource Include="Images\landing.png" />
+    <Resource Include="Images\mainClouds.jpg" />
+    <Resource Include="Images\onboard.png" />
+    <Resource Include="Images\pilot.png" />
     <Resource Include="PilotPics\Atchu Soorasangaram.jpg" />
     <Resource Include="PilotPics\Chris Rafferty.jpg" />
     <Resource Include="PilotPics\Default.jpg" />
@@ -112,14 +114,14 @@
     <Resource Include="PilotPics\Sarah Connor.jpg" />
     <Resource Include="PilotPics\Tak Li.jpg" />
     <Resource Include="PilotPics\Umar Majid.jpg" />
-    <Resource Include="plane.png" />
-    <Resource Include="planeGlobe.gif" />
+    <Resource Include="Images\plane.png" />
+    <Resource Include="Images\planeGlobe.gif" />
     <Resource Include="sfmIntro.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="startlogo.png" />
-    <Resource Include="TempLogo.png" />
-    <Resource Include="welcome.png" />
+    <Resource Include="Images\startlogo.png" />
+    <Resource Include="Images\TempLogo.png" />
+    <Resource Include="Images\welcome.png" />
   </ItemGroup>
 
   <ItemGroup>

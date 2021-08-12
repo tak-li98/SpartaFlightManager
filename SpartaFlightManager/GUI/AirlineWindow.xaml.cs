@@ -1,43 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Diagnostics;
 using Manager;
 
 namespace GUI
 {
-    /// <summary>
-    /// Interaction logic for Airlines.xaml
-    /// </summary>
+
     public partial class AirlineWindow : Window
     {
-        private AirlineManager _airlineManager = new AirlineManager();
+        private AirlineManager _airlineManager = new ();
 
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
+            double windowWidth = Width;
+            double windowHeight = Height;
+            Left = (screenWidth / 2) - (windowWidth / 2);
+            Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
         public void OpenWindow(Window window)
         {
             window.Show();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            Close();
         }
         public AirlineWindow()
         {
@@ -74,7 +61,7 @@ namespace GUI
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
@@ -98,7 +85,7 @@ namespace GUI
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
             var airlineSelected = _airlineManager.SelectedAirlineRegion.AirlineName.Replace(" ", "");
-            ProcessStartInfo link = new ProcessStartInfo();
+            ProcessStartInfo link = new ();
             link.UseShellExecute = true;
             link.FileName = "https://www.google.com/search?q=" + airlineSelected + "+airline";
             Process.Start(link);

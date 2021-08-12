@@ -21,22 +21,22 @@ namespace GUI
     /// </summary>
     public partial class AirportWindow : Window
     {
-        AirportManager _airportManager = new AirportManager();
+        AirportManager _airportManager = new ();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
             double windowWidth = this.Width;
             double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
+            Left = (screenWidth / 2) - (windowWidth / 2);
+            Top = (screenHeight / 2) - (windowHeight / 2);
         }
 
         public void OpenWindow(Window window)
         {
             window.Show();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            Close();
         }
         public AirportWindow()
         {
@@ -51,7 +51,7 @@ namespace GUI
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
             var airport = _airportManager.SelectedAirport.AirportID;
-            ProcessStartInfo link = new ProcessStartInfo();
+            ProcessStartInfo link = new ();
             link.UseShellExecute = true;
             link.FileName = "https://www.google.com/search?q=" + airport + " airport";
             Process.Start(link);

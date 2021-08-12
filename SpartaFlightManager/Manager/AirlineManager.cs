@@ -11,10 +11,8 @@ namespace Manager
     {
         public List<Airline> RetrieveAll()
         {
-            using (var db = new SpartaFlightContext())
-            {
-                return db.Airlines.ToList();
-            }
+            using var db = new SpartaFlightContext();
+            return db.Airlines.ToList();
         }
         public AirlineRegion SelectedAirlineRegion { get; set; }
         public void SetSelectedAirline(object airlineRegionItem)
@@ -23,47 +21,41 @@ namespace Manager
         }
         public int ReturnAirlineID(string str)
         {
-            using (var db = new SpartaFlightContext())
-            {
-                return db.Airlines.Where(a => a.AirlineName == str).FirstOrDefault().AirlineId;
-            }
+            using var db = new SpartaFlightContext();
+            return db.Airlines.Where(a => a.AirlineName == str).FirstOrDefault().AirlineId;
         }
 
         public List<string> ReturnAirlinesGivenRegion(string airportStr)
         {
-            using (var db = new SpartaFlightContext())
-            {
-                var regionId = db.Airports.Where(a => airportStr.Contains(a.AirportId) && airportStr.Contains(a.City)).FirstOrDefault().RegionId;
-                return db.Airlines.Where(a => a.RegionId == regionId).Select(i => i.AirlineName).ToList();
-            }
+            using var db = new SpartaFlightContext();
+            var regionId = db.Airports.Where(a => airportStr.Contains(a.AirportId) && airportStr.Contains(a.City)).FirstOrDefault().RegionId;
+            return db.Airlines.Where(a => a.RegionId == regionId).Select(i => i.AirlineName).ToList();
         }
 
         public List<AirlineRegion> ReturnAirlineAndRegion()
         {
             var list = new List<AirlineRegion>();
-            using (var db = new SpartaFlightContext())
-            {
+            using var db = new SpartaFlightContext();
 
-                var query =
-                    from a in db.Airlines
-                    join r in db.Regions on a.RegionId equals r.RegionId
-                    orderby r.RegionName
-                    select new
-                    {
-                        a.AirlineName,
-                        a.AirlineCode,
-                        r.RegionName
-                    };
-                foreach (var item in query)
+            var query =
+                from a in db.Airlines
+                join r in db.Regions on a.RegionId equals r.RegionId
+                orderby r.RegionName
+                select new
                 {
-                    AirlineRegion airlineRegion = new AirlineRegion();
-                    airlineRegion.AirlineName = item.AirlineName;
-                    airlineRegion.AirlineCode = item.AirlineCode;
-                    airlineRegion.RegionName = item.RegionName;
-                    list.Add(airlineRegion);
-                }
-                return list;
+                    a.AirlineName,
+                    a.AirlineCode,
+                    r.RegionName
+                };
+            foreach (var item in query)
+            {
+                AirlineRegion airlineRegion = new();
+                airlineRegion.AirlineName = item.AirlineName;
+                airlineRegion.AirlineCode = item.AirlineCode;
+                airlineRegion.RegionName = item.RegionName;
+                list.Add(airlineRegion);
             }
+            return list;
         }
 
     }
