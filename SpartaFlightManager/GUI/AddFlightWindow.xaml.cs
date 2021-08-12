@@ -32,10 +32,10 @@ namespace GUI
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
             double screenHeight = SystemParameters.PrimaryScreenHeight;
-            double windowWidth = this.Width;
-            double windowHeight = this.Height;
-            this.Left = (screenWidth / 2) - (windowWidth / 2);
-            this.Top = (screenHeight / 2) - (windowHeight / 2);
+            double windowWidth = Width;
+            double windowHeight = Height;
+            Left = (screenWidth / 2) - (windowWidth / 2);
+            Top = (screenHeight / 2) - (windowHeight / 2);
         }
         public bool CheckIfFieldsHaveValues()
         {
@@ -81,7 +81,7 @@ namespace GUI
         {
             window.Show();
             window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.Close();
+            Close();
         }
         public AddFlightWindow()
         {
@@ -147,7 +147,7 @@ namespace GUI
                 refreshLbl.Content = "Page refreshing in 3..2..1..";
                 await Task.Delay(1000);
                 OpenWindow(new AddFlightWindow());
-                this.Close();
+                Close();
             }
 
         }
@@ -155,7 +155,7 @@ namespace GUI
         private void ClearField_Click(object sender, RoutedEventArgs e)
         {
             OpenWindow(new AddFlightWindow());
-            this.Close();
+            Close();
 
         }
 
@@ -261,7 +261,7 @@ namespace GUI
 
         private void minimiseBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+           WindowState = WindowState.Minimized;
         }
 
         private static readonly Regex _regex = new Regex("[^0-9]");
