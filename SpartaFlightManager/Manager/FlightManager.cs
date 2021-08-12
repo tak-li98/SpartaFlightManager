@@ -146,7 +146,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Debug.WriteLine($"Error updating flight {flightId}");
                 }
@@ -167,7 +167,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Debug.WriteLine($"Error updating flight {flightId}");
                 }
@@ -194,7 +194,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Debug.WriteLine($"Error updating flight {flightId}");
                     return false;
