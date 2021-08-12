@@ -21,7 +21,7 @@ namespace GUI
     /// </summary>
     public partial class AirportWindow : Window
     {
-        AirportManager _airportManager = new AirportManager();
+        AirportManager _airportManager = new ();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -51,7 +51,7 @@ namespace GUI
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
             var airport = _airportManager.SelectedAirport.AirportID;
-            ProcessStartInfo link = new ProcessStartInfo();
+            ProcessStartInfo link = new ();
             link.UseShellExecute = true;
             link.FileName = "https://www.google.com/search?q=" + airport + " airport";
             Process.Start(link);

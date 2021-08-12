@@ -11,10 +11,8 @@ namespace Manager
     {
         public List<FlightStatus> RetrieveAll()
         {
-            using (var db = new SpartaFlightContext())
-            {
-                return db.FlightStatuses.ToList();
-            }
+            using var db = new SpartaFlightContext();
+            return db.FlightStatuses.ToList();
         }
     }
 }

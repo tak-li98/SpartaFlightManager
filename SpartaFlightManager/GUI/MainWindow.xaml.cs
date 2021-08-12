@@ -22,7 +22,7 @@ namespace GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private FlightManager _flightManager = new FlightManager();
+        FlightManager _flightManager = new ();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;

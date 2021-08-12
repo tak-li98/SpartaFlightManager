@@ -88,43 +88,41 @@ namespace Manager
         public List<string> ReturnFlightDetailIDStrings()
         {
             var outputList = new List<string>();
-            using (var db = new SpartaFlightContext())
-            {
-                var query =
-                    from fd in db.FlightDetails
-                    join f in db.Flights on fd.FlightId equals f.FlightId
-                    join fs in db.FlightStatuses on f.FlightStatusId equals fs.FlightStatusId
-                    join pl in db.Pilots on fd.PilotId equals pl.PilotId
-                    join p in db.Planes on fd.PlaneId equals p.PlaneId
-                    join a in db.Airlines on fd.AirlineId equals a.AirlineId
-                    where fd.FlightId == SelectedFlightDetail
-                    select new
-                    {
-                        fd.FlightId,
-                        pl.Title,
-                        pl.FirstName,
-                        pl.LastName,
-                        a.AirlineName,
-                        p.PlaneModel,
-                        p.Capacity,
-                        fd.PassengerNumber,
-                        fd.FlightDuration,
-                        f.FlightStatus
-
-                    };
-                foreach (var item in query)
+            using var db = new SpartaFlightContext();
+            var query =
+                from fd in db.FlightDetails
+                join f in db.Flights on fd.FlightId equals f.FlightId
+                join fs in db.FlightStatuses on f.FlightStatusId equals fs.FlightStatusId
+                join pl in db.Pilots on fd.PilotId equals pl.PilotId
+                join p in db.Planes on fd.PlaneId equals p.PlaneId
+                join a in db.Airlines on fd.AirlineId equals a.AirlineId
+                where fd.FlightId == SelectedFlightDetail
+                select new
                 {
-                    outputList.Add(item.FlightId.ToString()); // 0 element 
-                    outputList.Add($"{item.Title} {item.FirstName} {item.LastName}"); // 1 element 
-                    outputList.Add(item.AirlineName); // 2 element 
-                    outputList.Add(item.PlaneModel); // 3 element 
-                    outputList.Add(item.Capacity.ToString()); // 4 element 
-                    outputList.Add(item.PassengerNumber.ToString()); // 5 element 
-                    outputList.Add(item.FlightDuration.ToString()); // 6 element 
-                                                                    
-                }
-                return outputList;
+                    fd.FlightId,
+                    pl.Title,
+                    pl.FirstName,
+                    pl.LastName,
+                    a.AirlineName,
+                    p.PlaneModel,
+                    p.Capacity,
+                    fd.PassengerNumber,
+                    fd.FlightDuration,
+                    f.FlightStatus
+
+                };
+            foreach (var item in query)
+            {
+                outputList.Add(item.FlightId.ToString()); // 0 element 
+                outputList.Add($"{item.Title} {item.FirstName} {item.LastName}"); // 1 element 
+                outputList.Add(item.AirlineName); // 2 element 
+                outputList.Add(item.PlaneModel); // 3 element 
+                outputList.Add(item.Capacity.ToString()); // 4 element 
+                outputList.Add(item.PassengerNumber.ToString()); // 5 element 
+                outputList.Add(item.FlightDuration.ToString()); // 6 element `
+
             }
+            return outputList;
         }
         public bool Update(int flightDetailsId, int flightId, int pilotId,
             int airlineId, int planeId, int passengerNumber, int flightDuration, int capacity, bool archive = false)
@@ -155,7 +153,7 @@ namespace Manager
                 {
                     db.SaveChanges();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                     Debug.WriteLine($"Error updating flight detail {flightDetailsId}");

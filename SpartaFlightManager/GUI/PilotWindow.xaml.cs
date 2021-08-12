@@ -22,7 +22,7 @@ namespace GUI
     /// </summary>
     public partial class PilotWindow : Window
     {
-        PilotManager _pilotManager = new PilotManager();
+        PilotManager _pilotManager = new ();
         public void CentreScreen()
         {
             double screenWidth = SystemParameters.PrimaryScreenWidth;
@@ -157,7 +157,7 @@ namespace GUI
         public string PhotoPath;
         private void imageBtn_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog dlg = new ();
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
             Nullable<bool> result = dlg.ShowDialog();
@@ -183,7 +183,7 @@ namespace GUI
         private void imageEditBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog dlg = new ();
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPG Files (*.jpg)|*.jpg|PNG Files (*.png)|*.png|JPEG Files (*.jpeg)|*.jpeg";
             Nullable<bool> result = dlg.ShowDialog();
@@ -292,7 +292,7 @@ namespace GUI
                     EditPilotButton.IsEnabled = false;
                     AddPilotButton.Visibility = Visibility.Visible;
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     MessageBox.Show("Please assign a new pilot to flight associated to this pilot before deleting.");
                 }

@@ -20,7 +20,7 @@ namespace GUI
     /// </summary>
     public partial class LoadingScreenWindow : Window
     {
-        SoundPlayer player = new SoundPlayer("sfmIntro.wav");
+        SoundPlayer player = new ("sfmIntro.wav");
 
         public void CentreScreen()
         {

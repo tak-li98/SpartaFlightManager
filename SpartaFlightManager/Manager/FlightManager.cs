@@ -126,11 +126,9 @@ namespace Manager
         {
 
             var newFlightPath = new FlightPath() { FlightId = flightId, AirportId = arrivalId, IsDepartElseArrival = false };
-            using (var db = new SpartaFlightContext())
-            {
-                db.FlightPaths.Add(newFlightPath);
-                db.SaveChanges();
-            }
+            using var db = new SpartaFlightContext();
+            db.FlightPaths.Add(newFlightPath);
+            db.SaveChanges();
         }
         public bool UpdateFlightDeparture(int flightId, string departureId)
         {

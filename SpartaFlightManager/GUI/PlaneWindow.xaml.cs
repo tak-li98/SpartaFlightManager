@@ -95,7 +95,7 @@ namespace GUI
         private void MoreInfoButton_Click(object sender, RoutedEventArgs e)
         {
             var planeSelected = _planeManager.SelectedPlane.PlaneModel;
-            ProcessStartInfo link = new ProcessStartInfo();
+            ProcessStartInfo link = new ();
             link.UseShellExecute = true;
             link.FileName = "https://www.google.com/search?q=" + planeSelected;
             Process.Start(link);

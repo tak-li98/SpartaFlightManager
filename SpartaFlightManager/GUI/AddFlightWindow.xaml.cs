@@ -21,12 +21,12 @@ namespace GUI
     /// </summary>
     public partial class AddFlightWindow : Window
     {
-        PilotManager _pilotManager = new PilotManager();
-        AirlineManager _airlineManager = new AirlineManager();
-        FlightManager _flightManager = new FlightManager();
-        PlaneManager _planeManager = new PlaneManager();
-        AirportManager _airportManager = new AirportManager();
-        FlightDetailsManager _flightDetailsManager = new FlightDetailsManager();
+        PilotManager _pilotManager = new ();
+        AirlineManager _airlineManager = new ();
+        FlightManager _flightManager = new ();
+        PlaneManager _planeManager = new ();
+        AirportManager _airportManager = new ();
+        FlightDetailsManager _flightDetailsManager = new ();
 
         public void CentreScreen()
         {
@@ -55,7 +55,7 @@ namespace GUI
         {
             if (passengerNumTxt.Text != string.Empty)
             {
-                if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                if (int.Parse(passengerNumTxt.Text) > int.Parse(planeCapacityTxt.Text))
                 {
                     AddFlightButton.ToolTip = "Your passenger number is over capacity.";
                     AddFlightButton.IsEnabled = false;
@@ -123,7 +123,7 @@ namespace GUI
                 var pilotId = _pilotManager.ReturnPilotID(pilotCombo.Text);
                 var airlineId = _airlineManager.ReturnAirlineID(airlineCombo.Text);
                 var planeId = _planeManager.ReturnPlaneID(planeCombo.Text);
-                var passengerNum = Int32.Parse(passengerNumTxt.Text);
+                var passengerNum = int.Parse(passengerNumTxt.Text);
                 var flightDuration = (int)durationSlider.Value;
                 var dateTime = $"{datePicker.Text} {PresetTimePicker.Text}:00";
                 var departId = _airportManager.ReturnAirportIdGivenAirportStr(departCombo.Text);
@@ -213,7 +213,7 @@ namespace GUI
             {
                 if (planeCapacityTxt.Text != string.Empty)
                 {
-                    if (Int32.Parse(passengerNumTxt.Text) > Int32.Parse(planeCapacityTxt.Text))
+                    if (int.Parse(passengerNumTxt.Text) > int.Parse(planeCapacityTxt.Text))
                     {
 
                         AddFlightButton.ToolTip = "Your passenger number is over capacity.";
