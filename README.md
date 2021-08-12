@@ -52,7 +52,7 @@ SQL Server &#8594; (localdb)\MSSQLLocalDB &#8594; Databases &#8594; 'SpartaFl
 
 
 ##### Step 7: Copy the string into line 35 of 'SpartaFlightContext.cs' (found in the Database project folder)
-Remember to put @ in front of " " quotes to make '\' not an escape character!
+Remember to put @ in front of " " quotes to make '\\' not an escape character!
 
 ![Step7](Images/Step7.png)
 
