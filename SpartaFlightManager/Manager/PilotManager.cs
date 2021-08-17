@@ -60,6 +60,7 @@ namespace Manager
             try
             {
                 _service.SavePilotChanges();
+                
             }
             catch (Exception)
             {
@@ -82,6 +83,7 @@ namespace Manager
             try
             {
                 _service.SavePilotChanges();
+                SelectedPilot = updatePilot;
             }
             catch (Exception)
             {
